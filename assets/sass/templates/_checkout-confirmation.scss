@@ -1,0 +1,21 @@
+/*
+Styles the purchase confirmation page.
+
+@since 0.1.0
+*/
+
+@import "../settings";
+@import "../../vendor/sass/foundation/components/buttons";
+
+body.edd-success {
+  .edd_download_file_link {
+    @include button-base;
+    @include button-size;
+    @include button-style;
+    @include single-transition(background-color);
+
+    &:before {
+      content: 'Download Now: ';
+    }
+  }
+}

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="35px" height="63px" viewBox="0 0 35 63" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.2.2 (9983) - http://www.bohemiancoding.com/sketch -->
+    <title>plug</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="Main" sketch:type="MSArtboardGroup" transform="translate(-151.000000, -91.000000)" fill="#12538F">
+            <g id="plug" sketch:type="MSLayerGroup" transform="translate(151.000000, 91.000000)">
+                <path d="M12.5190778,13.416016 L12.5190778,2.30592981 C12.5190778,1.02709893 11.4843557,7.10542736e-15 10.2079613,7.10542736e-15 C8.9226681,7.10542736e-15 7.89684477,1.03239994 7.89684477,2.30592981 L7.89684477,13.416016 L0.5,13.416016 L0.5,18.416016 L34.5,18.416016 L34.5,13.416016 L27.5190778,13.416016 L27.5190778,2.30592981 C27.5190778,1.02709893 26.4843557,7.10542736e-15 25.2079613,7.10542736e-15 C23.9226681,7.10542736e-15 22.8968448,1.03239994 22.8968448,2.30592981 L22.8968448,13.416016 L12.5190778,13.416016 Z M4.5,20 L30.5,20 L27.7526861,36.832032 L7.27661088,36.832032 L4.5,20 Z" id="Plug" sketch:type="MSShapeGroup"></path>
+                <rect id="Rectangle-5" sketch:type="MSShapeGroup" x="13" y="39" width="9" height="24"></rect>
+            </g>
+        </g>
+    </g>
+</svg>

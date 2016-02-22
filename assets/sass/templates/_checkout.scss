@@ -1,0 +1,14 @@
+/*
+Checkout page.
+
+@since 0.1.0
+*/
+@import "../settings";
+
+body.edd-checkout {
+  #edd_checkout_user_info {
+    legend {
+      background: transparent;
+    }
+  }
+}

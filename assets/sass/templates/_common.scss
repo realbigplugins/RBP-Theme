@@ -1,0 +1,16 @@
+/*
+Styles shared among all templates.
+
+@since 0.1.0
+*/
+
+@import "../settings";
+
+#wrapper {
+  position: relative;
+}
+
+#site-content {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}

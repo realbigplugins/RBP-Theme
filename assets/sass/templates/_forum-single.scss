@@ -1,0 +1,49 @@
+/*
+Single forum thread page.
+
+@since 0.1.0
+*/
+@import "../settings";
+@import "../../vendor/sass/foundation/components/breadcrumbs";
+
+body.bbpress.single-topic {
+}
+
+#bbpress-forums{
+  .status-closed {
+    color: inherit;
+
+    a {
+      color: inherit;
+    }
+  }
+
+  fieldset.bbp-form {
+    padding: 0;
+  }
+}
+
+#subscription-toggle {
+  margin-left: 10px;
+}
+
+.bbp-breadcrumb {
+  @include crumb-container;
+  margin-bottom: 20px;
+
+  [class*="bbp-breadcrumb-"]:not(.bbp-breadcrumb-sep) {
+    @include crumbs;
+  }
+
+  a {
+    color: $anchor-font-color !important;
+
+    &:hover {
+      color: $anchor-font-color-hover !important;
+    }
+  }
+
+  .bbp-breadcrumb-sep {
+    display: none;
+  }
+}

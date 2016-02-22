@@ -1,0 +1,17 @@
+/*
+The static site footer.
+
+@since 0.1.0
+*/
+
+@import "../settings";
+
+#site-footer {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: rem-calc(12);
+  color: #aaa;
+}

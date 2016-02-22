@@ -1,0 +1,29 @@
+/*
+Styles single download page.
+
+@since 0.1.0
+*/
+@import "../settings";
+
+body.single-download {
+
+  h1 {
+    margin-top: 0;
+    line-height: 1;
+  }
+
+  .product-content {
+    margin: 20px 0;
+  }
+
+  .product-actions {
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  @media #{$small-only} {
+    .product-title, .product-image {
+      text-align: center;
+    }
+  }
+}
