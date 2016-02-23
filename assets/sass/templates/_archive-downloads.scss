@@ -5,7 +5,6 @@ Styles the downloads archive page.
 */
 
 @import "../settings";
-@import "../../vendor/sass/foundation/components/type";
 
 body.post-type-archive-download {
 
@@ -15,7 +14,7 @@ body.post-type-archive-download {
   }
 
   .title {
-    font-size: $h2-font-size * 0.8;
+    font-size: map-deep-get( $header-sizes, medium, h2 ) * 0.74px;
   }
 
   .product-image {

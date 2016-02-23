@@ -1,11 +1,6 @@
-/*
-Sets up the theme's styling properties and makes some variables already set in Foundation available for easy use
-throughout this theme's SASS files.
-
-@since 0.1.0
-*/
-
-@import "../vendor/sass/foundation/functions";
+// Copy of Foundation's _settings.scss with the path to util/util changed.
+// ZURB closed zurb/foundation-sites#7573 "Fixed util import in settings/_settings.scss", even though it is fairly broken unless you have your project structured with all your SASS in Foundation's scss folder... which would not be ideal.
+@import "foundation-settings";
 
 // We use these as default colors throughout
 $primary-color: #12538f;
@@ -15,13 +10,15 @@ $success-color: #43AC6A;
 $warning-color: #f08a24;
 $info-color: #a0d3e8;
 
-$body-bg: #eee;
+$body-background: #eee;
 
 // We use these to define default font stacks
 $font-family-sans-serif: "Open Sans", sans-serif;
 $font-family-serif: Georgia, Cambria, "Times New Roman", Times, serif;
 $font-family-monospace: Consolas, "Liberation Mono", Courier, monospace;
 $body-font-color: #222;
+$body-font-family: $font-family-sans-serif;
+$body-antialiased: false;
 
 // Sizes
 $header-height: 80px;
@@ -33,12 +30,13 @@ $header-line-height: 1.4;
 $header-top-margin: .2rem;
 $header-bottom-margin: .5rem;
 $header-font-weight: 800;
+$header-color: $black;
 
 // We use these to style anchors
 $anchor-text-decoration: none;
 $anchor-text-decoration-hover: none;
-$anchor-font-color: $primary-color;
-$anchor-font-color-hover: scale-color($anchor-font-color, $lightness: -14%);
+$anchor-color: #12538f;
+$anchor-color-hover: scale-color($anchor-color, $lightness: -15%);
 
 // Forms
 $fieldset-padding: 0;
@@ -49,7 +47,15 @@ $crumb-slash-color: #454545;
 $crumb-font-color: $body-font-color;
 
 // Grid
-$row-width: rem-calc(1000);
+$grid-row-width: rem-calc(1000);
+
+// Button Styles
+$button-background: $anchor-color;
+$button-background-hover: scale-color($button-background, $lightness: -15%);
+
+$button-background: $button-background !important;
+$button-background-hover: $button-background-hover !important;
+$button-padding: 1rem 2rem 1.0625rem 2rem;
 
 // Media query ranges
 $small-range: (0em, 40em);
@@ -78,6 +84,9 @@ $xlarge-only: "#{$screen} and (min-width:#{lower-bound($xlarge-range)}) and (max
 $xxlarge-up: "#{$screen} and (min-width:#{lower-bound($xxlarge-range)})";
 $xxlarge-only: "#{$screen} and (min-width:#{lower-bound($xxlarge-range)}) and (max-width:#{upper-bound($xxlarge-range)})";
 
+// Flexbox breaks Media Object and likely other things
+$global-flexbox: false;
+
 /*
  * Mixins
  */
@@ -88,4 +97,32 @@ $xxlarge-only: "#{$screen} and (min-width:#{lower-bound($xxlarge-range)}) and (m
     display: table;
     clear: both;
   }
+}
+
+@mixin crumbs {
+    float: #{$global-left};
+    color: $breadcrumbs-item-color-current;
+    font-size: $breadcrumbs-item-font-size;
+    cursor: default;
+
+    @if $breadcrumbs-item-uppercase {
+      text-transform: uppercase;
+    }
+
+    @if $breadcrumbs-item-slash {
+      // Need to escape the backslash
+      $slash: if($global-text-direction == 'ltr', '/', '\\');
+
+      &:not(:last-child)::after {
+        color: $medium-gray;
+        content: $slash;
+        margin: 0 $breadcrumbs-item-margin;
+        position: relative;
+        top: 1px;
+        opacity: 1;
+      }
+    }
+    @else {
+      margin-#{$global-right}: $breadcrumbs-item-margin;
+    }
 }

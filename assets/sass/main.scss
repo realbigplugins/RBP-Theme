@@ -14,12 +14,14 @@ Version: 0.1.0
 
 // Foundation
 // Here we control all of the various foundation components to use
-@import "../vendor/sass/foundation/components/visibility";
-@import "../vendor/sass/foundation/components/clearing";
-@import "../vendor/sass/foundation/components/grid";
-@import "../vendor/sass/foundation/components/buttons";
-@import "../vendor/sass/foundation/components/type";
-@import "../vendor/sass/foundation/components/forms";
+@import "../vendor/sass/foundation/foundation";
+@include foundation-global-styles;
+@include foundation-visibility-classes;
+@include foundation-grid;
+@include foundation-button;
+@include foundation-typography;
+@include foundation-forms;
+@include foundation-callout;
 
 // Setup
 @import "base";

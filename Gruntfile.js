@@ -15,23 +15,19 @@ module.exports = function (grunt) {
             },
             sass: {
                 files: ['assets/sass/**/*.scss', '!assets/sass/admin/**/*.scss'],
-                tasks: ['sass:front', 'autoprefixer:front', 'notify:sass', 'sftp-deploy', 'notify:sftp']
+                tasks: ['sass:front', 'autoprefixer:front', 'notify:sass']
             },
             sass_admin: {
                 files: ['assets/sass/admin/**/*.scss'],
-                tasks: ['sass:admin', 'autoprefixer:admin', 'notify:sass_admin', 'sftp-deploy', 'notify:sftp']
+                tasks: ['sass:admin', 'autoprefixer:admin', 'notify:sass_admin']
             },
             js: {
                 files: ['assets/js/*.js'],
-                tasks: ['uglify:front', 'notify:js', 'sftp-deploy', 'notify:sftp']
+                tasks: ['uglify:front', 'notify:js']
             },
             js_admin: {
                 files: ['assets/js/admin/*.js'],
                 tasks: ['uglify:admin', 'notify:js_admin', 'sftp-deploy', 'notify:sftp']
-            },
-            upload: {
-                files: ['**/*.php'],
-                tasks: ['sftp-deploy', 'notify:sftp']
             },
             livereload: {
                 files: ['**/*.html', '**/*.php', 'assets/images/**/*.{png,jpg,jpeg,gif,webp,svg}', '!**/*ajax*.php']
@@ -82,8 +78,14 @@ module.exports = function (grunt) {
                         'assets/vendor/js/placeholder.js',
                         'assets/vendor/js/jquery.cookie.js',
                         'assets/vendor/js/jquery.easing.js',
-                        'assets/vendor/js/foundation.js',
-
+                        'build/vendor/js/foundation/foundation.core.js',
+                        'build/vendor/js/foundation/foundation.util.keyboard.js',
+                        'build/vendor/js/foundation/foundation.util.box.js',
+                        'build/vendor/js/foundation/foundation.util.nest.js',
+                        'build/vendor/js/foundation/foundation.util.mediaQuery.js',
+                        'build/vendor/js/foundation/foundation.util.triggers.js',
+                        'build/vendor/js/foundation/foundation.util.motion.js',
+                        
                         // Included dynamically in header.php
                         '!assets/vendor/js/html5.js',
 
@@ -98,31 +100,6 @@ module.exports = function (grunt) {
                         'assets/js/admin/*.js'
                     ]
                 }
-            }
-        },
-
-        'sftp-deploy': {
-            dist: {
-                auth: {
-                    host: 'realbigmarketing.com',
-                    port: 22,
-                    authKey: 'main'
-                },
-                cache:  '.sftp-cache',
-                src: './',
-                dest: '/wp-content/themes/realbigplugins',
-                exclusions: [
-                    './node_modules',
-                    './.idea',
-                    './.sass-cache',
-                    './images_bak',
-                    './.ftppass',
-                    './Gruntfile.js',
-                    './package.json',
-                    './**/.DS_Store',
-                    './.gitignore',
-                    './.git'
-                ]
             }
         },
 
@@ -149,12 +126,6 @@ module.exports = function (grunt) {
                 options: {
                     title: '<%= pkg.name %>',
                     message: 'SASS Admin Complete'
-                }
-            },
-            sftp: {
-                options: {
-                    title: '<%= pkg.name %>',
-                    message: 'Upload Complete'
                 }
             }
         }
