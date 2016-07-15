@@ -17,6 +17,11 @@ the_post();
 ?>
 
 <!-- Single HTML -->
+<section id="site-content" class="row">
+    <div class="columns small-12">
+        <?php the_content(); ?>
+    </div>
+</section>
 
 <?php
 get_footer();
