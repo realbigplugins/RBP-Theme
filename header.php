@@ -1,8 +1,8 @@
 <?php
 /**
  * The theme's header file that appears on EVERY page.
- *
- * @since   0.1.0
+ * 
+ * @since   1.0.0
  * @package RealBigPlugins
  */
 
@@ -31,19 +31,52 @@ if ( ! defined( 'ABSPATH' ) ) {
 <body <?php body_class(); ?>>
 
 <div id="wrapper">
+    
+	<div id="back-cover"></div>
 
-	<section id="site-header" class="row">
-		<h1 class="site-title columns small-12 medium-4">
-			<a href="<?php bloginfo( 'url' ); ?>"><img src="<?php echo get_template_directory_uri(); ?>/assets/svg/rbm-logo-plugged.svg"/>
-				<span class="title-text">Real Big Plugins</span>
+	<header id="site-header">
+
+		<h1 class="site-title">
+			<a href="<?php bloginfo( 'url' ); ?>" class="no-effect">
+				<span class="color-secondary">Real</span>
+				<span class="color-primary" style="font-size: 1.5em;">Big</span>
+				<br/>
+				<span class="color-secondary">Marketing</span>
 			</a>
 		</h1>
 
-		<nav class="site-nav columns small-12 medium-8">
+		<nav class="site-nav-left">
 			<?php
 			wp_nav_menu( array(
-				'theme-location' => 'primary',
-			) );
+				'theme_location' => 'primary-left',
+				'container' => false,
+			));
 			?>
 		</nav>
-	</section>
+
+		<div class="site-logo">
+				<?php include __DIR__ . '/assets/images/rbm-logo.php'; ?>
+		</div>
+
+		<nav class="site-nav-circular">
+			<?php
+			wp_nav_menu( array(
+				'theme_location' => 'primary-center',
+				'container' => false,
+				'walker' => new RealBigPlugins_Walker_CircularNav(),
+			));
+			?>
+		</nav>
+
+		<nav class="site-nav-right">
+			<?php
+			wp_nav_menu( array(
+				'theme_location' => 'primary-right',
+				'container' => false,
+			));
+			?>
+		</nav>
+
+	</header>
+
+	<div id="site-content">

@@ -18,20 +18,23 @@ if ( ! version_compare( PHP_VERSION, '5.3.0', '>=' ) ) {
 
 // Make sure no theme constants are already defined (realistically, there should be no conflicts)
 if ( defined( 'THEME_VERSION' ) || defined( 'THEME_ID' ) || isset( $theme_fonts ) ) {
-	wp_die( 'ERROR in RealBigPlugins theme: There is a conflicting constant. Please either find the conflict or rename the constant.' );
+    wp_die( 'ERROR in Real Big Plugins theme: There is a conflicting constant. Please either find the conflict or rename the constant.' );
 }
 
 /**
- * The theme's current version (make sure to keep this up to date!)
+ * Define Constants based on our Stylesheet Header. Update things only once!
+ * 
+ * @since 1.1.0
+ * @return void
  */
-define( 'THEME_VERSION', '0.1.1' );
+add_action( 'init', function() {
 
-/**
- * The theme's ID (used in handlers).
- */
-define( 'THEME_ID', 'real_big_plugins' );
+    $theme_header = wp_get_theme();
 
-define( 'EDD_SLUG', 'plugins' );
+    define( 'THEME_ID', $theme_header->get( 'TextDomain' ) );
+    define( 'THEME_VERSION', $theme_header->get( 'Version' ) );
+
+} );
 
 /**
  * Fonts for the theme. Must be hosted font (Google fonts for example).
@@ -181,6 +184,121 @@ add_action( 'wp_footer', function () {
 		</script>
 	<?php
 	endif;
+    
+);
+
+/**
+ * Setup theme properties and stuff
+ * 
+ * @since 1.0.0
+ * @return void
+ */
+add_action( 'after_setup_theme', function () {
+
+    // Add theme support
+    require_once __DIR__ . '/includes/theme-support.php';
+
+    // Nav Walker for Foundation
+    require_once __DIR__ . '/includes/class-foundation_nav_walker.php';
+
+    // Allow shortcodes in text widget
+    add_filter( 'widget_text', 'do_shortcode' );
+
+} );
+
+/**
+ * Register our CSS/JS
+ * 
+ * @since 1.0.0
+ * @return void
+ */
+add_action( 'init', function() {
+
+    global $theme_fonts;
+
+    // Theme styles
+    wp_register_style(
+        THEME_ID,
+        get_template_directory_uri() . '/style.css',
+        null,
+        defined( 'WP_DEBUG' ) && WP_DEBUG ? time() : THEME_VERSION
+    );
+
+    // Theme fonts
+    if ( ! empty( $theme_fonts ) ) {
+        foreach ( $theme_fonts as $ID => $link ) {
+            wp_register_style(
+                THEME_ID . "-font-$ID",
+                $link
+            );
+        }
+    }
+
+} );
+
+/**
+ * Enqueue our CSS/JS on the Frontend
+ * 
+ * @since 1.0.0
+ * @return void
+ */
+add_action( 'wp_enqueue_scripts', function() {
+
+    global $theme_fonts;
+
+    wp_enqueue_style( THEME_ID );
+
+    // Theme fonts
+    if ( ! empty( $theme_fonts ) ) {
+        foreach ( $theme_fonts as $ID => $link ) {
+            wp_enqueue_style( THEME_ID . "-font-$ID" );
+        }
+    }
+
+} );
+
+/**
+ * Register Nav Menus
+ * 
+ * @since 1.0.0
+ * return void
+ */
+add_action( 'after_setup_theme', function () {
+
+    register_nav_menu( 'primary', 'Primary Menu' );
+
+} );
+
+/**
+ * Run Big Brother scripts only for non-logged in Users
+ * 
+ * @since 1.0.0
+ * return void
+ */
+add_action( 'wp_footer', function () {
+
+    if ( ! is_user_logged_in() ) :
+?>
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-37145568-3', 'auto');
+    ga('send', 'pageview');
+
+</script>
+<?php
+    endif;
+
 } );
 
 // Include other static files

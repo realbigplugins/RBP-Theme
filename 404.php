@@ -1,8 +1,8 @@
 <?php
 /**
- * The theme's page file use for displaying pages.
+ * The theme's 404 page for showing not found pages.
  *
- * @since   0.1.0
+ * @since 1.0.0
  * @package RealBigPlugins
  */
 
@@ -16,14 +16,21 @@ get_header();
 the_post();
 ?>
 
-	<section id="site-content" class="row">
-		<div class="columns small-12">
+	<div class="page-content row">
 
-			<h1 class="page-title">404</h1>
+		<article id="page-404" class="columns small-12">
 
-			Sorry, there doesn't seem to be anything here!
-		</div>
-	</section>
+			<h1 class="page-title">
+				404 - Not Found
+			</h1>
+
+			<p>
+				Sorry, but there's nothing here.
+			</p>
+
+		</article>
+
+	</div>
 
 <?php
 get_footer();

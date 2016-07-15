@@ -3,14 +3,13 @@
  * Adds theme support for the theme.
  *
  * Feel free to remove any un-wanted support (most is already commented out)
- *
- * @since   0.1.0
+ * @since   1.0.0
  * @package RealBigPlugins
  */
 
 // Don't load directly
 if ( ! defined( 'ABSPATH' ) ) {
-	die;
+    die;
 }
 
 /**

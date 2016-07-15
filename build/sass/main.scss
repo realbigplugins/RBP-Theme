@@ -5,8 +5,18 @@ Description:
 Author: Eric Defore
 Author URI: http://realbigmarketing.com
 Version: 1.1.0
+Text Domain: real-big-plugins
 */
 
-//@import 'settings';
 @import 'foundation';
 @import 'motion-ui';
+
+@import 'settings';
+
+@include foundation-global-styles;
+@include foundation-visibility-classes;
+@include foundation-grid;
+@include foundation-button;
+@include foundation-typography;
+@include foundation-forms;
+@include foundation-callout;
