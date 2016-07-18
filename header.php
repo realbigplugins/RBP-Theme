@@ -45,16 +45,22 @@ if ( ! defined( 'ABSPATH' ) ) {
                     
                     <div class="top-bar-left nav-menu">
                         
-                        <?php
-                        
-                        ?>
+                        <?php wp_nav_menu( array(
+                            'container' => false,
+                            'menu' => __( 'Primary Left Menu', THEME_ID ),
+                            'menu_class' => 'menu hide-for-small-only',
+                            'theme_location' => 'primary-left',
+                            'items_wrap'      => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+                            'fallback_cb' => false,
+                            'walker' => new Foundation_Nav_Walker(),
+                        ) ); ?>
                         
                     </div>
                     
                     <div class="top-bar-section top-bar-logo nav-menu">
                         <ul class="menu">
                             <li>
-                                <a href="/playbook/" title="Home">
+                                <a href="<?php bloginfo( 'url' ); ?>" title="<?php _e( 'Home', THEME_ID ); ?>">
                                     <span class="stacked-rbm-logo-icon"><span></span></span>
                                 </a>
                             </li>
@@ -65,9 +71,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 
                         <?php wp_nav_menu( array(
                             'container' => false,
-                            'menu' => __( 'Primary Menu', THEME_ID ),
+                            'menu' => __( 'Primary Right Menu', THEME_ID ),
                             'menu_class' => 'menu hide-for-small-only',
-                            'theme_location' => 'primary',
+                            'theme_location' => 'primary-right',
                             'items_wrap'      => '<ul id="%1$s" class="%2$s">%3$s</ul>',
                             'fallback_cb' => false,
                             'walker' => new Foundation_Nav_Walker(),

@@ -21,6 +21,8 @@ if ( defined( 'THEME_VERSION' ) || defined( 'THEME_ID' ) || isset( $theme_fonts 
     wp_die( 'ERROR in Real Big Plugins theme: There is a conflicting constant. Please either find the conflict or rename the constant.' );
 }
 
+define( 'EDD_SLUG', 'plugins' );
+
 /**
  * Define Constants based on our Stylesheet Header. Update things only once!
  * 
@@ -264,8 +266,10 @@ add_action( 'wp_enqueue_scripts', function() {
  * return void
  */
 add_action( 'after_setup_theme', function () {
-
-    register_nav_menu( 'primary', 'Primary Menu' );
+    
+    register_nav_menu( 'primary-left', 'Primary Left Menu' );
+    
+    register_nav_menu( 'primary-right', 'Primary Right Menu' );
 
 } );
 
