@@ -13,6 +13,11 @@
             > li {
                 > a {
                     color: $topbar-link-color;
+                    
+                    &:before, &:after {
+                        border-color: $topbar-link-color;
+                    }
+                    
                 }
             }
         }
@@ -75,12 +80,12 @@
                         }
 
                         &:before, &:after {
-                            //color: $light-color;
+                            color: $topbar-link-color;
                         }
 
                         span { // Extra layers of icons
                             &:after {
-                                //color: $light-color;
+                                color: $topbar-link-color;
                             }
                         }
 
@@ -89,6 +94,14 @@
                     &:hover {
 
                         span.stacked-rbm-logo {
+                            
+                            &:before {
+                                color: $gear;
+                            }
+                            
+                            &:after {
+                                color: $bulb;
+                            }
 
                             span:after {
                                 content: '\e900';

@@ -65,9 +65,13 @@ get_header();
 					<?php if ( function_exists( 'edd_price' ) ) { ?>
 						<div class="product-buttons">
 							<?php if ( ! edd_has_variable_prices( get_the_ID() ) ) { ?>
-								<?php echo edd_get_purchase_link( get_the_ID(), 'Add to Cart', 'button' ); ?>
+								<?php echo edd_get_purchase_link( array( 
+                                        'download_id' => get_the_ID(), 
+                                        'text' => 'Add to Cart',
+                                        'class' => 'primary' 
+                                ) ); ?>
 							<?php } ?>
-							<a href="<?php the_permalink(); ?>" class="button">View Details</a>
+							<a href="<?php the_permalink(); ?>" class="button primary">View Details</a>
 						</div><!--end .product-buttons-->
 					<?php } ?>
 				</div><!--end .product-->

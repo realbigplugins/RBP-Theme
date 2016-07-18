@@ -29,7 +29,11 @@ the_post();
 					<h4 class="single-product-price"><?php edd_price( get_the_ID() ); ?></h4>
 				<?php } ?>
 
-				<?php echo edd_get_purchase_link( get_the_ID(), 'Add to Cart', 'button', 'blue' ); ?>
+				<?php echo edd_get_purchase_link( array(
+                    'download_id' => get_the_ID(), 
+                    'text' => 'Add to Cart', 
+                    'class' => 'primary',
+                 ) ); ?>
 
 				<div class="product-categories">
 					<?php the_terms( get_the_ID(), 'download_category', '<span class="product-categories-title">Categories:</span> ', ', ', '' ); ?>

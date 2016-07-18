@@ -19,6 +19,8 @@ $foundation-palette: (
 $gear: #a4cd39;
 $bulb: #12538f;
 
+$light-color: #ddd;
+
 // We use these to define default font stacks
 $font-family-sans-serif: "Open Sans", sans-serif;
 $font-family-serif: Georgia, Cambria, "Times New Roman", Times, serif;
@@ -36,7 +38,7 @@ $offcanvas-background: $topbar-background;
 $topbar-link-color: null;
 @if lightness( $topbar-background ) < 50% {
 
-    $topbar-link-color: $white;
+    $topbar-link-color: $light-color;
 
 }
 @else {

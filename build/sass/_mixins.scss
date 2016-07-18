@@ -23,3 +23,146 @@
     background: $color; /* The fallback for ancient things */
     background: rgba( $color, $opacity );
 }
+
+@mixin link-hover-style( $border-color: $topbar-link-color ) {
+
+    position: relative;
+
+    &:before, &:after {
+        content: '';
+        position: absolute;
+        border-top: 0.1em solid;
+        border-color: $border-color;
+        height: 0;
+        left: 0;
+        right: 0;
+        opacity: 0;
+        transition: opacity 300ms, top 300ms, bottom 300ms;
+    }
+
+    &:before {
+        top: 0.25em;
+    }
+
+    &:after {
+        bottom: 0.25em;
+    }
+
+    &:hover {
+
+        &:before, &:after {
+            opacity: 1;
+        }
+
+        &:before {
+            top: -0.05em;
+        }
+
+        &:after {
+            bottom: -0.05em;
+        }
+
+    }
+
+}
+
+@mixin background-slide-in( $background: $secondary-color, $direction: 'right' ) {
+
+    position: relative;
+    background: transparent;
+    
+    border-color: $black;
+    color: $black;
+    
+    transition: border-color 300ms;
+    transition: color 300ms;
+    
+    .button-text {
+        color: $black;
+        z-index: 1;
+        position: relative;
+    }
+
+    &:before {
+
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        #{$direction}: 100%;
+        background: $background;
+        transition: #{$direction} 300ms;
+        z-index: 0;
+
+    }
+    
+    &:hover {
+        
+        border-color: $background;
+        
+        .button-text {
+            @include light-or-dark-text( $background );
+        }
+        
+        &:before {
+            
+            #{$direction}: 0;
+            
+        }
+        
+    }
+
+}
+
+// This is basically the same as background-slide-in, but I can't set up the HTML for the EDD buttons in the correct way
+@mixin edd-button-wrap( $background: $secondary-color, $direction: 'right' ) {
+
+    position: relative;
+    background: transparent;
+    
+    border-color: $black;
+    color: $black;
+    
+    transition: border-color 300ms;
+    transition: color 300ms;
+    
+    .a {
+        color: $black;
+        z-index: 1;
+        position: relative;
+    }
+
+    &:before {
+
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        #{$direction}: 100%;
+        background: $background;
+        transition: #{$direction} 300ms;
+        z-index: 0;
+
+    }
+    
+    &:hover {
+        
+        border-color: $background;
+        
+        .a {
+            @include light-or-dark-text( $background );
+        }
+        
+        &:before {
+            
+            #{$direction}: 0;
+            
+        }
+        
+    }
+
+}
