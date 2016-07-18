@@ -14,99 +14,103 @@ if ( ! defined( 'ABSPATH' ) ) {
 get_header();
 ?>
 
-	<section id="site-content" class="store-template">
-
-		<?php if ( have_posts() ) : $index = 1; ?>
-
-			<?php
-			// Get column classes
-			global $posts;
-			switch ( count( $posts ) ) {
-				case 1:
-					$column_classes = 'small-12';
-                    $max_columns = 1;
-					break;
-				case 2:
-					$column_classes = 'small-12 medium-6';
-                    $max_columns = 2;
-					break;
-				case 3:
-					$column_classes = 'small-12 large-4';
-                    $max_columns = 3;
-					break;
-				default:
-					$column_classes = 'small-12 medium-6';
-                    $max_columns = 2;
-					break;
-			}
-			?>
-
-			<?php while ( have_posts() ) : the_post(); ?>
+	<section class="store-template">
         
-                <?php if ( $index == 1 ) : ?>
-        
-                    <div class="row">
-                    
-                <?php endif; ?>
+        <div class="queue-on-scroll scale-in-up">
 
-                    <div class="product columns <?php echo $column_classes; ?>">
-                        <a href="<?php the_permalink(); ?>">
-                            <h2 class="title"><?php the_title(); ?></h2>
-                        </a>
+            <?php if ( have_posts() ) : $index = 1; ?>
 
-                        <div class="product-image">
-                            <a href="<?php the_permalink(); ?>">
-                                <?php the_post_thumbnail( 'product-image' ); ?>
-                            </a>
-                            <?php if ( function_exists( 'edd_price' ) ) { ?>
-                                <div class="product-price">
-                                    <?php
-                                    if ( edd_has_variable_prices( get_the_ID() ) ) {
-                                        // if the download has variable prices, show the first one as a starting price
-                                        echo 'Starting at: ';
-                                        edd_price( get_the_ID() );
-                                    } else {
-                                        edd_price( get_the_ID() );
-                                    }
-                                    ?>
-                                </div><!--end .product-price-->
-                            <?php } ?>
-                        </div>
-                        <?php if ( function_exists( 'edd_price' ) ) { ?>
-                            <div class="product-buttons">
-                                <?php if ( ! edd_has_variable_prices( get_the_ID() ) ) { ?>
-                                    <?php echo edd_get_purchase_link( array( 
-                                            'download_id' => get_the_ID(), 
-                                            'text' => 'Add to Cart',
-                                            'class' => 'primary' 
-                                    ) ); ?>
-                                <?php } ?>
-                                <a href="<?php the_permalink(); ?>" class="button primary">View Details</a>
-                            </div><!--end .product-buttons-->
-                        <?php } ?>
-                    </div><!--end .product-->
-                        
-				<?php if ( $index == $max_columns ) : ?>
-                        
-                    </div>
-        
                 <?php
-        
-                    $index = 1;
-        
-                else : 
-        
-                    $index++; 
-        
-                endif; ?>
+                // Get column classes
+                global $posts;
+                switch ( count( $posts ) ) {
+                    case 1:
+                        $column_classes = 'small-12';
+                        $max_columns = 1;
+                        break;
+                    case 2:
+                        $column_classes = 'small-12 medium-6';
+                        $max_columns = 2;
+                        break;
+                    case 3:
+                        $column_classes = 'small-12 large-4';
+                        $max_columns = 3;
+                        break;
+                    default:
+                        $column_classes = 'small-12 medium-6';
+                        $max_columns = 2;
+                        break;
+                }
+                ?>
 
-			<?php endwhile; ?>
-        
-            <?php if ( $index !== 1 ) : ?>
-        
-                </div> 
+                <?php while ( have_posts() ) : the_post(); ?>
 
-            <?php endif; ?>
+                    <?php if ( $index == 1 ) : ?>
+
+                        <div class="row">
+
+                    <?php endif; ?>
+
+                        <div class="product queued-item columns <?php echo $column_classes; ?>">
+                            <a href="<?php the_permalink(); ?>">
+                                <h2 class="title"><?php the_title(); ?></h2>
+                            </a>
+
+                            <div class="product-image">
+                                <a href="<?php the_permalink(); ?>">
+                                    <?php the_post_thumbnail( 'product-image' ); ?>
+                                </a>
+                                <?php if ( function_exists( 'edd_price' ) ) { ?>
+                                    <div class="product-price">
+                                        <?php
+                                        if ( edd_has_variable_prices( get_the_ID() ) ) {
+                                            // if the download has variable prices, show the first one as a starting price
+                                            echo 'Starting at: ';
+                                            edd_price( get_the_ID() );
+                                        } else {
+                                            edd_price( get_the_ID() );
+                                        }
+                                        ?>
+                                    </div><!--end .product-price-->
+                                <?php } ?>
+                            </div>
+                            <?php if ( function_exists( 'edd_price' ) ) { ?>
+                                <div class="product-buttons">
+                                    <?php if ( ! edd_has_variable_prices( get_the_ID() ) ) { ?>
+                                        <?php echo edd_get_purchase_link( array( 
+                                                'download_id' => get_the_ID(), 
+                                                'text' => 'Add to Cart',
+                                                'class' => 'primary' 
+                                        ) ); ?>
+                                    <?php } ?>
+                                    <a href="<?php the_permalink(); ?>" class="button primary">View Details</a>
+                                </div><!--end .product-buttons-->
+                            <?php } ?>
+                        </div><!--end .product-->
+
+                    <?php if ( $index == $max_columns ) : ?>
+
+                        </div>
+
+                    <?php
+
+                        $index = 1;
+
+                    else : 
+
+                        $index++; 
+
+                    endif; ?>
+
+                <?php endwhile; ?>
+
+                <?php if ( $index !== 1 ) : ?>
+
+                    </div> 
+
+                <?php endif; ?>
+        
+            </div>
 
 			<div class="pagination">
 				<?php

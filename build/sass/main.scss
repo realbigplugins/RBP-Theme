@@ -28,6 +28,9 @@ Text Domain: real-big-plugins
 @include foundation-visibility-classes;
 @include foundation-sticky;
 
+@include motion-ui-transitions;
+@include motion-ui-animations;
+
 @import "mixins";
 
 @import "global/wp";

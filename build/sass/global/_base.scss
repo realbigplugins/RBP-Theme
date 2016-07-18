@@ -60,7 +60,12 @@ section {
 
 #site-content {
     height: 100%;
-    padding-top: 46px;
+    padding-top: 160px;
+    
+    @media #{$medium-up} {
+        padding-top: 138px; // 3x the height of Admin Bar on Mobile
+    }
+    
 }
 
 img[class*=" wp-image-"] { // Catch-all to grab images added via "Add Media" button

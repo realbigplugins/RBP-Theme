@@ -17,7 +17,7 @@ $plugins_archive_link = get_post_type_archive_link( 'download' );
 $hire_us_page = get_page_by_title( 'Hire Us' );
 ?>
 
-	<section id="site-content" class="row">
+	<section class="row">
 		<div class="plugins columns small-12 medium-6">
 			<a href="<?php echo $plugins_archive_link ? $plugins_archive_link : '#'; ?>">
 				<p class="plug">

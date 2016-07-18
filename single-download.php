@@ -15,11 +15,7 @@ get_header();
 the_post();
 ?>
 
-	<div id="site-content" class="row">
-
-		<div class="product-title columns small-12 hide-for-medium-up">
-			<h1 class="title"><?php the_title(); ?></h1>
-		</div>
+	<div class="row animate-on-scroll fade-in">
 
 		<div class="product-image columns small-12 medium-4">
 			<?php the_post_thumbnail( 'large' ); ?>
