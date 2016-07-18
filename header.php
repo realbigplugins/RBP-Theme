@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 ?>
 
 <!DOCTYPE html>
-<html <?php language_attributes(); ?> class="no-js">
+<html <?php language_attributes(); ?> class="no-js off-canvas-fix">
     
     <head>
         <meta charset="<?php bloginfo( 'charset' ); ?>">
@@ -32,19 +32,43 @@ if ( ! defined( 'ABSPATH' ) ) {
     <body <?php body_class( 'off-canvas-wrapper' ); ?>>
 
         <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
+            
+            <div class="off-canvas position-left nav-menu" id="offCanvasLeft" data-off-canvas>
 
-            <div class="off-canvas-content" data-off-canvas-content>
+                <?php wp_nav_menu( array(
+                    'container' => false,
+                    'menu' => __( 'Primary Left Menu', THEME_ID ),
+                    'menu_class' => 'menu show-for-small-only',
+                    'theme_location' => 'primary-left',
+                    'items_wrap'      => '<ul id="%1$s" class="vertical %2$s">%3$s</ul>',
+                    'fallback_cb' => false,
+                    'walker' => new Foundation_Nav_Walker(),
+                ) ); ?>
+                
+                <?php wp_nav_menu( array(
+                    'container' => false,
+                    'menu' => __( 'Primary Right Menu', THEME_ID ),
+                    'menu_class' => 'menu show-for-small-only',
+                    'theme_location' => 'primary-right',
+                    'items_wrap'      => '<ul id="%1$s" class="vertical %2$s">%3$s</ul>',
+                    'fallback_cb' => false,
+                    'walker' => new Foundation_Nav_Walker(),
+                ) ); ?>
 
-                <nav class="top-bar">
-                    
+            </div>
+
+            <div class="off-canvas-content" data-off-canvas-content data-sticky-container>
+
+                <nav class="sticky top-bar" data-sticky data-sticky-on="small" data-margin-top="1" style="width:100%">
+
                     <div class="top-bar-left mobile-menu show-for-small-only">
                         <div class="menu-icon-wrapper">
                             <button class="menu-icon" type="button" data-toggle="offCanvasLeft" aria-expanded="false" aria-controls="offCanvasLeft"></button>
                         </div>
                     </div>
-                    
+
                     <div class="top-bar-left nav-menu">
-                        
+
                         <?php wp_nav_menu( array(
                             'container' => false,
                             'menu' => __( 'Primary Left Menu', THEME_ID ),
@@ -54,9 +78,9 @@ if ( ! defined( 'ABSPATH' ) ) {
                             'fallback_cb' => false,
                             'walker' => new Foundation_Nav_Walker(),
                         ) ); ?>
-                        
+
                     </div>
-                    
+
                     <div class="top-bar-section top-bar-logo nav-menu">
                         <ul class="menu">
                             <li>
@@ -66,7 +90,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                             </li>
                         </ul>
                     </div>
-                    
+
                     <div class="top-bar-right nav-menu">
 
                         <?php wp_nav_menu( array(
@@ -78,7 +102,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                             'fallback_cb' => false,
                             'walker' => new Foundation_Nav_Walker(),
                         ) ); ?>
-                        
+
                     </div>
                 </nav>
 

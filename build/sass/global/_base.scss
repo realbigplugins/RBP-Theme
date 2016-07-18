@@ -1,0 +1,104 @@
+/*
+Base element settings (no classes or id's).
+
+@since 0.1.0
+*/
+
+@media
+    only screen and (-webkit-min-device-pixel-ratio: 1.5),
+    only screen and (-o-min-device-pixel-ratio: 3/2),
+    only screen and (min--moz-device-pixel-ratio: 1.5),
+    only screen and (min-device-pixel-ratio: 1.5){
+        html,
+        body{
+            width:100%;
+            overflow-x:hidden;
+        }
+}
+
+// Select color
+::selection {
+    background: $primary-color;
+    @include light-or-dark-text($primary-color);
+}
+
+::-moz-selection {
+    background: $primary-color;
+    @include light-or-dark-text($primary-color);
+}
+
+html {
+    overflow-y: auto;
+    
+    @media #{$small-only} {
+        
+        &.off-canvas-fix { // EDD or some other plugin is adding in-line CSS below my inclusion of our styles.
+        
+            margin-top: 0 !important;
+            
+        }
+        
+    }
+    
+}
+
+section {
+    position: relative;
+}
+
+// Classes
+.screen-reader-text {
+    display: none;
+}
+
+.page-content {
+
+    background-color: $white;
+    padding: 30px;
+
+}
+
+#site-content {
+    height: 100%;
+    padding-top: 46px;
+}
+
+img[class*=" wp-image-"] { // Catch-all to grab images added via "Add Media" button
+
+    @include thumbnail;
+    border: none;
+    box-shadow: none;
+    
+    &:hover, &:focus {
+        box-shadow: none;
+    }
+
+}
+
+.pagination {
+    text-align: center;
+}
+
+.widget {
+    
+    list-style-type: none;
+
+    .menu {
+
+        list-style-type: $list-style-type;
+        margin-left: $list-side-margin;
+        margin-bottom: $list-margin-bottom;
+
+        li {
+
+            display: list-item;
+
+            a {
+                padding: 0;
+            }
+
+        }
+
+    }
+
+}

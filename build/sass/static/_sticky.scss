@@ -1,0 +1,27 @@
+// We have to override a lot of inline garbage for this
+
+.admin-bar {
+    
+    .sticky {
+        
+        margin-top: 45px !important;
+        
+        @media #{$medium-up} {
+            
+            margin-top: 32px !important;
+            
+        }
+        
+    }
+    
+}
+
+.sticky {
+    
+    margin-top: -1px !important;
+    
+    @media #{$medium-up} {
+        margin-top: 0 !important;
+    }
+    
+}
