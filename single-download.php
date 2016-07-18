@@ -56,5 +56,73 @@ the_post();
 
 	</div>
 
-<?php
+    <?php $testimonials = rbm_get_field( 'testimonials' );
+
+    if ( ! empty( $testimonials ) ) :
+
+        $index = 1;
+
+        switch( count( $testimonials ) ) {
+                
+            case 1 :
+                $column_class = 'medium-6';
+                $max_columns = 1;
+                break;
+            default : 
+                $column_class = 'medium-3';
+                $max_columns = 2;
+                break;
+                
+        }
+        
+        foreach ( $testimonials = rbm_get_field( 'testimonials' ) as $testimonial ) : ?>
+        
+            <?php if ( $index == 1 ) : ?>
+                <div class="row">
+            <?php endif; ?>
+        
+                <div class="small-12 <?php echo $column_class; ?> columns">
+                    <?php echo get_avatar( $testimonial['gravatar_email'] ); ?>
+                </div>
+
+                <div class="small-12 <?php echo $column_class; ?> columns">
+                    <?php echo apply_filters( 'the_content', $testimonial['content'] ); ?>
+                </div>
+                    
+            <?php if ( $index == $max_columns ) : ?>
+                
+                </div>
+
+            <?php 
+
+                $index = 1;
+
+            else : 
+
+                $index++; 
+
+            endif;
+        
+        endforeach;
+
+        if ( $index !== 1 ) : ?>
+
+            </div>
+
+        <?php endif;
+
+    endif;
+
+    $video_url = rbm_get_field( 'video' );
+
+    if ( ! empty( $video_url ) ) : ?>
+
+        <div class="row">
+            
+            <?php echo wp_oembed_get( $video_url ); ?>
+
+        </div>
+
+    <?php endif; 
+
 get_footer();

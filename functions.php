@@ -403,6 +403,10 @@ function rbp_download_features_meta_box() {
         'image' => array(
             'type' => 'image',
             'label' => __( 'Image', THEME_ID ),
+            false,
+            array(
+                'preview' => 'thumbnail',
+            )
         ),
         'title' => array( 
             'type' => 'text',
