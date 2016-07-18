@@ -8,7 +8,7 @@
 
     .top-bar-left, .top-bar-right {
         width: 45%;
-        
+
         > ul {
             > li {
                 > a {
@@ -16,17 +16,17 @@
                 }
             }
         }
-        
+
     }
-    
+
     .top-bar-left.mobile-menu {
         width: 100%;
         text-align: left;
-        
+
         .menu-icon-wrapper {
             padding: $menu-item-padding;
         }
-        
+
     }
 
     .top-bar-left {
@@ -53,51 +53,52 @@
                 margin-left: -3.5em;
                 border-radius: 50%;
                 top: -0.1em;
-                
+
                 a {
                     font-size: 5em;
-                    
+                    font-weight: normal;
+
                     &:before, &:after {
                         border: none;
                     }
-                    
-                    span.stacked-rbm-logo-icon {
+
+                    span.stacked-rbm-logo {
                         margin-left: -0.25em;
                         margin-top: -0.12em;
-                        
+
+                        &:before {
+                            color: $gear;
+                        }
+
+                        &:after {
+                            color: $bulb;
+                        }
+
                         &:before, &:after {
                             //color: $light-color;
                         }
-                        
+
                         span { // Extra layers of icons
                             &:after {
                                 //color: $light-color;
                             }
                         }
-                        
-                    }
-                    
-                    &:hover {
-                        
-                        span.stacked-rbm-logo-icon {
-                            
-                            &:before {
-                                //color: $gear;
-                            }
 
-                            &:after {
-                                //color: $bulb;
-                            }
+                    }
+
+                    &:hover {
+
+                        span.stacked-rbm-logo {
 
                             span:after {
                                 content: '\e900';
-                                //color: $bulb;
+                                color: $bulb;
                             }
-                            
+
                         }
 
                     }
-                    
+
                 }
 
             }

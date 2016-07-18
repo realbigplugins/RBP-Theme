@@ -61,7 +61,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                         <ul class="menu">
                             <li>
                                 <a href="<?php bloginfo( 'url' ); ?>" title="<?php _e( 'Home', THEME_ID ); ?>">
-                                    <span class="stacked-rbm-logo-icon"><span></span></span>
+                                    <span class="stacked-rbm-logo"><span></span></span>
                                 </a>
                             </li>
                         </ul>
@@ -81,7 +81,5 @@ if ( ! defined( 'ABSPATH' ) ) {
                         
                     </div>
                 </nav>
-                
-                <?php var_dump( wp_get_nav_menu_items( 'primary' ) ); ?>
 
                 <section id="site-content">
