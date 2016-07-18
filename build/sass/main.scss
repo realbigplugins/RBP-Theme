@@ -1,4 +1,4 @@
-@charset 'utf-8';
+@charset "utf-8";
 /*!
 Theme Name: Real Big Plugins - Future
 Description: 
@@ -8,15 +8,24 @@ Version: 1.1.0
 Text Domain: real-big-plugins
 */
 
-@import 'foundation';
-@import 'motion-ui';
+@import "foundation";
+@import "motion-ui";
 
-@import 'settings';
+@import "settings";
 
 @include foundation-global-styles;
-@include foundation-visibility-classes;
-@include foundation-grid;
-@include foundation-button;
 @include foundation-typography;
 @include foundation-forms;
+@include foundation-button;
 @include foundation-callout;
+@include foundation-grid;
+@include foundation-top-bar;
+@include foundation-menu;
+@include foundation-menu-icon;
+@include foundation-off-canvas;
+@include foundation-dropdown;
+@include foundation-dropdown-menu;
+@include foundation-visibility-classes;
+
+@import "static/top-bar";
+@import "static/off-canvas";

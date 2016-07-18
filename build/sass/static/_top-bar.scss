@@ -1,0 +1,108 @@
+.top-bar {
+
+    text-align: center;
+    font-family: $header-font-family;
+    font-weight: 600;
+    text-transform: uppercase;
+    width: 100%;
+
+    .top-bar-left, .top-bar-right {
+        width: 45%;
+        
+        > ul {
+            > li {
+                > a {
+                    color: $topbar-link-color;
+                }
+            }
+        }
+        
+    }
+    
+    .top-bar-left.mobile-menu {
+        width: 100%;
+        text-align: left;
+        
+        .menu-icon-wrapper {
+            padding: $menu-item-padding;
+        }
+        
+    }
+
+    .top-bar-left {
+        ul {
+            float: right;
+        }
+    }
+
+    .top-bar-section {
+        display: block;
+    }
+
+    .top-bar-logo {
+        width: 6.5em;
+
+        ul {
+            li {
+
+                background: $topbar-background;
+                width: 6.5em;
+                height: 6.5em;
+                position: absolute;
+                left: 50%;
+                margin-left: -3.5em;
+                border-radius: 50%;
+                top: -0.1em;
+                
+                a {
+                    font-size: 5em;
+                    
+                    &:before, &:after {
+                        border: none;
+                    }
+                    
+                    span.stacked-rbm-logo-icon {
+                        margin-left: -0.25em;
+                        margin-top: -0.12em;
+                        
+                        &:before, &:after {
+                            //color: $light-color;
+                        }
+                        
+                        span { // Extra layers of icons
+                            &:after {
+                                //color: $light-color;
+                            }
+                        }
+                        
+                    }
+                    
+                    &:hover {
+                        
+                        span.stacked-rbm-logo-icon {
+                            
+                            &:before {
+                                //color: $gear;
+                            }
+
+                            &:after {
+                                //color: $bulb;
+                            }
+
+                            span:after {
+                                content: '\e900';
+                                //color: $bulb;
+                            }
+                            
+                        }
+
+                    }
+                    
+                }
+
+            }
+        }
+
+    }
+
+}
