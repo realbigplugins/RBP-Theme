@@ -185,7 +185,7 @@ add_action( 'wp_footer', function () {
 	<?php
 	endif;
     
-);
+} );
 
 /**
  * Setup theme properties and stuff
