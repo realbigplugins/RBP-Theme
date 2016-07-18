@@ -12,10 +12,21 @@
         > ul {
             > li {
                 > a {
+                    
                     color: $topbar-link-color;
                     
                     &:before, &:after {
                         border-color: $topbar-link-color;
+                    }
+                    
+                    &:hover {
+                        
+                        color: $secondary-color;
+                        
+                        &:before, &:after {
+                            border-color: $secondary-color;
+                        }
+                        
                     }
                     
                 }

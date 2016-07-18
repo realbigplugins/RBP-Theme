@@ -1,0 +1,43 @@
+.post-type-archive-download {
+
+    .product-image {
+
+        a {
+
+            &:before, &:after {
+                border: none;
+            }
+
+        }
+
+    }
+
+    .product {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    .title {
+        font-size: map-deep-get( $header-sizes, medium, h2 ) * 0.74px;
+    }
+
+    .product-image {
+
+        img {
+            max-width: 250px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        .product-price {
+            margin-bottom: 20px;
+        }
+    }
+
+    .product-buttons {
+        .button {
+            margin-bottom: 0;
+        }
+    }
+
+}

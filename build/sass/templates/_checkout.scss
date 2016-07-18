@@ -1,0 +1,12 @@
+.edd-checkout {
+
+    #edd_purchase_submit, #edd_checkout_cart {
+        
+        .edd-submit {
+            @include button-style( $primary-color, auto auto );
+            border-radius: 0;
+        }
+        
+    }
+
+}

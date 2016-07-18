@@ -14,9 +14,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 get_header();
 ?>
 
-	<section id="site-content" class="row store-template">
+	<section id="site-content" class="store-template">
 
-		<?php if ( have_posts() ) : $i = 1; ?>
+		<?php if ( have_posts() ) : $index = 1; ?>
 
 			<?php
 			// Get column classes
@@ -24,60 +24,89 @@ get_header();
 			switch ( count( $posts ) ) {
 				case 1:
 					$column_classes = 'small-12';
+                    $max_columns = 1;
 					break;
 				case 2:
 					$column_classes = 'small-12 medium-6';
+                    $max_columns = 2;
 					break;
 				case 3:
 					$column_classes = 'small-12 large-4';
+                    $max_columns = 3;
 					break;
 				default:
 					$column_classes = 'small-12 medium-6';
+                    $max_columns = 2;
 					break;
 			}
 			?>
 
 			<?php while ( have_posts() ) : the_post(); ?>
+        
+                <?php if ( $index == 1 ) : ?>
+        
+                    <div class="row">
+                    
+                <?php endif; ?>
 
-				<div class="product columns <?php echo $column_classes; ?>">
-					<a href="<?php the_permalink(); ?>">
-						<h2 class="title"><?php the_title(); ?></h2>
-					</a>
+                    <div class="product columns <?php echo $column_classes; ?>">
+                        <a href="<?php the_permalink(); ?>">
+                            <h2 class="title"><?php the_title(); ?></h2>
+                        </a>
 
-					<div class="product-image">
-						<a href="<?php the_permalink(); ?>">
-							<?php the_post_thumbnail( 'product-image' ); ?>
-						</a>
-						<?php if ( function_exists( 'edd_price' ) ) { ?>
-							<div class="product-price">
-								<?php
-								if ( edd_has_variable_prices( get_the_ID() ) ) {
-									// if the download has variable prices, show the first one as a starting price
-									echo 'Starting at: ';
-									edd_price( get_the_ID() );
-								} else {
-									edd_price( get_the_ID() );
-								}
-								?>
-							</div><!--end .product-price-->
-						<?php } ?>
-					</div>
-					<?php if ( function_exists( 'edd_price' ) ) { ?>
-						<div class="product-buttons">
-							<?php if ( ! edd_has_variable_prices( get_the_ID() ) ) { ?>
-								<?php echo edd_get_purchase_link( array( 
-                                        'download_id' => get_the_ID(), 
-                                        'text' => 'Add to Cart',
-                                        'class' => 'primary' 
-                                ) ); ?>
-							<?php } ?>
-							<a href="<?php the_permalink(); ?>" class="button primary">View Details</a>
-						</div><!--end .product-buttons-->
-					<?php } ?>
-				</div><!--end .product-->
-				<?php $i += 1; ?>
+                        <div class="product-image">
+                            <a href="<?php the_permalink(); ?>">
+                                <?php the_post_thumbnail( 'product-image' ); ?>
+                            </a>
+                            <?php if ( function_exists( 'edd_price' ) ) { ?>
+                                <div class="product-price">
+                                    <?php
+                                    if ( edd_has_variable_prices( get_the_ID() ) ) {
+                                        // if the download has variable prices, show the first one as a starting price
+                                        echo 'Starting at: ';
+                                        edd_price( get_the_ID() );
+                                    } else {
+                                        edd_price( get_the_ID() );
+                                    }
+                                    ?>
+                                </div><!--end .product-price-->
+                            <?php } ?>
+                        </div>
+                        <?php if ( function_exists( 'edd_price' ) ) { ?>
+                            <div class="product-buttons">
+                                <?php if ( ! edd_has_variable_prices( get_the_ID() ) ) { ?>
+                                    <?php echo edd_get_purchase_link( array( 
+                                            'download_id' => get_the_ID(), 
+                                            'text' => 'Add to Cart',
+                                            'class' => 'primary' 
+                                    ) ); ?>
+                                <?php } ?>
+                                <a href="<?php the_permalink(); ?>" class="button primary">View Details</a>
+                            </div><!--end .product-buttons-->
+                        <?php } ?>
+                    </div><!--end .product-->
+                        
+				<?php if ( $index == $max_columns ) : ?>
+                        
+                    </div>
+        
+                <?php
+        
+                    $index = 1;
+        
+                else : 
+        
+                    $index++; 
+        
+                endif; ?>
 
 			<?php endwhile; ?>
+        
+            <?php if ( $index !== 1 ) : ?>
+        
+                </div> 
+
+            <?php endif; ?>
 
 			<div class="pagination">
 				<?php
