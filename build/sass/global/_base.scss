@@ -108,6 +108,14 @@ img[class*=" wp-image-"] { // Catch-all to grab images added via "Add Media" but
 
 }
 
+ul.multi-column, ol.multi-column {
+    
+    li {
+        float: left !important; // Just apply Column Classes to the <li>s as you would anything else and they will span multiple columns
+    }
+    
+}
+
 .off-canvas-content a:not(.button) {
     @include link-hover-style( $anchor-color-hover );
 }

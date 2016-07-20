@@ -75,7 +75,7 @@ the_post();
                 
         }
         
-        foreach ( $testimonials = rbm_get_field( 'testimonials' ) as $testimonial ) : ?>
+        foreach ( $testimonials as $testimonial ) : ?>
         
             <?php if ( $index == 1 ) : ?>
                 <div class="row">
@@ -112,6 +112,88 @@ the_post();
         <?php endif;
 
     endif;
+
+    $features = rbm_get_field( 'features' );
+
+    if ( ! empty( $features ) ) :
+
+        $index = 0;
+        
+        foreach ( $features as $feature ) : ?>
+        
+            <div class="row">
+                
+                <?php if ( $index % 2 == 0 ) : ?>
+        
+                <div class="small-12 medium-4 columns">
+                    <?php echo wp_get_attachment_image( $feature['image'], 'medium' ); ?>
+                </div>
+                
+                <?php endif; ?>
+
+                <div class="small-12 medium-8 columns">
+                    <h3><?php echo $feature['title']; ?></h3>
+                    <?php echo apply_filters( 'the_content', $feature['content'] ); ?>
+                </div>
+                
+                <?php if ( $index % 2 !== 0 ) : ?>
+        
+                <div class="small-12 medium-4 columns">
+                    <?php echo wp_get_attachment_image( $feature['image'], 'medium' ); ?>
+                </div>
+                
+                <?php endif; ?>
+                
+            </div>
+
+            <?php
+
+            $index++;
+        
+        endforeach;
+
+    endif;
+
+    $requirements = rbm_get_field( 'requirements' );
+
+    if ( ! empty( $requirements ) ) {
+        
+        $index = 1;
+
+        switch( count( $requirements ) ) {
+                
+            case 1 :
+                $column_class = 'medium-12';
+                break;
+            case 2 : 
+                $column_class = 'medium-6';
+            default : 
+                $column_class = 'medium-4';
+                break;
+                
+        }
+        
+        ?>
+
+        <div class="row">
+            
+            <ul class="multi-column">
+            
+                <?php foreach( $requirements as $item ) : ?>
+                
+                    <li class="small-12 <?php echo $column_class; ?> columns">
+                        <?php echo $item['requirement']; ?>
+                    </li>
+
+                <?php endforeach; ?>
+                
+            </ul>
+            
+        </div>
+
+        <?php
+        
+    }
 
     $video_url = rbm_get_field( 'video' );
 
