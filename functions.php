@@ -306,6 +306,27 @@ add_action( 'wp_footer', function () {
 } );
 
 /**
+ * Make YouTube videos not show suggested videos at the end
+ * 
+ * @param string $return HTML
+ * @param object $data Data Object returned from oEmbed provider
+ * @param string $url URL String
+ * 
+ * @since 1.1.0
+ * @return HTML
+ */
+add_filter( 'oembed_dataparse', function( $return, $data, $url ) {
+    
+    if ( $data->provider_name == 'YouTube' ) {
+        
+        $return = str_replace( '?feature=oembed"', '?feature=oembed&rel=0" class="youtube-embed"', $return );
+    }
+    
+    return $return;
+    
+}, 10, 3 );
+
+/**
  * Conditionally include RBM Field Helpers
  * 
  * @since 1.1.0
@@ -455,4 +476,3 @@ function rbp_download_requires_meta_box() {
 
 // Include other static files
 require_once __DIR__ . '/includes/shortcodes/mailchimp-embed.php';
-
