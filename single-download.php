@@ -58,9 +58,12 @@ the_post();
 
     <?php $testimonials = rbm_get_field( 'testimonials' );
 
-    if ( ! empty( $testimonials ) ) :
+    if ( ! empty( $testimonials ) ) : ?>
+
+        <?php
 
         $index = 1;
+        $first = true;
 
         switch( count( $testimonials ) ) {
                 
@@ -74,12 +77,26 @@ the_post();
                 break;
                 
         }
+
+        ?>
+
+        <div class="alternating-branding">
         
-        foreach ( $testimonials as $testimonial ) : ?>
+        <?php foreach ( $testimonials as $testimonial ) : ?>
         
             <?php if ( $index == 1 ) : ?>
                 <div class="row">
             <?php endif; ?>
+                        
+                <?php if ( $first ) : ?>
+                        
+                    <h3><?php _e( 'Testimonials', THEME_ID ); ?></h3>
+                        
+                <?php
+                        
+                    $first = false;
+                        
+                endif ?>
         
                 <div class="small-12 <?php echo $column_class; ?> columns">
                     <?php echo get_avatar( $testimonial['gravatar_email'] ); ?>
@@ -90,7 +107,7 @@ the_post();
                 </div>
                     
             <?php if ( $index == $max_columns ) : ?>
-                
+                    
                 </div>
 
             <?php 
@@ -109,54 +126,68 @@ the_post();
 
             </div>
 
-        <?php endif;
+        <?php endif; ?>
 
-    endif;
+        </div>
+
+    <?php endif;
 
     $features = rbm_get_field( 'features' );
 
-    if ( ! empty( $features ) ) :
+    if ( ! empty( $features ) ) : ?>
 
+        <div class="alternating-branding">
+
+        <?php 
+            
         $index = 0;
         
         foreach ( $features as $feature ) : ?>
-        
+
             <div class="row">
-                
+
+                <?php if ( $index == 0 ) : ?>
+
+                    <h3><?php _e( 'Features', THEME_ID ); ?></h3>
+
+                <?php endif; ?>
+
                 <?php if ( $index % 2 == 0 ) : ?>
-        
+
                 <div class="small-12 medium-4 columns">
                     <?php echo wp_get_attachment_image( $feature['image'], 'medium' ); ?>
                 </div>
-                
+
                 <?php endif; ?>
 
                 <div class="small-12 medium-8 columns">
                     <h3><?php echo $feature['title']; ?></h3>
                     <?php echo apply_filters( 'the_content', $feature['content'] ); ?>
                 </div>
-                
+
                 <?php if ( $index % 2 !== 0 ) : ?>
-        
+
                 <div class="small-12 medium-4 columns">
                     <?php echo wp_get_attachment_image( $feature['image'], 'medium' ); ?>
                 </div>
-                
+
                 <?php endif; ?>
-                
+
             </div>
 
             <?php
 
             $index++;
         
-        endforeach;
+        endforeach; ?>
+            
+        </div>
 
-    endif;
+    <?php endif;
 
     $requirements = rbm_get_field( 'requirements' );
 
-    if ( ! empty( $requirements ) ) {
+    if ( ! empty( $requirements ) ) : 
         
         $index = 1;
 
@@ -175,34 +206,46 @@ the_post();
         
         ?>
 
-        <div class="row">
-            
-            <ul class="multi-column">
-            
-                <?php foreach( $requirements as $item ) : ?>
-                
-                    <li class="small-12 <?php echo $column_class; ?> columns">
-                        <?php echo $item['requirement']; ?>
-                    </li>
+        <div class="alternating-branding">
 
-                <?php endforeach; ?>
+            <div class="row">
                 
-            </ul>
+                <h3><?php _e( 'Requirements', THEME_ID ); ?></h3>
+
+                <ul class="multi-column">
+
+                    <?php foreach( $requirements as $item ) : ?>
+
+                        <li class="small-12 <?php echo $column_class; ?> columns">
+                            <?php echo $item['requirement']; ?>
+                        </li>
+
+                    <?php endforeach; ?>
+
+                </ul>
+
+            </div>
             
         </div>
 
         <?php
         
-    }
+    endif;
 
     $video_url = rbm_get_field( 'video' );
 
     if ( ! empty( $video_url ) ) : ?>
 
-        <div class="row">
-            
-            <?php echo wp_oembed_get( $video_url ); ?>
+        <div class="alternating-branding">
 
+            <div class="row">
+                
+                <h3><?php _e( 'Video Preview', THEME_ID ); ?></h3>
+
+                <?php echo wp_oembed_get( $video_url ); ?>
+
+            </div>
+            
         </div>
 
     <?php endif; 
