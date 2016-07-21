@@ -15,7 +15,7 @@ get_header();
 the_post();
 ?>
 
-	<div class="row animate-on-scroll fade-in">
+	<div class="row product-row animate-on-scroll fade-in">
 
 		<div class="product-image columns small-12 medium-4">
 			<?php the_post_thumbnail( 'large' ); ?>
@@ -68,24 +68,25 @@ the_post();
         switch( count( $testimonials ) ) {
                 
             case 1 :
-                $column_class = 'medium-6';
                 $max_columns = 1;
                 break;
             default : 
-                $column_class = 'medium-3';
                 $max_columns = 2;
                 break;
                 
         }
 
+        $image_column_class = 'small-4';
+        $column_class = 'small-8';
+
         ?>
 
-        <div class="alternating-branding">
+        <div class="testimonials alternating-branding">
         
         <?php foreach ( $testimonials as $testimonial ) : ?>
         
             <?php if ( $index == 1 ) : ?>
-                <div class="row">
+                <div class="row animate-on-scroll fade-in">
             <?php endif; ?>
                         
                 <?php if ( $first ) : ?>
@@ -97,13 +98,17 @@ the_post();
                     $first = false;
                         
                 endif ?>
+                    
+                <div class="testimonial-container small-12 medium-6 columns">
         
-                <div class="small-12 <?php echo $column_class; ?> columns">
-                    <?php echo get_avatar( $testimonial['gravatar_email'] ); ?>
-                </div>
+                    <div class="<?php echo $image_column_class; ?> columns">
+                        <?php echo get_avatar( $testimonial['gravatar_email'] ); ?>
+                    </div>
 
-                <div class="small-12 <?php echo $column_class; ?> columns">
-                    <?php echo apply_filters( 'the_content', $testimonial['content'] ); ?>
+                    <div class="<?php echo $column_class; ?> columns">
+                        <?php echo apply_filters( 'the_content', $testimonial['content'] ); ?>
+                    </div>
+                    
                 </div>
                     
             <?php if ( $index == $max_columns ) : ?>
@@ -136,7 +141,7 @@ the_post();
 
     if ( ! empty( $features ) ) : ?>
 
-        <div class="alternating-branding">
+        <div class="features alternating-branding">
 
         <?php 
             
@@ -144,7 +149,7 @@ the_post();
         
         foreach ( $features as $feature ) : ?>
 
-            <div class="row">
+            <div class="row animate-on-scroll fade-in">
 
                 <?php if ( $index == 0 ) : ?>
 
@@ -154,20 +159,20 @@ the_post();
 
                 <?php if ( $index % 2 == 0 ) : ?>
 
-                <div class="small-12 medium-4 columns">
+                <div class="small-6 medium-4 columns">
                     <?php echo wp_get_attachment_image( $feature['image'], 'medium' ); ?>
                 </div>
 
                 <?php endif; ?>
 
-                <div class="small-12 medium-8 columns">
+                <div class="small-6 medium-8 columns">
                     <h3><?php echo $feature['title']; ?></h3>
                     <?php echo apply_filters( 'the_content', $feature['content'] ); ?>
                 </div>
 
                 <?php if ( $index % 2 !== 0 ) : ?>
 
-                <div class="small-12 medium-4 columns">
+                <div class="small-6 medium-4 columns">
                     <?php echo wp_get_attachment_image( $feature['image'], 'medium' ); ?>
                 </div>
 
@@ -206,9 +211,9 @@ the_post();
         
         ?>
 
-        <div class="alternating-branding">
+        <div class="requirements alternating-branding">
 
-            <div class="row">
+            <div class="row animate-on-scroll fade-in">
                 
                 <h3><?php _e( 'Requirements', THEME_ID ); ?></h3>
 
@@ -236,13 +241,17 @@ the_post();
 
     if ( ! empty( $video_url ) ) : ?>
 
-        <div class="alternating-branding">
+        <div class="video alternating-branding">
 
-            <div class="row">
+            <div class="row animate-on-scroll fade-in">
                 
                 <h3><?php _e( 'Video Preview', THEME_ID ); ?></h3>
+                
+                <div class="video-container">
 
-                <?php echo wp_oembed_get( $video_url ); ?>
+                    <?php echo wp_oembed_get( $video_url ); ?>
+                    
+                </div>
 
             </div>
             

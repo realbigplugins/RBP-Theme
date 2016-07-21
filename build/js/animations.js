@@ -133,7 +133,7 @@ jQuery( function( $ ) {
     } );
 
     // Scroll down effect
-    $( window ).scroll(function () {
+    $( 'body' ).scroll(function () {
 
         // Percentage FROM bottom of window to start animation
         var percent = 25;

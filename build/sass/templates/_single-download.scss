@@ -27,8 +27,29 @@
         }
 
     }
+    
+    .product-row {
+        
+        @each $breakpoint, $gutter in $grid-column-gutter {
+            $padding: rem-calc($gutter) / 2;
+
+            @include breakpoint($breakpoint) {
+
+                margin-bottom: $padding;
+
+            }
+
+        }
+        
+    }
 
     .alternating-branding {
+        
+        @media #{$small-only} {
+
+            padding: 0 map-get( $grid-column-gutter, 'small' );
+            
+        }
         
         .row {
 
@@ -66,6 +87,41 @@
 
         }
 
+    }
+    
+    .testimonials {
+        
+        .testimonial-container {
+            
+            display: inline-block;
+            
+            @media #{$small-only} {
+
+                padding: 0 0 map-get( $grid-column-gutter, 'small' ) 0;
+                
+            }
+            
+            &:after {
+                clear: both;
+            }
+            
+        }
+        
+    }
+    
+    .video {
+        
+        .row {
+            
+            .video-container {
+                
+                margin: 0 auto;
+                width: 75%; // This determines our new aspect ratio
+                
+            }
+            
+        }
+        
     }
 
 }
