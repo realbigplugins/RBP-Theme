@@ -1,0 +1,9 @@
+.single-documentation {
+    
+    @media #{$medium-up} {
+    
+        overflow-x: visible; // Allows Magellan to function properly while maintaining proper Off Canvas
+        
+    }
+    
+}

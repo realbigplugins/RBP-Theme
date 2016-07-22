@@ -12,6 +12,7 @@ Base element settings (no classes or id's).
         html,
         body{
             width:100%;
+            overflow-x: hidden;
         }
 }
 
@@ -33,7 +34,6 @@ html {
         &.off-canvas-fix {
         
             margin-top: 0 !important; // EDD or some other plugin is adding in-line CSS below my inclusion of our styles.
-            overflow-x: hidden; // Allows Magellan to function properly while maintaining proper Off Canvas
             
         }
         
