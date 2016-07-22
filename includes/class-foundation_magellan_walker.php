@@ -113,7 +113,9 @@ if ( ! class_exists( 'Foundation_Magellan_Walker' ) ) {
             
             $target = preg_replace( '/^([0-9]|[a-z])+\./i', '', $post_title );
         
-            $target = trim( str_replace( ' ', '-', strtolower( $target ) ) );
+            $target = trim( $target ); // Ensure all extra spaces are out before our replacements
+            
+            $target = str_replace( ' ', '-', strtolower( $target ) );
             
             return $target;
             

@@ -37,9 +37,9 @@ $documentation_sections = get_page_children( get_the_ID(), $all_documentation );
 
             <article id="top" <?php post_class(); ?>>
                 
-                <?php $magellan_link = Foundation_Magellan_Walker::magellan_target( get_the_title() ); ?>
+                <?php $parent_magellan_link = Foundation_Magellan_Walker::magellan_target( get_the_title() ); ?>
 
-                <h1 id="<?php echo $magellan_link; ?>" data-magellan-target="<?php echo $magellan_link; ?>" class="page-title">
+                <h1 id="<?php echo $parent_magellan_link; ?>" data-magellan-target="<?php echo $parent_magellan_link; ?>" class="page-title">
                     <?php the_title(); ?>
                 </h1>
 
@@ -53,9 +53,9 @@ $documentation_sections = get_page_children( get_the_ID(), $all_documentation );
 
                     <article id="<?php the_ID(); ?>" <?php post_class(); ?>>
                         
-                        <?php $magellan_link = Foundation_Magellan_Walker::magellan_target( get_the_title() ); ?>
+                        <?php $child_magellan_link = Foundation_Magellan_Walker::magellan_target( get_the_title() ); ?>
 
-                        <h2 id="<?php echo $magellan_link; ?>" data-magellan-target="<?php echo $magellan_link; ?>" class="section-title">
+                        <h2 id="<?php echo $child_magellan_link; ?>" data-magellan-target="<?php echo $child_magellan_link; ?>" class="section-title">
                             <?php the_title(); ?>
                         </h1>
 
@@ -78,6 +78,12 @@ $documentation_sections = get_page_children( get_the_ID(), $all_documentation );
                 <nav class="columns docs-toc-wrap" data-sticky data-anchor="docs" data-margin-top="7">
                     
                     <ul class="docs-toc vertical menu expanded" data-magellan data-bar-offset="60">
+                        
+                        <li <?php post_class(); ?>>
+                            <a href="#<?php echo $parent_magellan_link; ?>">
+                                <?php the_title(); ?>
+                            </a>
+                        </li>
                     
                         <?php wp_list_pages( array(
                             'post_type' => 'documentation',
