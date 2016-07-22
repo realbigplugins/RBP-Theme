@@ -75,7 +75,7 @@ $documentation_sections = get_page_children( get_the_ID(), $all_documentation );
         
             <div class="medium-3 columns sticky-container hide-on-small" data-sticky-container>
                 
-                <nav class="columns docs-toc-wrap" data-sticky data-anchor="docs" data-margin-top="7">
+                <nav class="columns docs-toc-wrap magellan" data-sticky data-anchor="docs" data-margin-top="7">
                     
                     <ul class="docs-toc vertical menu expanded" data-magellan data-bar-offset="60">
                         

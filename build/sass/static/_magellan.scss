@@ -1,0 +1,34 @@
+.magellan {
+
+    & > ul {
+
+        // All <ul>s after the first level
+        ul {
+
+            & > li {
+                padding-left: map-get( $grid-column-gutter, 'medium' );
+            }
+
+        }
+
+    }
+
+    .active {
+
+        transition: all;
+        background-color: $primary-color;
+        @include light-or-dark-text( $primary-color );
+
+        &:hover {
+
+            &:before, &:after {
+
+                border: none;
+
+            }
+
+        }
+
+    }
+
+}
