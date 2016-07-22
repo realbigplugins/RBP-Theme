@@ -38,6 +38,16 @@ the_post();
 				<div class="product-tags">
 					<?php the_terms( get_the_ID(), 'download_tag', '<span class="product-tags-title">Tags:</span> ', ', ', '' ); ?>
 				</div>
+                
+                <?php if ( $documentation = get_post_meta( get_the_ID(), '_rbm_p2p_documentation', true ) ) : ?>
+                    <div class="documentation">
+                        <a href="<?php echo get_permalink( $documentation ); ?>" class="button primary">
+                            <?php _e( 'Documentation', THEME_ID ); ?>
+                        </a>
+                    </div>
+                <?php endif; ?>
+                
+                
 			</div>
 		</div>
 

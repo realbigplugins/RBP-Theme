@@ -36,6 +36,10 @@
             @include breakpoint($breakpoint) {
 
                 margin-bottom: $padding;
+                
+                .documentation {
+                    margin-top: $padding;
+                }
 
             }
 
