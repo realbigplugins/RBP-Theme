@@ -13,11 +13,6 @@ Base element settings (no classes or id's).
         body{
             width:100%;
         }
-        
-        body {
-            overflow-x:hidden;
-        }
-        
 }
 
 // Select color
@@ -32,13 +27,13 @@ Base element settings (no classes or id's).
 }
 
 html {
-    //overflow-y: auto;
     
     @media #{$small-only} {
         
-        &.off-canvas-fix { // EDD or some other plugin is adding in-line CSS below my inclusion of our styles.
+        &.off-canvas-fix {
         
-            margin-top: 0 !important;
+            margin-top: 0 !important; // EDD or some other plugin is adding in-line CSS below my inclusion of our styles.
+            overflow-x: hidden; // Allows Magellan to function properly while maintaining proper Off Canvas
             
         }
         
