@@ -68,6 +68,18 @@ $documentation_sections = get_page_children( get_the_ID(), $all_documentation );
                 wp_reset_postdata();
 
             endif; ?>
+        
+            <?php if ( $linked_download = get_post_meta( get_the_ID(), "p2p_children_downloads", true ) ) : // Grab Linked Download
+            
+                if ( $changelog = get_post_meta( $linked_download[0], '_edd_sl_changelog', true ) ) : ?>
+
+                    <h1 id="changelog" data-magellan-target="changelog"><?php _e( 'Changelog', THEME_ID ); ?></h1>
+            
+                    <?php echo apply_filters( 'the_content', $changelog );
+            
+                endif;
+
+            endif; ?>
             
         </div>
         
@@ -91,6 +103,16 @@ $documentation_sections = get_page_children( get_the_ID(), $all_documentation );
                             'title_li' => null,
                             'walker' => new Foundation_Magellan_Walker(),
                         ) ); ?>
+                        
+                        <?php if ( $changelog ) : ?>
+                        
+                            <li <?php post_class( array(), $linked_download[0] ); ?>>
+                                <a href="#changelog">
+                                    <?php _e( 'Changelog', THEME_ID ); ?>
+                                </a>
+                            </li>
+                        
+                        <?php endif ?>
                         
                     </ul>
                     
