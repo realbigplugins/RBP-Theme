@@ -1,27 +1,37 @@
 // We have to override a lot of inline garbage for this
 
+.top-bar.sticky {
+
+    margin-top: -1px !important;
+
+    @media #{$medium-up} {
+        margin-top: 0 !important;
+    }
+
+}
+
 .admin-bar {
-    
-    .top-bar.sticky {
+
+    .top-bar {
         
         margin-top: 45px !important;
         
         @media #{$medium-up} {
             
-            margin-top: 32px !important;
+            margin-top: 0 !important;
             
         }
-        
-    }
-    
-}
 
-.top-bar.sticky {
-    
-    margin-top: -1px !important;
-    
-    @media #{$medium-up} {
-        margin-top: 0 !important;
+        &.sticky.is-stuck {
+
+            @media #{$medium-up} {
+
+                margin-top: 32px !important;
+
+            }
+
+        }
+
     }
     
 }

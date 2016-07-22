@@ -55,6 +55,18 @@ section {
     padding-top: 138px; // 3x the height of Admin Bar on Mobile
 }
 
+.admin-bar {
+    #site-content {
+        
+        @media #{$small-only} {
+            
+            padding-top: 160px;
+            
+        }
+        
+    }
+}
+
 img[class*=" wp-image-"] { // Catch-all to grab images added via "Add Media" button
 
     @include thumbnail;

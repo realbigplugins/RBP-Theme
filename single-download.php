@@ -16,6 +16,10 @@ the_post();
 ?>
 
 	<div class="row product-row animate-on-scroll fade-in">
+        
+        <div class="product-title columns small-12 hide-for-medium hide-for-large">
+			<h1 class="title"><span itemprop="name"><?php the_title(); ?></span></h1>
+		</div>
 
 		<div class="product-image columns small-12 medium-4">
 			<?php the_post_thumbnail( 'large' ); ?>
