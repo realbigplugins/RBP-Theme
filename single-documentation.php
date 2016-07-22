@@ -16,20 +16,24 @@ get_header();
 the_post();
 
 global $post;
-        
-$args = array( 
-    'post_type' => 'documentation',
-    'post_parent' => get_the_ID(),
-    'posts_per_page' => -1,
-);
 
-$documentation_sections = new WP_Query( $args );
+// Grab all so we are sure to include grandchildren
+// I'm not sure why, but it only seems to work this way
+$query = new WP_Query();
+$all_documentation = $query->query( array(
+    'post_type' => 'documentation',
+    'orderby' => 'title',
+    'order' => 'ASC',
+) );
+
+// Grab all Children and Grandchildren Recursively
+$documentation_sections = get_page_children( get_the_ID(), $all_documentation );
 
 ?>
 
 	<div class="page-content row">
         
-        <div id="docs" class="small-12<?php echo ( $documentation_sections->have_posts() ) ? ' medium-9' : ''; ?> columns">
+        <div id="docs" class="small-12<?php echo ( ! empty( $documentation_sections ) ) ? ' medium-9' : ''; ?> columns">
 
             <article id="top" <?php post_class(); ?>>
                 
@@ -43,9 +47,9 @@ $documentation_sections = new WP_Query( $args );
 
             </article>
 
-            <?php if ( $documentation_sections->have_posts() ) : 
+            <?php if ( ! empty( $documentation_sections ) ) : 
 
-                while ( $documentation_sections->have_posts() ) : $documentation_sections->the_post(); ?>
+                foreach ( $documentation_sections as $post ) : setup_postdata( $post ); ?>
 
                     <article id="<?php the_ID(); ?>" <?php post_class(); ?>>
                         
@@ -59,7 +63,7 @@ $documentation_sections = new WP_Query( $args );
 
                     </article>
 
-                <?php endwhile;
+                <?php endforeach;
 
                 wp_reset_postdata();
 
@@ -67,7 +71,7 @@ $documentation_sections = new WP_Query( $args );
             
         </div>
         
-        <?php if ( $documentation_sections->have_posts() ): ?>
+        <?php if ( ! empty( $documentation_sections ) ) : ?>
         
             <div class="medium-3 columns sticky-container hide-on-small" data-sticky-container>
                 
