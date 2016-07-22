@@ -200,6 +200,28 @@ the_post();
 
     <?php endif;
 
+    $video_url = rbm_get_field( 'video' );
+
+    if ( ! empty( $video_url ) ) : ?>
+
+        <div class="video alternating-branding">
+
+            <div class="row animate-on-scroll fade-in">
+                
+                <h3><?php _e( 'Video Preview', THEME_ID ); ?></h3>
+                
+                <div class="video-container">
+
+                    <?php echo wp_oembed_get( $video_url ); ?>
+                    
+                </div>
+
+            </div>
+            
+        </div>
+
+    <?php endif; 
+
     $requirements = rbm_get_field( 'requirements' );
 
     if ( ! empty( $requirements ) ) : 
@@ -246,27 +268,5 @@ the_post();
         <?php
         
     endif;
-
-    $video_url = rbm_get_field( 'video' );
-
-    if ( ! empty( $video_url ) ) : ?>
-
-        <div class="video alternating-branding">
-
-            <div class="row animate-on-scroll fade-in">
-                
-                <h3><?php _e( 'Video Preview', THEME_ID ); ?></h3>
-                
-                <div class="video-container">
-
-                    <?php echo wp_oembed_get( $video_url ); ?>
-                    
-                </div>
-
-            </div>
-            
-        </div>
-
-    <?php endif; 
 
 get_footer();
