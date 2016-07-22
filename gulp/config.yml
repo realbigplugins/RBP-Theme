@@ -16,8 +16,7 @@ javascript:
       - "bower_components/foundation-sites/js/foundation.dropdownMenu.js"
       - "bower_components/foundation-sites/js/foundation.offcanvas.js"
       - "bower_components/foundation-sites/js/foundation.sticky.js"
-      - "bower_components/foundation-sites/js/foundation.util.timerAndImageLoader.js"
-      - "bower_components/foundation-sites/js/foundation.equalizer.js"
+      - "bower_components/foundation-sites/js/foundation.magellan.js"
     # Paths to JavaScript libraries, which are combined into one file
     src:
       # Paths to your own project code are here

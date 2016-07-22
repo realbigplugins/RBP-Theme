@@ -202,6 +202,9 @@ add_action( 'after_setup_theme', function () {
 
     // Nav Walker for Foundation
     require_once __DIR__ . '/includes/class-foundation_nav_walker.php';
+    
+    // Walker for Foundation Magellan via wp_list_pages()
+    require_once __DIR__ . '/includes/class-foundation_magellan_walker.php';
 
     // Allow shortcodes in text widget
     add_filter( 'widget_text', 'do_shortcode' );
