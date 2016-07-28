@@ -73,28 +73,40 @@
         &:nth-of-type(4n) {
 
             background-color: $primary-color;
-            @include light-or-dark-text( $primary-color );
+            
+            &, * {
+                @include light-or-dark-text( $primary-color );
+            }
 
         }
 
         &:nth-of-type(4n+1) {
 
             background-color: $white;
-            @include light-or-dark-text( $white );
+            
+            &, * {
+                @include light-or-dark-text( $white );
+            }
 
         }
 
         &:nth-of-type(4n+2) {
 
             background-color: $secondary-color;
-            @include light-or-dark-text( $secondary-color );
+            
+            &, * {
+                @include light-or-dark-text( $secondary-color );
+            }
 
         }
 
         &:nth-of-type(4n+3) {
 
             background-color: $white;
-            @include light-or-dark-text( $white );
+            
+            &, * {
+                @include light-or-dark-text( $white );
+            }
 
         }
 
@@ -109,6 +121,24 @@
             @media #{$small-only} {
 
                 padding: 0 0 map-get( $grid-column-gutter, 'small' ) 0;
+                
+            }
+            
+            .testimonial-header {
+                
+                text-align: right;
+                
+                h5 {
+                    margin-bottom: 0;
+                }
+                
+            }
+            
+            blockquote {
+                
+                border: none;
+                font-style: italic;
+                margin-bottom: $header-margin-bottom;
                 
             }
             

@@ -113,14 +113,23 @@ the_post();
                         
                 endif ?>
                     
-                <div class="testimonial-container small-12 medium-6 columns">
+                <div class="testimonial-container small-12 medium-6<?php echo ( count( $testimonials ) == 1 ) ? ' medium-offset-3' : ' columns'; ?>">
         
                     <div class="<?php echo $image_column_class; ?> columns">
                         <?php echo get_avatar( $testimonial['gravatar_email'] ); ?>
                     </div>
 
                     <div class="<?php echo $column_class; ?> columns">
-                        <?php echo apply_filters( 'the_content', $testimonial['content'] ); ?>
+                        
+                        <blockquote><?php echo apply_filters( 'the_content', '"' . $testimonial['content'] . '"' ); ?></blockquote>
+                        
+                        <div class="testimonial-header">
+                            <h5>
+                                <?php echo $testimonial['name']; ?>
+                            </h5>
+                            <?php echo $testimonial['company']; ?>
+                        </div>
+                        
                     </div>
                     
                 </div>
