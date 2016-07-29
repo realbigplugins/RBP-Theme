@@ -15,7 +15,7 @@ get_header();
 the_post();
 ?>
 
-	<div class="row product-row animate-on-scroll fade-in">
+	<div class="row product-row">
         
         <div class="product-title columns small-12 hide-for-medium hide-for-large">
 			<h1 class="title"><span itemprop="name"><?php the_title(); ?></span></h1>
@@ -92,7 +92,7 @@ the_post();
         <?php foreach ( $testimonials as $testimonial ) : ?>
         
             <?php if ( $index == 1 ) : ?>
-                <div class="row animate-on-scroll fade-in">
+                <div class="row">
                     <div class="small-12 columns">
             <?php endif; ?>
                         
@@ -167,7 +167,7 @@ the_post();
         
         foreach ( $features as $feature ) : ?>
 
-            <div class="row animate-on-scroll fade-in">
+            <div class="row">
                 <div class="small-12 columns">
 
                 <?php if ( $index == 0 ) : ?>
@@ -220,7 +220,7 @@ the_post();
 
         <div class="video alternating-branding">
 
-            <div class="row animate-on-scroll fade-in">
+            <div class="row">
                 <div class="small-12 columns">
                 
                 <h3><?php _e( 'Video Preview', THEME_ID ); ?></h3>
@@ -261,7 +261,7 @@ the_post();
 
         <div class="requirements alternating-branding">
 
-            <div class="row animate-on-scroll fade-in">
+            <div class="row">
                 <div class="small-12 columns">
                 
                     <h3><?php _e( 'Requirements', THEME_ID ); ?></h3>
@@ -289,7 +289,7 @@ the_post();
 
     <div class="purchase-alt alternating-branding">
         
-        <div class="row text-center animate-on-scroll fade-in">
+        <div class="row text-center">
             
             <div class="small-12 columns">
             
