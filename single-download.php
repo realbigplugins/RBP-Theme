@@ -34,14 +34,6 @@ the_post();
                     'text' => 'Add to Cart', 
                     'class' => 'primary',
                  ) ); ?>
-
-				<div class="product-categories">
-					<?php the_terms( get_the_ID(), 'download_category', '<span class="product-categories-title">Categories:</span> ', ', ', '' ); ?>
-				</div>
-
-				<div class="product-tags">
-					<?php the_terms( get_the_ID(), 'download_tag', '<span class="product-tags-title">Tags:</span> ', ', ', '' ); ?>
-				</div>
                 
                 <?php if ( $documentation = get_post_meta( get_the_ID(), '_rbm_p2p_documentation', true ) ) : ?>
                     <div class="documentation">
