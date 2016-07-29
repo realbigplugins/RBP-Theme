@@ -187,7 +187,9 @@ the_post();
                 <?php if ( $index % 2 == 0 ) : ?>
 
                 <div class="small-6 medium-4 columns">
-                    <?php echo wp_get_attachment_image( $feature['image'], 'medium' ); ?>
+                    <a href="<?php echo wp_get_attachment_url( $feature['image'], 'full' ); ?>">
+                        <?php echo wp_get_attachment_image( $feature['image'], 'medium' ); ?>
+                    </a>
                 </div>
 
                 <?php endif; ?>
@@ -200,7 +202,9 @@ the_post();
                 <?php if ( $index % 2 !== 0 ) : ?>
 
                 <div class="small-6 medium-4 columns">
-                    <?php echo wp_get_attachment_image( $feature['image'], 'medium' ); ?>
+                    <a href="<?php echo wp_get_attachment_url( $feature['image'], 'full' ); ?>">
+                        <?php echo wp_get_attachment_image( $feature['image'], 'medium' ); ?>
+                    </a>
                 </div>
 
                 <?php endif; ?>
