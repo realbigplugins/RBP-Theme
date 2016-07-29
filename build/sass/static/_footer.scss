@@ -1,7 +1,7 @@
 #site-footer {
     
     background-color: $topbar-background;
-    @include light-or-dark-text( $topbar-background );
+    color: $topbar-link-color;
     
     @each $breakpoint, $gutter in $grid-column-gutter {
         $padding: rem-calc($gutter) / 2;

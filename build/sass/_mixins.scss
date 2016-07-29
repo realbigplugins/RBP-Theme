@@ -2,7 +2,7 @@
 
     @if lightness( $color ) < 50% {
 
-        color: $light-color;
+        color: $white;
 
     }
     @else {

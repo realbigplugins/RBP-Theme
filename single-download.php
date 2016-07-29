@@ -280,6 +280,26 @@ the_post();
 
         <?php
         
-    endif;
+    endif; ?>
 
-get_footer();
+    <div class="purchase-alt alternating-branding">
+        
+        <div class="row text-center animate-on-scroll fade-in">
+            
+            <div class="small-12 columns">
+            
+                <h2><?php printf( __( 'Buy %s Now!', THEME_ID ), get_the_title() ); ?></h2>
+
+                <?php echo edd_get_purchase_link( array(
+                    'download_id' => get_the_ID(), 
+                    'text' => 'Add to Cart', 
+                    'class' => 'large primary',
+                 ) ); ?>
+                
+            </div>
+            
+        </div>
+        
+    </div>
+
+<?php get_footer();
