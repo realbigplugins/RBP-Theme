@@ -101,6 +101,7 @@ the_post();
         
             <?php if ( $index == 1 ) : ?>
                 <div class="row animate-on-scroll fade-in">
+                    <div class="small-12 columns">
             <?php endif; ?>
                         
                 <?php if ( $first ) : ?>
@@ -137,6 +138,7 @@ the_post();
             <?php if ( $index == $max_columns ) : ?>
                     
                 </div>
+            </div>
 
             <?php 
 
@@ -152,6 +154,7 @@ the_post();
 
         if ( $index !== 1 ) : ?>
 
+                </div>
             </div>
 
         <?php endif; ?>
@@ -173,6 +176,7 @@ the_post();
         foreach ( $features as $feature ) : ?>
 
             <div class="row animate-on-scroll fade-in">
+                <div class="small-12 columns">
 
                 <?php if ( $index == 0 ) : ?>
 
@@ -201,6 +205,7 @@ the_post();
 
                 <?php endif; ?>
 
+                </div>
             </div>
 
             <?php
@@ -220,6 +225,7 @@ the_post();
         <div class="video alternating-branding">
 
             <div class="row animate-on-scroll fade-in">
+                <div class="small-12 columns">
                 
                 <h3><?php _e( 'Video Preview', THEME_ID ); ?></h3>
                 
@@ -229,6 +235,7 @@ the_post();
                     
                 </div>
 
+                </div>
             </div>
             
         </div>
@@ -259,21 +266,23 @@ the_post();
         <div class="requirements alternating-branding">
 
             <div class="row animate-on-scroll fade-in">
+                <div class="small-12 columns">
                 
-                <h3><?php _e( 'Requirements', THEME_ID ); ?></h3>
+                    <h3><?php _e( 'Requirements', THEME_ID ); ?></h3>
 
-                <ul class="multi-column">
+                    <ul class="multi-column">
 
-                    <?php foreach( $requirements as $item ) : ?>
+                        <?php foreach( $requirements as $item ) : ?>
 
-                        <li class="small-12 <?php echo $column_class; ?> columns">
-                            <?php echo $item['requirement']; ?>
-                        </li>
+                            <li class="small-12 <?php echo $column_class; ?> columns">
+                                <?php echo $item['requirement']; ?>
+                            </li>
 
-                    <?php endforeach; ?>
+                        <?php endforeach; ?>
 
-                </ul>
+                    </ul>
 
+                </div>
             </div>
             
         </div>
