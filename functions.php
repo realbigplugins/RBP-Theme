@@ -331,5 +331,59 @@ add_filter( 'oembed_dataparse', function( $return, $data, $url ) {
     
 }, 10, 3 );
 
+/**
+ * Register Customizer Controls
+ * @param object $wp_customize    WP Customizer Object
+ *                                              
+ * @since 1.1.0
+ * @return void
+ */
+add_action( 'customize_register', function( $wp_customize ) {
+    
+    $wp_customize->add_section( 'rbp_home_section' , array(
+            'title'      => __( 'Home Page Settings', THEME_ID ),
+            'priority'   => 30,
+        ) 
+    );
+    
+    $wp_customize->add_setting( 'home_background', array(
+            'default'     => 1,
+            'transport'   => 'refresh',
+        ) 
+    );
+    $wp_customize->add_control( new WP_Customize_Media_Control( $wp_customize, 'home_background', array(
+        'label'        => __( 'Home Page Background', THEME_ID ),
+        'section'    => 'rbp_home_section',
+        'settings'   => 'home_background',
+        'mime_type'  => 'image',
+        'active_callback' => 'is_front_page',
+    ) ) );
+    
+    $wp_customize->add_setting( 'home_tagline', array(
+            'default'     => __( 'Quality WordPress Plugins<br />Built With Love', THEME_ID ),
+            'transport'   => 'refresh',
+        ) 
+    );
+    $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'home_tagline', array(
+        'label'        => __( 'Home Page Tagline', THEME_ID ),
+        'section'    => 'rbp_home_section',
+        'settings'   => 'home_tagline',
+        'active_callback' => 'is_front_page',
+    ) ) );
+    
+    $wp_customize->add_setting( 'home_button_text', array(
+            'default'     => __( 'View Our Plugins', THEME_ID ),
+            'transport'   => 'refresh',
+        ) 
+    );
+    $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'home_button_text', array(
+        'label'        => __( 'Home Page Tagline', THEME_ID ),
+        'section'    => 'rbp_home_section',
+        'settings'   => 'home_button_text',
+        'active_callback' => 'is_front_page',
+    ) ) );
+    
+} );
+
 // Include other static files
 require_once __DIR__ . '/includes/shortcodes/mailchimp-embed.php';

@@ -33,6 +33,7 @@ html {
         
         &.off-canvas-fix {
         
+            height: auto;
             margin-top: 0 !important; // EDD or some other plugin is adding in-line CSS below my inclusion of our styles.
             
         }
@@ -53,6 +54,11 @@ section {
 #site-content {
     height: 100%;
     padding-top: 138px; // 3x the height of Admin Bar on Mobile
+    background-color: $body-background;
+}
+
+body {
+    background-color: $topbar-background;
 }
 
 .page-content {

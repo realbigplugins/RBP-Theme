@@ -17,26 +17,21 @@ $plugins_archive_link = get_post_type_archive_link( 'download' );
 $hire_us_page = get_page_by_title( 'Hire Us' );
 ?>
 
-	<section class="row">
-		<div class="plugins columns small-12 medium-6">
-			<a href="<?php echo $plugins_archive_link ? $plugins_archive_link : '#'; ?>">
-				<p class="plug">
-					<img class="animate-on-hover" src="<?php echo get_template_directory_uri(); ?>/svg/plug.svg"/>
-				</p>
-
-				<h2>Plugins</h2>
-			</a>
-		</div>
-
-		<div class="hire columns small-12 medium-6">
-			<a href="<?php echo $hire_us_page ? get_permalink( $hire_us_page->ID ) : '#'; ?>">
-				<p class="svg-rbm-logo">
-					<img class="animate-on-hover" src="<?php echo get_template_directory_uri(); ?>/svg/rbm-logo.svg"/>
-				</p>
-
-				<h2>Hire Us</h2>
-			</a>
-		</div>
+	<section class="row text-center call-to-action animate-on-scroll fade-in">
+        
+        <div class="small-12 columns">
+		
+            <h1>
+                <?php echo get_theme_mod( 'home_tagline', __( 'Quality WordPress Plugins<br />Built With Love', THEME_ID ) ); ?>
+            </h1>
+            <a href="/<?php echo EDD_SLUG; ?>/" class="button large secondary slide-right">
+                <span class="button-text">
+                    <?php echo get_theme_mod( 'home_button_text', __( 'View Our Plugins', THEME_ID ) ); ?>
+                </span>
+            </a>
+            
+        </div>
+        
 	</section>
 
 <?php
