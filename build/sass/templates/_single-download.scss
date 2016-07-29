@@ -11,6 +11,10 @@
         line-height: 1;
 
     }
+    
+    .product-image {
+        text-align: center;
+    }
 
     .product-content {
 
@@ -136,17 +140,13 @@
         
     }
     
-    .requirements {
-
+    .purchase-alt {
+        
         background-image: url( 'images/green-squares.jpg' );
 
         &, * {
             @include light-or-dark-text( $secondary-color );
         }
-        
-    }
-    
-    .purchase-alt {
         
         form {
             margin-bottom: 0;

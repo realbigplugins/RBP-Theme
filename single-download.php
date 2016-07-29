@@ -47,7 +47,51 @@ the_post();
 				// Don't show the add to cart stuff here as well as the sidebar. Reduntant
 				remove_action( 'the_content', 'edd_after_download_content', 10 );
 				the_content( 'Read the rest of this entry &raquo;' );
-				?>
+                
+                $requirements = rbm_get_field( 'requirements' );
+
+                if ( ! empty( $requirements ) ) : 
+
+                    $index = 1;
+
+                    switch( count( $requirements ) ) {
+
+                        case 1 :
+                            $column_class = 'medium-12';
+                            break;
+                        case 2 : 
+                            $column_class = 'medium-6';
+                        default : 
+                            $column_class = 'medium-4';
+                            break;
+
+                    }
+
+                    ?>
+
+                    <div class="requirements row">
+                        <div class="small-12 columns">
+
+                            <h5><?php _e( 'Requirements', THEME_ID ); ?></h5>
+
+                            <ul class="multi-column">
+
+                                <?php foreach( $requirements as $item ) : ?>
+
+                                    <li class="small-12 <?php echo $column_class; ?> columns">
+                                        <?php echo $item['requirement']; ?>
+                                    </li>
+
+                                <?php endforeach; ?>
+
+                            </ul>
+
+                        </div>
+                    </div>
+
+                    <?php
+
+                endif; ?>
                 
                 <?php if ( $documentation = get_post_meta( get_the_ID(), '_rbm_p2p_documentation', true ) ) : ?>
                     <div class="documentation">
@@ -236,56 +280,7 @@ the_post();
             
         </div>
 
-    <?php endif; 
-
-    $requirements = rbm_get_field( 'requirements' );
-
-    if ( ! empty( $requirements ) ) : 
-        
-        $index = 1;
-
-        switch( count( $requirements ) ) {
-                
-            case 1 :
-                $column_class = 'medium-12';
-                break;
-            case 2 : 
-                $column_class = 'medium-6';
-            default : 
-                $column_class = 'medium-4';
-                break;
-                
-        }
-        
-        ?>
-
-        <div class="requirements alternating-branding">
-
-            <div class="row">
-                <div class="small-12 columns">
-                
-                    <h3><?php _e( 'Requirements', THEME_ID ); ?></h3>
-
-                    <ul class="multi-column">
-
-                        <?php foreach( $requirements as $item ) : ?>
-
-                            <li class="small-12 <?php echo $column_class; ?> columns">
-                                <?php echo $item['requirement']; ?>
-                            </li>
-
-                        <?php endforeach; ?>
-
-                    </ul>
-
-                </div>
-            </div>
-            
-        </div>
-
-        <?php
-        
-    endif; ?>
+    <?php endif; ?>
 
     <div class="purchase-alt alternating-branding">
         
