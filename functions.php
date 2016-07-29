@@ -136,32 +136,33 @@ add_action( 'after_setup_theme', function () {
  */
 add_action( 'widgets_init', function () {
 
-//	// Footer left
-//	register_sidebar( array(
-//		'name' => 'Footer Left',
-//		'id' => 'footer-left',
-//		'description' => 'Displays in the left side of the footer.',
-//		'before_title' => '<h3 class="footer-widget-title">',
-//		'after_title' => '</h3>',
-//	));
-//
-//	// Footer right
-//	register_sidebar( array(
-//		'name' => 'Footer Right',
-//		'id' => 'footer-right',
-//		'description' => 'Displays in the right side of the footer.',
-//		'before_title' => '<h3 class="footer-widget-title">',
-//		'after_title' => '</h3>',
-//	));
-//
-//	// Footer copyright
-//	register_sidebar( array(
-//		'name' => 'Footer Copyright',
-//		'id' => 'footer-copyright',
-//		'description' => 'Displays at the very bottom of the footer.',
-//		'before_title' => '<h3 class="footer-widget-title">',
-//		'after_title' => '</h3>',
-//	));
+    // Footer left
+    register_sidebar( array(
+    	'name' => 'Footer Left',
+    	'id' => 'footer-left',
+    	'description' => 'Displays in the left side of the footer.',
+    	'before_title' => '<h3 class="footer-widget-title">',
+    	'after_title' => '</h3>',
+    ) ); 
+    
+    // Footer center
+    register_sidebar( array(
+    	'name' => 'Footer Center',
+    	'id' => 'footer-center',
+    	'description' => 'Displays in the center of the footer.',
+    	'before_title' => '<h3 class="footer-widget-title">',
+    	'after_title' => '</h3>',
+    ) ); 
+    
+    // Footer right
+    register_sidebar( array(
+    	'name' => 'Footer Right',
+    	'id' => 'footer-right',
+    	'description' => 'Displays in the right side of the footer.',
+    	'before_title' => '<h3 class="footer-widget-title">',
+    	'after_title' => '</h3>',
+    ) );
+    
 } );
 
 add_action( 'wp_footer', function () {

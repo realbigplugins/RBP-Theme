@@ -12,7 +12,29 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 
-<footer id="site-footer" class="row expand">
+<footer id="site-footer">
+    
+    <div class="row">
+    
+        <?php 
+
+        $footer_sidebars = array(
+            'footer-left',
+            'footer-center',
+            'footer-right',
+        ); 
+
+        foreach ( $footer_sidebars as $sidebar ) : ?>
+
+            <div class="small-12 medium-4 columns">
+
+                <?php dynamic_sidebar( $sidebar ); ?>
+
+            </div>
+
+        <?php endforeach; ?>
+        
+    </div>
 
 </footer>
 
