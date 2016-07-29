@@ -35,15 +35,6 @@ the_post();
                     'class' => 'primary',
                  ) ); ?>
                 
-                <?php if ( $documentation = get_post_meta( get_the_ID(), '_rbm_p2p_documentation', true ) ) : ?>
-                    <div class="documentation">
-                        <a href="<?php echo get_permalink( $documentation ); ?>" class="button primary">
-                            <?php _e( 'Documentation', THEME_ID ); ?>
-                        </a>
-                    </div>
-                <?php endif; ?>
-                
-                
 			</div>
 		</div>
 
@@ -57,6 +48,15 @@ the_post();
 				remove_action( 'the_content', 'edd_after_download_content', 10 );
 				the_content( 'Read the rest of this entry &raquo;' );
 				?>
+                
+                <?php if ( $documentation = get_post_meta( get_the_ID(), '_rbm_p2p_documentation', true ) ) : ?>
+                    <div class="documentation">
+                        <a href="<?php echo get_permalink( $documentation ); ?>">
+                            <?php printf( __( 'View Documentation for %s', THEME_ID ), get_the_title() ); ?>
+                        </a>
+                    </div>
+                <?php endif; ?>
+                
 			</div>
 		</div>
 
