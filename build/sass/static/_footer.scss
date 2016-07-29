@@ -1,7 +1,10 @@
 #site-footer {
     
     background-color: $topbar-background;
-    color: $topbar-link-color;
+    
+    &, * {
+        color: $topbar-link-color;
+    }
     
     @each $breakpoint, $gutter in $grid-column-gutter {
         $padding: rem-calc($gutter) / 2;
@@ -11,6 +14,12 @@
             padding: $padding;
 
         }
+
+    }
+    
+    .button {
+        
+        @include button-style( $primary-color );
 
     }
     
