@@ -125,6 +125,20 @@
         
     }
     
+    .features {
+        
+        & > .row {
+            
+            & > h3 {
+            
+                margin-bottom: 1rem;
+                
+            }
+            
+        }
+        
+    }
+    
     .video {
         
         .row {

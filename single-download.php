@@ -212,17 +212,18 @@ the_post();
         foreach ( $features as $feature ) : ?>
 
             <div class="row">
-                <div class="small-12 columns">
 
                 <?php if ( $index == 0 ) : ?>
 
                     <h3><?php _e( 'Features', THEME_ID ); ?></h3>
 
                 <?php endif; ?>
+                
+                <div class="small-12 columns">
 
                 <?php if ( $index % 2 == 0 ) : ?>
 
-                <div class="small-6 medium-4 columns">
+                <div class="small-6 medium-3 columns text-center">
                     <a href="<?php echo wp_get_attachment_url( $feature['image'], 'full' ); ?>">
                         <?php echo wp_get_attachment_image( $feature['image'], 'medium' ); ?>
                     </a>
@@ -230,14 +231,14 @@ the_post();
 
                 <?php endif; ?>
 
-                <div class="small-6 medium-8 columns">
+                <div class="small-6 medium-9 columns">
                     <h3><?php echo $feature['title']; ?></h3>
                     <?php echo apply_filters( 'the_content', $feature['content'] ); ?>
                 </div>
 
                 <?php if ( $index % 2 !== 0 ) : ?>
 
-                <div class="small-6 medium-4 columns">
+                <div class="small-6 medium-3 columns text-center">
                     <a href="<?php echo wp_get_attachment_url( $feature['image'], 'full' ); ?>">
                         <?php echo wp_get_attachment_image( $feature['image'], 'medium' ); ?>
                     </a>

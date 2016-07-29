@@ -87,7 +87,7 @@ img[class*=" wp-image-"] { // Catch-all to grab images added via "Add Media" but
 
 a[href$=".png"], a[href$=".jpg"], a[href$=".jpeg"], a[data-featherlight] {
     
-    &:hover {
+    &, &:hover {
         
         &:before, &:after {
             border: none !important;
