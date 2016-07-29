@@ -12,6 +12,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 
+</div> <!-- .page-content -->
+
 <footer id="site-footer">
     
     <div class="row">
@@ -38,7 +40,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 </footer>
 
-</div> <!-- #wrapper -->
+</div> <!-- #site-content -->
 
 <?php wp_footer(); ?>
 

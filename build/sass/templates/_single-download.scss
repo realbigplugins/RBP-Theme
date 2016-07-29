@@ -1,4 +1,8 @@
 .single-download {
+    
+    .page-content {
+        padding: 0; // Keep our full-width sections
+    }
 
     h1 {
 
@@ -30,6 +34,8 @@
     
     .product-row {
         
+        padding: 30px;
+        
         @each $breakpoint, $gutter in $grid-column-gutter {
             $padding: rem-calc($gutter) / 2;
 
@@ -49,11 +55,7 @@
 
     .alternating-branding {
         
-        @media #{$small-only} {
-
-            padding: 0 map-get( $grid-column-gutter, 'small' );
-            
-        }
+        padding: 0 30px;
         
         .row {
 

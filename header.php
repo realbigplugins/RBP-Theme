@@ -107,3 +107,4 @@ if ( ! defined( 'ABSPATH' ) ) {
                 </nav>
 
                 <section id="site-content">
+                    <div class="page-content row">
