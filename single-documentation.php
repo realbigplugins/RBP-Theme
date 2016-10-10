@@ -22,7 +22,7 @@ global $post;
 $query = new WP_Query();
 $all_documentation = $query->query( array(
     'post_type' => 'documentation',
-    'orderby' => 'title',
+    'orderby' => 'menu_order title',
     'order' => 'ASC',
 ) );
 
