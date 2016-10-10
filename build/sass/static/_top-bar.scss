@@ -32,6 +32,31 @@
                 }
             }
         }
+        
+        // We need to keep the padding and such for the Header
+        > ul.fake {
+            
+            li {
+                
+                a {
+                    
+                    cursor: default;
+                    
+                    &:before, &:after {
+                        border-color: transparent;
+                    }
+                    
+                    &:hover {
+                        &:before, &:after {
+                            border-color: transparent;
+                        }
+                    }
+                    
+                }
+                
+            }
+            
+        }
 
     }
 

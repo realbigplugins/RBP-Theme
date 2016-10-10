@@ -14,31 +14,35 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 </div> <!-- .page-content -->
 
-<footer id="site-footer">
-    
-    <div class="row">
-    
-        <?php 
+<?php if ( ! edd_is_checkout() ) : ?>
 
-        $footer_sidebars = array(
-            'footer-left',
-            'footer-center',
-            'footer-right',
-        ); 
+    <footer id="site-footer">
 
-        foreach ( $footer_sidebars as $sidebar ) : ?>
+        <div class="row">
 
-            <div class="small-12 medium-4 columns">
+            <?php 
 
-                <?php dynamic_sidebar( $sidebar ); ?>
+            $footer_sidebars = array(
+                'footer-left',
+                'footer-center',
+                'footer-right',
+            ); 
 
-            </div>
+            foreach ( $footer_sidebars as $sidebar ) : ?>
 
-        <?php endforeach; ?>
-        
-    </div>
+                <div class="small-12 medium-4 columns">
 
-</footer>
+                    <?php dynamic_sidebar( $sidebar ); ?>
+
+                </div>
+
+            <?php endforeach; ?>
+
+        </div>
+
+    </footer>
+
+<?php endif; ?>
 
 </div> <!-- #site-content -->
 

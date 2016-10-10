@@ -33,29 +33,33 @@ if ( ! defined( 'ABSPATH' ) ) {
 
         <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
             
-            <div class="off-canvas position-left nav-menu" id="offCanvasLeft" data-off-canvas>
+            <?php if ( ! edd_is_checkout() ) : ?>
+            
+                <div class="off-canvas position-left nav-menu" id="offCanvasLeft" data-off-canvas>
 
-                <?php wp_nav_menu( array(
-                    'container' => false,
-                    'menu' => __( 'Primary Left Menu', THEME_ID ),
-                    'menu_class' => 'menu show-for-small-only',
-                    'theme_location' => 'primary-left',
-                    'items_wrap'      => '<ul id="%1$s" class="vertical %2$s">%3$s</ul>',
-                    'fallback_cb' => false,
-                    'walker' => new Foundation_Nav_Walker(),
-                ) ); ?>
-                
-                <?php wp_nav_menu( array(
-                    'container' => false,
-                    'menu' => __( 'Primary Right Menu', THEME_ID ),
-                    'menu_class' => 'menu show-for-small-only',
-                    'theme_location' => 'primary-right',
-                    'items_wrap'      => '<ul id="%1$s" class="vertical %2$s">%3$s</ul>',
-                    'fallback_cb' => false,
-                    'walker' => new Foundation_Nav_Walker(),
-                ) ); ?>
+                    <?php wp_nav_menu( array(
+                        'container' => false,
+                        'menu' => __( 'Primary Left Menu', THEME_ID ),
+                        'menu_class' => 'menu show-for-small-only',
+                        'theme_location' => 'primary-left',
+                        'items_wrap'      => '<ul id="%1$s" class="vertical %2$s">%3$s</ul>',
+                        'fallback_cb' => false,
+                        'walker' => new Foundation_Nav_Walker(),
+                    ) ); ?>
 
-            </div>
+                    <?php wp_nav_menu( array(
+                        'container' => false,
+                        'menu' => __( 'Primary Right Menu', THEME_ID ),
+                        'menu_class' => 'menu show-for-small-only',
+                        'theme_location' => 'primary-right',
+                        'items_wrap'      => '<ul id="%1$s" class="vertical %2$s">%3$s</ul>',
+                        'fallback_cb' => false,
+                        'walker' => new Foundation_Nav_Walker(),
+                    ) ); ?>
+
+                </div>
+            
+            <?php endif; ?>
 
             <div class="off-canvas-content" data-off-canvas-content data-sticky-container>
 
@@ -63,21 +67,41 @@ if ( ! defined( 'ABSPATH' ) ) {
 
                     <div class="top-bar-left mobile-menu show-for-small-only">
                         <div class="menu-icon-wrapper">
-                            <button class="menu-icon" type="button" data-toggle="offCanvasLeft" aria-expanded="false" aria-controls="offCanvasLeft"></button>
+                            
+                            <?php if ( ! edd_is_checkout() ) : ?>
+                            
+                                <button class="menu-icon" type="button" data-toggle="offCanvasLeft" aria-expanded="false" aria-controls="offCanvasLeft"></button>
+                            
+                            <?php else : // Make a fake hamburger button so the height stays the same ?>
+                            
+                                <button type="button"></button>
+                            
+                            <?php endif; ?>
+                            
                         </div>
                     </div>
 
                     <div class="top-bar-left nav-menu">
+                        
+                        <?php if ( ! edd_is_checkout() ) : ?>
 
-                        <?php wp_nav_menu( array(
-                            'container' => false,
-                            'menu' => __( 'Primary Left Menu', THEME_ID ),
-                            'menu_class' => 'menu hide-for-small-only',
-                            'theme_location' => 'primary-left',
-                            'items_wrap'      => '<ul id="%1$s" class="%2$s">%3$s</ul>',
-                            'fallback_cb' => false,
-                            'walker' => new Foundation_Nav_Walker(),
-                        ) ); ?>
+                            <?php wp_nav_menu( array(
+                                'container' => false,
+                                'menu' => __( 'Primary Left Menu', THEME_ID ),
+                                'menu_class' => 'menu hide-for-small-only',
+                                'theme_location' => 'primary-left',
+                                'items_wrap'      => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+                                'fallback_cb' => false,
+                                'walker' => new Foundation_Nav_Walker(),
+                            ) ); ?>
+                        
+                        <?php else : // Make a fake Menu Item so the height stays the same ?>
+                        
+                            <ul class="menu fake hide-for-small-only">
+                                <li><a>&nbsp;</a></li>
+                            </ul>
+                        
+                        <?php endif; ?>
 
                     </div>
 
@@ -92,16 +116,26 @@ if ( ! defined( 'ABSPATH' ) ) {
                     </div>
 
                     <div class="top-bar-right nav-menu">
+                        
+                        <?php if ( ! edd_is_checkout() ) : ?>
 
-                        <?php wp_nav_menu( array(
-                            'container' => false,
-                            'menu' => __( 'Primary Right Menu', THEME_ID ),
-                            'menu_class' => 'menu hide-for-small-only',
-                            'theme_location' => 'primary-right',
-                            'items_wrap'      => '<ul id="%1$s" class="%2$s">%3$s</ul>',
-                            'fallback_cb' => false,
-                            'walker' => new Foundation_Nav_Walker(),
-                        ) ); ?>
+                            <?php wp_nav_menu( array(
+                                'container' => false,
+                                'menu' => __( 'Primary Right Menu', THEME_ID ),
+                                'menu_class' => 'menu hide-for-small-only',
+                                'theme_location' => 'primary-right',
+                                'items_wrap'      => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+                                'fallback_cb' => false,
+                                'walker' => new Foundation_Nav_Walker(),
+                            ) ); ?>
+                        
+                        <?php else : // Make a fake Menu Item so the height stays the same ?>
+                        
+                            <ul class="menu fake hide-for-small-only">
+                                <li><a>&nbsp;</a></li>
+                            </ul>
+                        
+                        <?php endif; ?>
 
                     </div>
                 </nav>
