@@ -24,6 +24,7 @@ $all_documentation = $query->query( array(
     'post_type' => 'documentation',
     'orderby' => 'menu_order title',
     'order' => 'ASC',
+    'posts_per_page' => -1,
 ) );
 
 // Grab all Children and Grandchildren Recursively
