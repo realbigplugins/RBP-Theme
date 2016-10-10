@@ -93,7 +93,7 @@ $documentation_sections = get_page_children( get_the_ID(), $all_documentation );
 
         <nav class="columns docs-toc-wrap magellan" data-sticky data-anchor="docs" data-margin-top="7">
 
-            <ul class="docs-toc vertical menu expanded" data-magellan data-bar-offset="60">
+            <ul class="docs-toc vertical menu expanded" data-magellan data-deep-linking="true" data-bar-offset="60">
 
                 <li <?php post_class(); ?>>
                     <a href="#<?php echo $parent_magellan_link; ?>">
