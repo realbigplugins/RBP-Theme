@@ -230,6 +230,14 @@ add_action( 'init', function() {
         null,
         defined( 'WP_DEBUG' ) && WP_DEBUG ? time() : THEME_VERSION
     );
+    
+    // Login styles
+    wp_register_style(
+        THEME_ID . '-login',
+        get_template_directory_uri() . '/login.css',
+        null,
+        defined( 'WP_DEBUG' ) && WP_DEBUG ? time() : THEME_VERSION
+    );
 
     // Theme fonts
     if ( ! empty( $theme_fonts ) ) {
@@ -262,6 +270,18 @@ add_action( 'wp_enqueue_scripts', function() {
         }
     }
 
+} );
+
+/**
+ * Enqueue our CSS/JS on the Login Screen
+ * 
+ * @since 1.0.0
+ * @return void
+ */
+add_action( 'login_enqueue_scripts', function() {
+    
+    wp_enqueue_style( THEME_ID . '-login' );
+    
 } );
 
 /**

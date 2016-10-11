@@ -1,8 +1,7 @@
 javascript:
-  dest:
-    root: "."
   front:
     # filename to output
+    root: "."
     filename: "script.js"
     notification: "Running JavaScript"
     bowerPaths:
@@ -24,6 +23,7 @@ javascript:
       - "build/js/**/*.js"
       - "!build/js/admin/**/*.js"
   admin:
+    root: "."
     filename: "admin.js"
     notification: "Running Admin JavaScript"
     src:
@@ -34,17 +34,21 @@ sass:
   compatibility:
     - "last 2 versions"
     - "ie >= 9"
-  dest:
-    root: "."
   front:
     notification: "Running Sass"
     bowerPaths:
       - "bower_components/foundation-sites/scss"
       - "bower_components/motion-ui/src"
+    root: "."
     src: "build/sass/main.scss"
   admin:
     notification: "Running Admin Sass"
+    root: "."
     src: "build/sass/admin/main.scss"
+  login:
+    notification: "Running Login Sass"
+    root: "."
+    src: "build/sass/login/main.scss"
 
 watch:
   javascript:
@@ -56,4 +60,6 @@ watch:
     front: 
       - "build/sass/**/*.scss"
       - "!build/sass/admin/**/*.scss"
+      - "!build/sass/login/**/*.scss"
     admin: "build/sass/admin/**/*.scss"
+    login: "build/sass/login/**/*.scss"
