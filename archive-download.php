@@ -16,7 +16,7 @@ get_header();
 
 	<section class="store-template">
         
-        <div class="queue-on-scroll scale-in-up">
+        <div class="animate-on-scroll scale-in-up">
 
             <?php if ( have_posts() ) : $index = 1; ?>
 
@@ -47,7 +47,7 @@ get_header();
 
                     <?php endif; ?>
 
-                        <div class="product queued-item columns <?php echo $column_classes; ?>">
+                        <div class="product columns <?php echo $column_classes; ?>">
                             <a href="<?php the_permalink(); ?>">
                                 <h2 class="title"><?php the_title(); ?></h2>
                             </a>
