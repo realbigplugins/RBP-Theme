@@ -32,13 +32,9 @@ get_header();
                         $column_classes = 'small-12 medium-6';
                         $max_columns = 2;
                         break;
-                    case 3:
-                        $column_classes = 'small-12 large-4';
-                        $max_columns = 3;
-                        break;
                     default:
-                        $column_classes = 'small-12 medium-6';
-                        $max_columns = 2;
+                        $column_classes = 'small-12 medium-4';
+                        $max_columns = 3;
                         break;
                 }
                 ?>
