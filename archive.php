@@ -14,56 +14,60 @@ if ( ! defined( 'ABSPATH' ) ) {
 get_header();
 ?>
 
-<h1 class="page-title columns small-12">
-    <?php post_type_archive_title( '' ); ?>
-</h1>
+<div class="page-content row">
 
-<?php
-the_archive_description( '<div class="taxonomy-description columns small-12">', '</div>' );
-?>
+    <h1 class="page-title columns small-12">
+        <?php post_type_archive_title( '' ); ?>
+    </h1>
 
-<?php if ( have_posts() ) : ?>
     <?php
-    while ( have_posts() ) :
-        the_post();
-        ?>
-        <article id="post-<?php the_ID(); ?>" <?php post_class( array(
-            'columns',
-            'small-12'
-        ) ); ?>>
+    the_archive_description( '<div class="taxonomy-description columns small-12">', '</div>' );
+    ?>
 
-            <h2 class="post-title">
-                <a href="<?php the_permalink(); ?>" class="force-color">
-                    <?php the_title(); ?>
-                </a>
-            </h2>
-
-            <?php the_excerpt(); ?>
-
-            <a href="<?php the_permalink(); ?>" class="button dark">
-                Read more
-            </a>
-
-        </article>
-    <?php endwhile; ?>
-
-    <div class="columns small-12">
+    <?php if ( have_posts() ) : ?>
         <?php
-        the_posts_pagination( array(
-            'prev_text'          => 'Previous page',
-            'next_text'          => 'Next page',
-            'before_page_number' => '<span class="meta-nav screen-reader-text">' . 'Page' . ' </span>',
-        ) );
-        ?>
-    </div>
+        while ( have_posts() ) :
+            the_post();
+            ?>
+            <article id="post-<?php the_ID(); ?>" <?php post_class( array(
+                'columns',
+                'small-12'
+            ) ); ?>>
 
-<?php else: ?>
+                <h2 class="post-title">
+                    <a href="<?php the_permalink(); ?>" class="force-color">
+                        <?php the_title(); ?>
+                    </a>
+                </h2>
 
-    <div class="columns small-12">
-        Nothing found, sorry!
-    </div>
+                <?php the_excerpt(); ?>
 
-<?php endif; ?>
+                <a href="<?php the_permalink(); ?>" class="button dark">
+                    Read more
+                </a>
+
+            </article>
+        <?php endwhile; ?>
+
+        <div class="columns small-12">
+            <?php
+            the_posts_pagination( array(
+                'prev_text'          => 'Previous page',
+                'next_text'          => 'Next page',
+                'before_page_number' => '<span class="meta-nav screen-reader-text">' . 'Page' . ' </span>',
+            ) );
+            ?>
+        </div>
+
+    <?php else: ?>
+
+        <div class="columns small-12">
+            Nothing found, sorry!
+        </div>
+
+    <?php endif; ?>
+    
+</div>
 
 <?php
 get_footer();

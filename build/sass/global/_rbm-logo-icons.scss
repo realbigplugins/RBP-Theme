@@ -144,11 +144,11 @@ $rbm-logo-prefix: 'rbm-logo';
 // Stacked Icons for Multi-Color
 
 [class^='stacked-rbm-logo']:before, [class*=' stacked-rbm-logo']:before {
-    color: $gear;
+    color: $gear-color;
 }
 
 [class^='stacked-rbm-logo']:after, [class*=' stacked-rbm-logo']:after, [class^='stacked-rbm-logo'] span:after, [class*=' stacked-rbm-logo'] span:after {
-    color: $bulb;
+    color: $bulb-color;
 }
 
 .stacked-#{$rbm-logo-prefix}:before { // Gear

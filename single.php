@@ -16,18 +16,22 @@ get_header();
 the_post();
 ?>
 
-<article id="page-<?php the_ID(); ?>" <?php post_class( array( 'columns', 'small-12' ) ); ?>>
+<div class="page-content row">
 
-    <h1 class="page-title">
-        <?php the_title(); ?>
-    </h1>
+    <article id="page-<?php the_ID(); ?>" <?php post_class( array( 'columns', 'small-12' ) ); ?>>
 
-    <?php the_content(); ?>
+        <h1 class="page-title">
+            <?php the_title(); ?>
+        </h1>
 
-</article>
+        <?php the_content(); ?>
 
-<div class="columns small-12">
-    <?php comments_template(); ?>
+    </article>
+
+    <div class="columns small-12">
+        <?php comments_template(); ?>
+    </div>
+    
 </div>
 
 <?php

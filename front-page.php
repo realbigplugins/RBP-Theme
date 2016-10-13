@@ -17,6 +17,8 @@ $plugins_archive_link = get_post_type_archive_link( 'download' );
 $hire_us_page = get_page_by_title( 'Hire Us' );
 ?>
 
+<div class="page-content row">
+
 	<section class="row text-center call-to-action animate-on-scroll fade-in">
         
         <div class="small-12 columns">
@@ -33,6 +35,8 @@ $hire_us_page = get_page_by_title( 'Hire Us' );
         </div>
         
 	</section>
+    
+</div>
 
 <?php
 get_footer();

@@ -44,6 +44,7 @@ add_action( 'init', function() {
 $theme_fonts = array(
 	'open-sans' => '//fonts.googleapis.com/css?family=Open+Sans:300italic,700,300,800',
     'font-awesome' => '//maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css',
+    'leckerli-one' => '//fonts.googleapis.com/css?family=Leckerli+One',
 );
 
 /**

@@ -14,6 +14,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 get_header();
 ?>
 
+<div class="page-content row">
+
 	<div id="main-content" class="row store-template">
 		<div class="content clearfix">
 			<?php
@@ -86,5 +88,7 @@ get_header();
 			<?php endif; ?>
 		</div><!--end .content-->
 	</div><!--end #main-content.row-->
+    
+</div>
 
 <?php get_footer(); ?>

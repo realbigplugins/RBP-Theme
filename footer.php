@@ -12,8 +12,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 
-</div> <!-- .page-content -->
-
 <?php if ( ! edd_is_checkout() ) : ?>
 
     <footer id="site-footer">

@@ -1,6 +1,6 @@
 // We use these as default colors throughout
 $primary-color: #12538f;
-$secondary-color: #76d100;
+$secondary-color: #5b9d1a;
 $alert-color: #f04124;
 $success-color: #43AC6A;
 $warning-color: #f08a24;
@@ -16,8 +16,8 @@ $foundation-palette: (
     alert: $alert-color,
 );
 
-$gear: #a4cd39;
-$bulb: #12538f;
+$gear-color: #a4cd39;
+$bulb-color: #12538f;
 
 $light-color: #ddd;
 
@@ -25,6 +25,7 @@ $light-color: #ddd;
 $font-family-sans-serif: "Open Sans", sans-serif;
 $font-family-serif: Georgia, Cambria, "Times New Roman", Times, serif;
 $font-family-monospace: Consolas, "Liberation Mono", Courier, monospace;
+//$body-background: $light-gray;
 $body-font-color: #222;
 $body-font-family: $font-family-sans-serif;
 $body-antialiased: false;
@@ -46,6 +47,8 @@ $topbar-link-color: null;
     $topbar-link-color: $black;
 
 }
+
+$site-content-padding: 138px; // 3x the height of Admin Bar on Mobile
 
 // Media query ranges
 $small-range: (0em, 40em);

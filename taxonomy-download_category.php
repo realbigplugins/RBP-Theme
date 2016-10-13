@@ -14,6 +14,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 get_header();
 ?>
 
+<div class="page-content row">
+
 	<div id="main-content" class="row store-template">	
 		<div class="twelvecol last">		
 			<div class="content clearfix">
@@ -89,5 +91,7 @@ get_header();
 		</div><!--end .twelvecol-->		
 		
 	</div><!--end .row#main-content-->
+    
+</div>
 
 <?php get_footer(); ?>

@@ -52,9 +52,11 @@ section {
 }
 
 #site-content {
+    
     height: 100%;
-    padding-top: 138px; // 3x the height of Admin Bar on Mobile
-    background-color: $body-background;
+    padding-top: $site-content-padding;
+    //background-color: $body-background;
+    
 }
 
 .page-content {
@@ -66,7 +68,7 @@ section {
         
         @media #{$small-only} {
             
-            padding-top: 160px;
+            padding-top: $site-content-padding + 22;
             
         }
         
@@ -133,6 +135,7 @@ ul.multi-column, ol.multi-column {
     
 }
 
+// This ensures we can ignore other areas wehere we don't want these styles
 .off-canvas-content a:not(.button) {
     @include link-hover-style( $anchor-color-hover );
 }
@@ -159,4 +162,8 @@ ul.multi-column, ol.multi-column {
 
     }
     
+}
+
+.cursive {
+    font-family: 'Leckerli One', cursive;
 }

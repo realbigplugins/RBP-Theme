@@ -141,4 +141,3 @@ if ( ! defined( 'ABSPATH' ) ) {
                 </nav>
 
                 <section id="site-content"<?php echo ( is_front_page() ) ? ' style="background-image: url(' . wp_get_attachment_image_url( get_theme_mod( 'home_background' ), 'full' ) . '); background-size: cover;"' : ''; ?>>
-                    <div class="page-content row">

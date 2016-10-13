@@ -15,6 +15,8 @@ get_header();
 the_post();
 ?>
 
+<div class="page-content row">
+
 	<div class="row product-row">
         
         <div class="product-title columns small-12 hide-for-medium hide-for-large">
@@ -302,5 +304,7 @@ the_post();
         </div>
         
     </div>
+
+</div>
 
 <?php get_footer();
