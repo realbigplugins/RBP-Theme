@@ -82,7 +82,7 @@ $documentation_sections = get_page_children( get_the_ID(), $all_documentation );
 
                 <h1 id="changelog" data-magellan-target="changelog"><?php _e( 'Changelog', THEME_ID ); ?></h1>
 
-                <?php echo apply_filters( 'the_content', $changelog );
+                <?php echo apply_filters( 'the_content', wp_unslash( $changelog ) );
 
             endif;
 
