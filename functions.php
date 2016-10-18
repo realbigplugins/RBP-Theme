@@ -25,18 +25,12 @@ define( 'EDD_SLUG', 'plugins' );
 
 /**
  * Define Constants based on our Stylesheet Header. Update things only once!
- * 
- * @since 1.1.0
- * @return void
  */
-add_action( 'init', function() {
 
-    $theme_header = wp_get_theme();
+$theme_header = wp_get_theme();
 
-    define( 'THEME_ID', $theme_header->get( 'TextDomain' ) );
-    define( 'THEME_VERSION', $theme_header->get( 'Version' ) );
-
-} );
+define( 'THEME_ID', $theme_header->get( 'TextDomain' ) );
+define( 'THEME_VERSION', $theme_header->get( 'Version' ) );
 
 /**
  * Fonts for the theme. Must be hosted font (Google fonts for example).
@@ -202,6 +196,9 @@ add_action( 'after_setup_theme', function () {
 
     // Add theme support
     require_once __DIR__ . '/includes/theme-support.php';
+    
+    // Add miscellaneous helper functions
+    require_once __DIR__ . '/includes/theme-functions.php';
 
     // Nav Walker for Foundation
     require_once __DIR__ . '/includes/class-foundation_nav_walker.php';
@@ -403,6 +400,60 @@ add_action( 'customize_register', function( $wp_customize ) {
         'settings'   => 'home_button_text',
         'active_callback' => 'is_front_page',
     ) ) );
+    
+} );
+
+/**
+ * Add Post Meta-controlled Styling to the Download Single
+ * 
+ * @since       1.1.0
+ * @return      HTML
+ */
+add_action( 'wp_print_styles', function() {
+    
+    if ( is_single() && get_post_type() == 'download' ) : 
+
+        $primary_color = get_post_meta( get_the_ID(), '_rbm_primary_color', true );
+        $primary_color = ( $primary_color ) ? $primary_color : '#12538f';
+    
+        $secondary_color = get_post_meta( get_the_ID(), '_rbm_secondary_color', true );
+        $secondary_color = ( $secondary_color ) ? $secondary_color : '#51a0e9';
+    
+        ?>
+
+        <style type="text/css">
+            
+            /* Same styling as Downloads Archive, but controlled via Post Meta */
+            .download-color-section {
+                
+                background-color: <?php echo $primary_color; ?>;
+                border-bottom: 0.5rem solid <?php echo $secondary_color; ?>;
+                
+                color: <?php echo ( rbp_is_light( $primary_color ) ) ? '#000' : '#fff'; ?>;
+                
+            }
+            
+            .documentation-link {
+                
+                background-color: <?php echo $primary_color; ?> !important;
+                box-shadow: 7.5px 7.5px <?php echo $secondary_color; ?>;
+                
+                color: <?php echo ( rbp_is_light( $primary_color ) ) ? '#000' : '#fff'; ?> !important;
+                
+            }
+            
+            .documentation-link:hover {
+                
+                background-color: <?php echo rbp_darken_hex( $primary_color, 15 ); ?> !important;
+                box-shadow: 7.5px 7.5px <?php echo rbp_darken_hex( $secondary_color, 15 ); ?>;
+                
+                color: <?php echo ( rbp_is_light( rbp_darken_hex( $primary_color, 15 ) ) ) ? '#000' : '#fff'; ?> !important;
+                
+            }
+            
+        </style>
+
+    <?php endif;
     
 } );
 
