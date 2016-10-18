@@ -433,6 +433,56 @@ add_action( 'wp_print_styles', function() {
                 
             }
             
+            .download-color-section ul * {
+                
+                color: <?php echo ( rbp_is_light( $primary_color ) ) ? '#000' : '#fff'; ?>;
+                
+            }
+            
+            .download-color-section .button {
+                
+                background-color: <?php echo $primary_color; ?> !important;
+                color: <?php echo ( rbp_is_light( $primary_color ) ) ? '#000' : '#fff'; ?> !important;
+                
+            }
+            
+            .download-color-section .button:hover {
+                
+                background-color: <?php echo rbp_darken_hex( $primary_color, 15 ); ?> !important;
+                color: <?php echo ( rbp_is_light( rbp_darken_hex( $primary_color, 15 ) ) ) ? '#000' : '#fff'; ?> !important;
+                
+            }
+            
+            .download-color-section .button.hollow {
+                
+                background-color: transparent !important;
+                border-color: <?php echo $primary_color; ?> !important;
+                color: <?php echo $primary_color; ?> !important;
+                
+            }
+            
+            .download-color-section .button.hollow:hover {
+                
+                background-color: <?php echo $primary_color; ?> !important;
+                border-color: <?php echo $primary_color; ?> !important;
+                color: <?php echo ( rbp_is_light( $primary_color ) ) ? '#000' : '#fff'; ?> !important;
+                
+            }
+            
+            .download-color-section .button.invert {
+                
+                background-color: #fff !important;
+                color: <?php echo $primary_color; ?> !important;
+                
+            }
+            
+            .download-color-section .button.invert:hover {
+                
+                background-color: <?php echo $primary_color; ?> !important;
+                color: <?php echo ( rbp_is_light( $primary_color ) ) ? '#000' : '#fff'; ?> !important;
+                
+            }
+            
             .documentation-link {
                 
                 background-color: <?php echo $primary_color; ?> !important;

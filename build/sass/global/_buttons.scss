@@ -1,0 +1,62 @@
+.off-canvas-content {
+    
+    .button {
+
+        @each $name, $color in $foundation-palette {
+
+            // Re-style Hollow Buttons
+            &.hollow.#{$name} {
+
+                color: $color;
+                border-width: 0.25em;
+
+                &:hover {
+
+                    background-color: $color;
+                    border-color: $color;
+                    @include light-or-dark-text( $color );
+
+                }
+
+            }
+            
+            // Add inverted version
+            &.invert.#{$name} {
+
+                background-color: $white;
+                border-width: 0.25em;
+                border-color: transparent;
+                color: $color;
+
+                &:hover {
+
+                    border-color: $white;
+                    background-color: $color;
+                    @include light-or-dark-text( $color );
+
+                }
+
+            }
+            
+            // Create slide-in background buttons
+            &.#{$name}.slide-left {
+                @include background-slide-in( $color, 'left' );
+            }
+
+            &.#{$name}.slide-right {
+                @include background-slide-in( $color, 'right' );
+            }
+
+            &.#{$name}.slide-top {
+                @include background-slide-in( $color, 'top' );
+            }
+
+            &.#{$name}.slide-bottom {
+                @include background-slide-in( $color, 'bottom' );
+            }
+
+        }
+
+    }
+    
+}
