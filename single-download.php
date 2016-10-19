@@ -27,13 +27,11 @@ remove_action( 'the_content', 'edd_after_download_content', 10 );
     
 </div>
 
-<?php if ( $documentation = get_post_meta( get_the_ID(), '_rbm_p2p_documentation', true ) ) : ?>
-    <div class="documentation">
-        <a class="button large documentation-link" href="<?php echo get_permalink( $documentation ); ?>">
-            <?php printf( __( 'Get started with %s now!', THEME_ID ), get_the_title() ); ?>
-        </a>
-    </div>
-<?php endif; ?>
+<div class="call-to-action">
+    <a class="button large download-buy-link" href="#download-buy">
+        <?php echo strip_tags( sprintf( __( 'Get started with %s now!', THEME_ID ), get_the_title() ) ); ?>
+    </a>
+</div>
 
 <?php			
                 
@@ -200,7 +198,7 @@ if ( ! empty( $testimonials ) ) : ?>
 
 <?php endif; ?>
 
-<div class="download-buy download-color-section">
+<div id="download-buy" class=" download-color-section">
     
     <?php echo edd_get_purchase_link( array(
         'download_id' => get_the_ID(), 

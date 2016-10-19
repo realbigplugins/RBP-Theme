@@ -484,7 +484,7 @@ add_action( 'wp_print_styles', function() {
                 
             }
             
-            .documentation-link {
+            .download-buy-link {
                 
                 background-color: <?php echo $primary_color; ?> !important;
                 box-shadow: 7.5px 7.5px <?php echo $secondary_color; ?>;
@@ -493,7 +493,7 @@ add_action( 'wp_print_styles', function() {
                 
             }
             
-            .documentation-link:hover {
+            .download-buy-link:hover {
                 
                 background-color: <?php echo rbp_darken_hex( $primary_color, 15 ); ?> !important;
                 box-shadow: 7.5px 7.5px <?php echo rbp_darken_hex( $secondary_color, 15 ); ?>;
@@ -502,7 +502,7 @@ add_action( 'wp_print_styles', function() {
                 
             }
             
-            .download-buy .edd_price_options ul:after {
+            #download-buy .edd_price_options ul:after {
             
                 border-top: solid 3px <?php echo $secondary_color; ?>;
                 color: <?php echo $secondary_color; ?>;
@@ -515,15 +515,15 @@ add_action( 'wp_print_styles', function() {
 
             }
             
-            .download-buy .edd_price_options del {
+            #download-buy .edd_price_options del {
                 color: <?php echo $secondary_color; ?>;
             }
             
-            .download-buy .edd_purchase_submit_wrapper .support-link {   
+            #download-buy .edd_purchase_submit_wrapper .support-link {   
                 color: <?php echo $secondary_color; ?>;
             }
             
-            .download-buy .edd_purchase_submit_wrapper .support-link:hover {   
+            #download-buy .edd_purchase_submit_wrapper .support-link:hover {   
                 
                 <?php if ( rbp_is_light( $primary_color ) ) : ?>
                     color: <?php echo rbp_darken_hex( $secondary_color, 25 ); ?>;
@@ -533,7 +533,7 @@ add_action( 'wp_print_styles', function() {
                 
             }
             
-            .download-buy .edd_purchase_submit_wrapper .support-link:before, .download-buy .edd_purchase_submit_wrapper .support-link:after {   
+            #download-buy .edd_purchase_submit_wrapper .support-link:before, #download-buy .edd_purchase_submit_wrapper .support-link:after {   
                 
                 <?php if ( rbp_is_light( $primary_color ) ) : ?>
                     border-color: <?php echo rbp_darken_hex( $secondary_color, 25 ); ?>;

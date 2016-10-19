@@ -11,8 +11,7 @@ Base element settings (no classes or id's).
     only screen and (min-device-pixel-ratio: 1.5){
         html,
         body{
-            width:100%;
-            overflow-x: hidden;
+            width: 100%;
         }
 }
 
@@ -33,7 +32,7 @@ html {
         
         &.off-canvas-fix {
         
-            height: auto;
+            height: 100%;
             margin-top: 0 !important; // EDD or some other plugin is adding in-line CSS below my inclusion of our styles.
             
         }

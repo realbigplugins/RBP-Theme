@@ -23,7 +23,7 @@
         
     }
     
-    .documentation {
+    .call-to-action {
         
         text-align: center;
         
@@ -130,7 +130,7 @@
         
     }
     
-    .download-buy {
+    #download-buy {
         
         @each $breakpoint, $gutter in $grid-column-gutter {
             $padding: rem-calc($gutter) / 2;
