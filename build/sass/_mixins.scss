@@ -166,3 +166,31 @@
     }
 
 }
+
+// $column-class is a class name attached to your Column
+// Another element inside the Column named #{$column-class}-container should also be in your markup
+@mixin drop-shadow-column( $column-class, $shadow-color: $medium-gray ) {
+    
+    .#{$column-class} {
+
+        @each $breakpoint, $gutter in $grid-column-gutter {
+            $padding: rem-calc($gutter) / 2;
+
+            margin-bottom: ( $padding * 2 );
+            padding: 0 ( $padding );
+
+            .#{$column-class}-container {
+
+                @include breakpoint($breakpoint) {
+
+                    box-shadow: ( $padding / 2 ) ( $padding / 2 ) $shadow-color;
+
+                }
+
+            }
+
+        }
+
+    }
+    
+}

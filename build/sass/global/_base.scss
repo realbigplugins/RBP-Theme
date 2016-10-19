@@ -140,30 +140,6 @@ ul.multi-column, ol.multi-column {
     @include link-hover-style( $anchor-color-hover );
 }
 
-.off-canvas-content {
-
-    @each $name, $color in $foundation-palette {
-
-        .button.#{$name}.slide-left {
-            @include background-slide-in( $color, 'left' );
-        }
-
-        .button.#{$name}.slide-right {
-            @include background-slide-in( $color, 'right' );
-        }
-
-        .button.#{$name}.slide-top {
-            @include background-slide-in( $color, 'top' );
-        }
-
-        .button.#{$name}.slide-bottom {
-            @include background-slide-in( $color, 'bottom' );
-        }
-
-    }
-    
-}
-
 .cursive {
     font-family: 'Leckerli One', cursive;
 }

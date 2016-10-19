@@ -1,32 +1,47 @@
 .single-download {
     
-    .page-content {
-        padding: 0; // Keep our full-width sections
-        max-width: none;
+    &, .off-canvas-content {
+        background: $light-gray;
     }
+    
+    #site-content {
+        padding-top: 0;
+    }
+    
+    .downloads-header {
+        
+        padding-top: $site-content-padding; // #site-content padding
+        padding-bottom: $site-content-padding * 0.5;
+        
+        font-size: 1.25rem;
+        text-align: center;
+        
+        h3 {
+            margin-bottom: 0;
+            font-weight: bold;
+        }
+        
+    }
+    
+    .documentation {
+        
+        text-align: center;
+        
+        @each $breakpoint, $gutter in $grid-column-gutter {
+            $padding: rem-calc($gutter) / 2;
 
-    h1 {
+            @include breakpoint($breakpoint) {
 
-        margin-top: 0;
-        line-height: 1;
+                padding: ( $padding * 4 ) 0;
 
+            }
+
+        }
+        
     }
     
     .product-image {
         text-align: center;
-    }
-
-    .product-content {
-
-        margin: 20px 0;
-
-    }
-
-    .product-actions {
-
-        text-align: center;
-        margin-top: 20px;
-
     }
 
     @media #{$small-only} {
@@ -37,75 +52,65 @@
 
     }
     
-    .product-row {
+    .features-section .feature {
         
-        padding: 30px;
+        background-color: $white;
+        border-bottom: 0.5rem solid $medium-gray;
         
         @each $breakpoint, $gutter in $grid-column-gutter {
             $padding: rem-calc($gutter) / 2;
 
             @include breakpoint($breakpoint) {
 
-                margin-bottom: $padding;
-                
-                .documentation {
-                    margin-top: $padding;
-                }
+                padding: $padding 0;
+                margin-bottom: ( $padding * 3 );
 
             }
 
         }
         
-    }
-
-    .alternating-branding {
+        &:last-of-type() {
+            
+            margin-bottom: 0;
+            
+        }
         
-        padding: 0 30px;
-        
-        .row {
-
-            @each $breakpoint, $gutter in $grid-column-gutter {
-                $padding: rem-calc($gutter) / 2;
-
-                @include breakpoint($breakpoint) {
-
-                    padding: $padding 0;
-
-                }
-
+        & > .row {
+            
+            & > h3 {
+            
+                margin-bottom: 1rem;
+                
             }
             
         }
-
+        
     }
     
-    .testimonials {
+    .testimonials-section {
         
-        background-image: url( 'images/project-group-around-table-overlay.jpg' );
-        background-size: cover;
-        background-position: center center;
+        @each $breakpoint, $gutter in $grid-column-gutter {
+            $padding: rem-calc($gutter) / 2;
 
-        &, * {
-            @include light-or-dark-text( $primary-color );
+            @include breakpoint($breakpoint) {
+
+                padding: ( $padding * 2 ) 0 $padding 0;
+
+            }
+
         }
+        
+        @include drop-shadow-column( 'testimonial' );
         
         .testimonial-container {
             
             display: inline-block;
+                
+            background-color: white;
             
             @media #{$small-only} {
 
                 padding: 0 0 map-get( $grid-column-gutter, 'small' ) 0;
-                
-            }
-            
-            .testimonial-header {
-                
-                text-align: right;
-                
-                h5 {
-                    margin-bottom: 0;
-                }
                 
             }
             
@@ -125,13 +130,44 @@
         
     }
     
-    .features {
+    .download-buy {
         
-        & > .row {
+        @each $breakpoint, $gutter in $grid-column-gutter {
+            $padding: rem-calc($gutter) / 2;
+
+            @include breakpoint($breakpoint) {
+
+                padding: ( $padding * 4 ) 0;
+
+            }
+
+        }
+        
+        // Let's force Foundation's Grid since we can't really modify the class names!
+        .edd_download_purchase_form {
             
-            & > h3 {
+            margin-bottom: 0;
             
-                margin-bottom: 1rem;
+            @include grid_row();
+            
+            & > div {
+                
+                &, .button {
+                    margin-bottom: 0;
+                }
+                
+                @include grid_column( 12 );
+                
+                @media #{$medium-up} {
+                
+                    @include grid_column( 6 );
+                    
+                }
+                
+                // The way Foundation handles this by default won't work here
+                &:last-of-type:not(:first-child) {
+                    float: right;
+                }
                 
             }
             
@@ -155,8 +191,6 @@
     }
     
     .purchase-alt {
-        
-        background-image: url( 'images/green-squares.jpg' );
 
         &, * {
             @include light-or-dark-text( $secondary-color );

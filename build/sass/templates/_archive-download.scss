@@ -42,36 +42,28 @@
     .animate-on-scroll {
         visibility: hidden;
     }
+    
+    @include drop-shadow-column( 'product' );
 
     .product {
-        
-        // Base Margins on Column Gutters
-        $small-padding: map-get( $grid-column-gutter, 'small' );
-        $medium-padding: map-get( $grid-column-gutter, 'medium' );
-        
-        margin-bottom: ( $small-padding / 2 );
-        padding: 0 ( $small-padding / 4 );
-        
-        @media #{$medium-up} {
-            margin-bottom: ( $medium-padding / 2 );
-            padding: 0 ( $medium-padding / 4 );
-        }
         
         .product-container {
             
             background-color: white;
-            box-shadow: ( $medium-padding / 4 ) ( $medium-padding / 4 ) $medium-gray;
             
         }
         
         .product-container-top, .product-container-bottom {
             
-            margin: $small-padding / 4;
-            padding: $small-padding;
-        
-            @media #{$medium-up} {
-                margin: $medium-padding / 4;
-                padding: $small-padding;
+            @each $breakpoint, $gutter in $grid-column-gutter {
+                $padding: rem-calc($gutter) / 2;
+
+                @include breakpoint($breakpoint) {
+
+                    padding: $padding * 1.5;
+
+                }
+
             }
             
         }
