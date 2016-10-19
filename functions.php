@@ -405,6 +405,7 @@ add_action( 'customize_register', function( $wp_customize ) {
 
 /**
  * Add Post Meta-controlled Styling to the Download Single
+ * I really don't like doing this, but this is about the only way to get DB-stored Colors into the Styling
  * 
  * @since       1.1.0
  * @return      HTML
@@ -501,11 +502,81 @@ add_action( 'wp_print_styles', function() {
                 
             }
             
+            .download-buy .edd_price_options ul:after {
+            
+                border-top: solid 3px <?php echo $secondary_color; ?>;
+                color: <?php echo $secondary_color; ?>;
+                display: block;
+                width: 100%;
+                content: '<?php echo _x( 'All price options are billed yearly. You may cancel your subscription at any time.', 'Price Options Disclaimer Text', THEME_ID ); ?>';
+                font-style: italic;
+                margin-top: 0.5em;
+                padding-top: 0.5em;
+
+            }
+            
+            .download-buy .edd_price_options del {
+                color: <?php echo $secondary_color; ?>;
+            }
+            
+            .download-buy .edd_purchase_submit_wrapper .support-link {   
+                color: <?php echo $secondary_color; ?>;
+            }
+            
+            .download-buy .edd_purchase_submit_wrapper .support-link:hover {   
+                
+                <?php if ( rbp_is_light( $primary_color ) ) : ?>
+                    color: <?php echo rbp_darken_hex( $secondary_color, 25 ); ?>;
+                <?php else : ?>
+                    color: <?php echo rbp_lighten_hex( $secondary_color, 25 ); ?>;
+                <?php endif; ?>
+                
+            }
+            
+            .download-buy .edd_purchase_submit_wrapper .support-link:before, .download-buy .edd_purchase_submit_wrapper .support-link:after {   
+                
+                <?php if ( rbp_is_light( $primary_color ) ) : ?>
+                    border-color: <?php echo rbp_darken_hex( $secondary_color, 25 ); ?>;
+                <?php else : ?>
+                    border-color: <?php echo rbp_lighten_hex( $secondary_color, 25 ); ?>;
+                <?php endif; ?>
+                
+            }
+            
         </style>
 
     <?php endif;
     
 } );
+
+/**
+ * EDD could really use a few more Action Hooks around here...
+ * Since this is HTML we can't use CSS Pseudo Selectors to toss it in there
+ * 
+ * @param       string $purchase_form Purchase Form HTML
+ * @param       array  $args          Purchase Form $args
+ *                                                  
+ * @since       1.1.0
+ * @return      string Purchase Form HTML
+ */
+add_filter( 'edd_purchase_download_form', function( $purchase_form, $args ) {
+    
+    $preg_match_bool = preg_match( '/<div class="edd_purchase_submit_wrapper">(.*?)<\/div>/ims', $purchase_form, $matches );
+    
+    if ( $preg_match_bool ) {
+        
+        $link_text = _x( 'Questions or concerns?', 'Download Single Support Link Text', THEME_ID );
+    
+        // Between the HTML Tags
+        $injected_link = $matches[1] . '<a href="/support/" class="support-link" title="' . $link_text . '">' . $link_text . '</a>';
+        
+        $purchase_form = str_replace( $matches[1], $injected_link, $purchase_form );
+            
+    }
+    
+    return $purchase_form;
+    
+}, 10, 2 );
 
 // Include other static files
 require_once __DIR__ . '/includes/shortcodes/mailchimp-embed.php';
