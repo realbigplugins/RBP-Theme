@@ -33,28 +33,7 @@ remove_action( 'the_content', 'edd_after_download_content', 10 );
     </a>
 </div>
 
-<?php			
-                
-$requirements = rbm_get_field( 'requirements' );
-
-if ( ! empty( $requirements ) ) : 
-
-$index = 1;
-
-switch( count( $requirements ) ) {
-
-    case 1 :
-        $column_class = 'medium-12';
-        break;
-    case 2 : 
-        $column_class = 'medium-6';
-    default : 
-        $column_class = 'medium-4';
-        break;
-
-}
-
-$features = rbm_get_field( 'features' );
+<?php $features = rbm_get_field( 'features' );
 
 if ( ! empty( $features ) ) : ?>
 
@@ -69,8 +48,6 @@ if ( ! empty( $features ) ) : ?>
             <div class="feature">
 
                 <div class="row">
-
-                    <div class="small-12 columns">
 
                     <?php if ( $index % 2 == 0 ) : ?>
 
@@ -97,7 +74,6 @@ if ( ! empty( $features ) ) : ?>
 
                     <?php endif; ?>
 
-                    </div>
                 </div>
                 
             </div>
@@ -142,38 +118,36 @@ if ( ! empty( $testimonials ) ) : ?>
 
         <?php if ( $index == 1 ) : ?>
             <div class="row">
-                <div class="small-12 columns">
         <?php endif; ?>
 
-            <div class="testimonial small-12 medium-6<?php echo ( count( $testimonials ) == 1 ) ? ' medium-offset-3' : ' columns'; ?>">
-                
-                <div class="testimonial-container">
+                <div class="testimonial small-12 medium-6<?php echo ( count( $testimonials ) == 1 ) ? ' medium-offset-3' : ' columns'; ?>">
 
-                    <div class="<?php echo $image_column_class; ?> columns">
-                        <?php echo get_avatar( $testimonial['gravatar_email'] ); ?>
-                    </div>
+                    <div class="testimonial-container">
 
-                    <div class="<?php echo $column_class; ?> columns">
+                        <div class="<?php echo $image_column_class; ?> columns">
+                            <?php echo get_avatar( $testimonial['gravatar_email'] ); ?>
+                        </div>
 
-                        <blockquote><?php echo apply_filters( 'the_content', '"' . $testimonial['content'] . '"' ); ?></blockquote>
+                        <div class="<?php echo $column_class; ?> columns">
 
-                        <div class="testimonial-header">
-                            <h5>
-                                <?php echo $testimonial['name']; ?>
-                            </h5>
-                            <?php echo $testimonial['company']; ?>
+                            <blockquote><?php echo apply_filters( 'the_content', '"' . $testimonial['content'] . '"' ); ?></blockquote>
+
+                            <div class="testimonial-header">
+                                <h5>
+                                    <?php echo $testimonial['name']; ?>
+                                </h5>
+                                <?php echo $testimonial['company']; ?>
+                            </div>
+
                         </div>
 
                     </div>
-                    
-                </div>
 
-            </div>
+                </div>
 
         <?php if ( $index == $max_columns ) : ?>
 
             </div>
-        </div>
 
         <?php 
 
@@ -198,7 +172,7 @@ if ( ! empty( $testimonials ) ) : ?>
 
 <?php endif; ?>
 
-<div id="download-buy" class=" download-color-section">
+<div id="download-buy" class="download-color-section">
     
     <?php echo edd_get_purchase_link( array(
         'download_id' => get_the_ID(), 
@@ -208,91 +182,116 @@ if ( ! empty( $testimonials ) ) : ?>
     
 </div>
 
-<div class="requirements row">
-    <div class="small-12 columns">
+<div class="download-meta-section">
+    
+    <div class="row">
+    
+        <?php 
+        
+        $column_class = 'medium-6';
+        
+        if ( $requirements = rbm_get_field( 'requirements' ) ) : $column_class = 'medium-4'; endif; ?>
 
-        <h5><?php _e( 'Requirements', THEME_ID ); ?></h5>
+        <div class="download-meta requirements small-12 <?php echo $column_class; ?> columns">
 
-        <ul class="multi-column">
+            <?php if ( $requirements ) : ?>
 
-            <?php foreach( $requirements as $item ) : ?>
+                <div class="download-meta-container">
 
-                <li class="small-12 <?php echo $column_class; ?> columns">
-                    <?php echo $item['requirement']; ?>
-                </li>
+                    <h3><?php echo _x( 'Requirements', 'Requirements Header', THEME_ID ); ?></h3>
 
-            <?php endforeach; ?>
+                    <ul>
 
-        </ul>
+                        <?php foreach ( $requirements as $item ) : ?>
+                            <li><?php echo $item['requirement']; ?></li>
+                        <?php endforeach; ?>
 
-    </div>
-</div>
+                    </ul>
+
+                </div>
+
+            <?php endif; ?>
+            
+        </div>
+        
+        <div class="download-meta support small-12 <?php echo $column_class; ?> columns">
+
+            <div class="download-meta-container">
+
+                <h3><?php echo _x( 'Support', 'Support Header', THEME_ID ); ?></h3>
+                
+                <ul>
+                
+                    <?php if ( $documentation = get_post_meta( get_the_ID(), '_rbm_p2p_documentation', true ) ) : 
+
+                        $documentation_link_text = _x( 'View plugin documentation', 'View Documentaion Link Text', THEME_ID );
+
+                    ?>
+                    
+                        <li>
+                            <a href="<?php echo get_permalink( $documentation ); ?>" title="<?php echo $documentation_link_text; ?>">
+                                <?php echo $documentation_link_text; ?>
+                            </a>
+                        </li>
+                    
+                    <?php endif; ?>
 
                     <?php
+                        $support_link_text = _x( 'Contact support', 'Contact Support Link Text', THEME_ID );
+                    ?>
 
-                endif; ?>
-                
-                <?php if ( $documentation = get_post_meta( get_the_ID(), '_rbm_p2p_documentation', true ) ) : ?>
-                    <div class="documentation">
-                        <a href="<?php echo get_permalink( $documentation ); ?>">
-                            <?php printf( __( 'View Documentation for %s', THEME_ID ), get_the_title() ); ?>
-                        </a>
-                    </div>
-                <?php endif; ?>
-                
-			</div>
-		</div>
-
-	</div>
-
-    
-
-    
-
-    <?php $video_url = rbm_get_field( 'video' );
-
-    if ( ! empty( $video_url ) ) : ?>
-
-        <div class="video alternating-branding">
-
-            <div class="row">
-                <div class="small-12 columns">
-                
-                <h3><?php _e( 'Video Preview', THEME_ID ); ?></h3>
-                
-                <div class="video-container">
-
-                    <?php echo wp_oembed_get( $video_url ); ?>
+                    <li>
+                        <a href="/support/" title="<?php echo $support_link_text; ?>"><?php echo $support_link_text; ?></a>
+                    </li>
                     
-                </div>
+                </ul>
 
-                </div>
             </div>
             
         </div>
-
-    <?php endif; ?>
-
-    <div class="purchase-alt alternating-branding">
         
-        <div class="row text-center">
-            
-            <div class="small-12 columns">
-            
-                <h2><?php printf( __( 'Buy %s Now!', THEME_ID ), get_the_title() ); ?></h2>
+        <div class="download-meta plugin-details small-12 <?php echo $column_class; ?> columns">
 
-                <?php echo edd_get_purchase_link( array(
-                    'download_id' => get_the_ID(), 
-                    'text' => 'Add to Cart', 
-                    'class' => 'large primary',
-                 ) ); ?>
+            <div class="download-meta-container">
+
+                <h3><?php echo _x( 'Plugin Details', 'Plugin Details Header', THEME_ID ); ?></h3>
                 
+                <ul>
+                
+                    <?php if ( $current_version = get_post_meta( get_the_ID(), '_edd_sl_version', true ) ) : ?>
+                    
+                        <li>
+                            <?php echo sprintf( _x( 'Version %s', 'Current Version Text', THEME_ID ), $current_version ); ?>
+                        </li>
+
+                    <?php endif; ?>
+                    
+                    <?php if ( $documentation ) : ?>
+                    
+                        <?php if ( $changelog = get_post_meta( get_the_ID(), '_edd_sl_changelog', true ) ) : 
+                    
+                            $changelog_link_text = _x( 'Changelog', 'Changelog Link Text', THEME_ID );
+                    
+                            ?>
+                    
+                            <li>
+                                <a href="<?php echo get_permalink( $documentation ); ?>#changelog" title="<?php echo $changelog_link_text; ?>">
+                                    <?php echo $changelog_link_text; ?>
+                                </a>
+                            </li>
+                    
+                        <?php endif; ?>
+                    
+                    <?php endif; ?>
+                    
+                </ul>
+
             </div>
-            
+
         </div>
         
     </div>
-
+    
 </div>
 
 <?php get_footer();

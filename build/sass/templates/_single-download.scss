@@ -192,6 +192,42 @@
         
     }
     
+    .download-meta-section {
+        
+        @include drop-shadow-column( 'download-meta' );
+        
+        @each $breakpoint, $gutter in $grid-column-gutter {
+            $padding: rem-calc($gutter) / 2;
+
+            @include breakpoint($breakpoint) {
+
+                padding: $padding 0;
+                margin: ( $padding * 2 ) 0;
+
+            }
+
+        }
+        
+        .download-meta-container {
+            
+            background-color: $white;
+            width: 100%;
+            
+            @each $breakpoint, $gutter in $grid-column-gutter {
+                $padding: rem-calc($gutter) / 2;
+
+                @include breakpoint($breakpoint) {
+
+                    padding: $padding;
+
+                }
+
+            }
+        
+        }
+        
+    }
+    
     .video {
         
         .row {
