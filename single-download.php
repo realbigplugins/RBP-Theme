@@ -111,9 +111,6 @@ if ( ! empty( $testimonials ) ) : ?>
 
     }
 
-    $image_column_class = 'small-4';
-    $column_class = 'small-8';
-
     ?>
 
     <div class="testimonials-section">
@@ -127,20 +124,38 @@ if ( ! empty( $testimonials ) ) : ?>
                 <div class="testimonial small-12 medium-6<?php echo ( count( $testimonials ) == 1 ) ? ' medium-offset-3' : ' columns'; ?>">
 
                     <div class="testimonial-container">
-
-                        <div class="<?php echo $image_column_class; ?> columns">
-                            <?php echo get_avatar( $testimonial['gravatar_email'] ); ?>
+                        
+                        <div class="testimonial-top row">
+                            
+                            <div class="small-9 columns testimonial-meta">
+                        
+                                <?php echo get_avatar( $testimonial['gravatar_email'], 96, null, false, array(
+                                    'class' => 'alignleft',
+                                ) ); ?>
+                                
+                                <h6 class="testimonial-name">
+                                    <strong>
+                                        <?php echo $testimonial['name']; ?>
+                                    </strong>
+                                </h6>
+                                <span class="testimonial-company">
+                                    <?php echo $testimonial['company']; ?>
+                                </span>
+                                
+                            </div>
+                            
+                            <div class="small-3 columns testimonial-quotation-mark">
+                                <span class="fa fa-4x fa-quote-left"></span>
+                            </div>
+                            
                         </div>
+                        
+                        <div class="testimonial-bottom row">
+                            
+                            <div class="small-12 columns testimonial-content">
 
-                        <div class="<?php echo $column_class; ?> columns">
-
-                            <blockquote><?php echo apply_filters( 'the_content', '"' . $testimonial['content'] . '"' ); ?></blockquote>
-
-                            <div class="testimonial-header">
-                                <h5>
-                                    <?php echo $testimonial['name']; ?>
-                                </h5>
-                                <?php echo $testimonial['company']; ?>
+                                <blockquote><?php echo apply_filters( 'the_content', '"' . $testimonial['content'] . '"' ); ?></blockquote>
+                                
                             </div>
 
                         </div>

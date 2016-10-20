@@ -130,25 +130,69 @@
         .testimonial-container {
             
             display: inline-block;
-                
             background-color: white;
             
-            @media #{$small-only} {
+            @each $breakpoint, $gutter in $grid-column-gutter {
+                $padding: rem-calc($gutter) / 2;
 
-                padding: 0 0 map-get( $grid-column-gutter, 'small' ) 0;
+                @include breakpoint($breakpoint) {
+
+                    padding: $padding * 1.5;
+
+                }
+
+            }
+            
+            .testimonial-top {
+                
+                .testimonial-meta {
+                    
+                    .avatar.alignleft {
+                        margin-top: 0;
+                    }
+                    
+                    .testimonial-name {
+                        margin-bottom: 0;
+                    }
+                    
+                    .testimonial-company {
+                        color: $dark-gray;
+                    }
+                    
+                }
+                
+                .testimonial-quotation-mark {
+                    
+                    text-align: right;
+                    color: $light-gray;
+                    
+                    .fa {
+                        font-size: 4.5em;
+                    }
+                    
+                }
                 
             }
             
-            blockquote {
+            .testimonial-bottom {
                 
-                border: none;
-                font-style: italic;
-                margin-bottom: $header-margin-bottom;
-                
-            }
             
-            &:after {
-                clear: both;
+                blockquote {
+
+                    border: none;
+                    margin-bottom: 0;
+                    padding: 0;
+
+                }
+                
+                blockquote, blockquote p {
+                    color: $black;
+                }
+                
+                p:last-of-type {
+                    margin-bottom: 0;
+                }
+                
             }
             
         }
