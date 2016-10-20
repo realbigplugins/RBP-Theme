@@ -618,7 +618,7 @@ add_filter( 'edd_purchase_download_form', function( $purchase_form, $args ) {
             
     }
     
-    $preg_match_prices_bool = preg_match_all( '/<span class="edd_price_option_price.*?\&nbsp\;.*?<\/span>/ims', $purchase_form, $matches_prices );
+    $preg_match_prices_bool = preg_match_all( '/<span class="edd_price_option_price\s.*?<\/span>\&nbsp\;<span class="edd_price_option_price".*?>.*?<\/span>/ims', $purchase_form, $matches_prices );
     
     if ( $preg_match_prices_bool ) {
         
