@@ -55,7 +55,7 @@ if ( ! empty( $features ) ) : ?>
 
                     <?php if ( $index % 2 == 0 ) : ?>
 
-                    <div class="small-6 medium-6 columns text-center">
+                    <div class="small-6 medium-6 columns text-right">
                         <a href="<?php echo wp_get_attachment_url( $feature['image'], 'full' ); ?>">
                             <?php echo wp_get_attachment_image( $feature['image'], 'medium' ); ?>
                         </a>
@@ -70,7 +70,7 @@ if ( ! empty( $features ) ) : ?>
 
                     <?php if ( $index % 2 !== 0 ) : ?>
 
-                    <div class="small-6 medium-6 columns text-center">
+                    <div class="small-6 medium-6 columns text-left">
                         <a href="<?php echo wp_get_attachment_url( $feature['image'], 'full' ); ?>">
                             <?php echo wp_get_attachment_image( $feature['image'], 'medium' ); ?>
                         </a>
