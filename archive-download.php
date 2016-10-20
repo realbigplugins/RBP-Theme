@@ -72,6 +72,8 @@ get_header();
                                         <h4 class="title"><?php the_title(); ?></h4>
                                     </a>
                                     
+                                    <?php the_excerpt(); ?>
+                                    
                                 </div>
                                 
                                 <hr />
