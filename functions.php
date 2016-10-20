@@ -537,6 +537,12 @@ add_action( 'wp_print_styles', function() {
                 
             }
             
+            #download-buy .edd_price_options ul li.active del {
+             
+                color: <?php echo $secondary_color; ?>;
+                
+            }
+            
             #download-buy .edd_price_options del {
                 color: <?php echo $secondary_color; ?>;
             }
@@ -599,17 +605,31 @@ add_action( 'wp_print_styles', function() {
  */
 add_filter( 'edd_purchase_download_form', function( $purchase_form, $args ) {
     
-    $preg_match_bool = preg_match( '/<div class="edd_purchase_submit_wrapper">(.*?)<\/div>/ims', $purchase_form, $matches );
+    $preg_match_submit_wrapper_bool = preg_match( '/<div class="edd_purchase_submit_wrapper">(.*?)<\/div>/ims', $purchase_form, $matches_submit );
     
-    if ( $preg_match_bool ) {
+    if ( $preg_match_submit_wrapper_bool ) {
         
         $link_text = _x( 'Questions or concerns?', 'Download Single Support Link Text', THEME_ID );
     
         // Between the HTML Tags
-        $injected_link = $matches[1] . '<a href="/support/" class="support-link" title="' . $link_text . '">' . $link_text . '</a>';
+        $injected_link = $matches_submit[1] . '<a href="/support/" class="support-link" title="' . $link_text . '">' . $link_text . '</a>';
         
-        $purchase_form = str_replace( $matches[1], $injected_link, $purchase_form );
+        $purchase_form = str_replace( $matches_submit[1], $injected_link, $purchase_form );
             
+    }
+    
+    $preg_match_prices_bool = preg_match_all( '/<span class="edd_price_option_price.*?\&nbsp\;.*?<\/span>/ims', $purchase_form, $matches_prices );
+    
+    if ( $preg_match_prices_bool ) {
+        
+        // This allows us to float both prices at once
+        foreach( $matches_prices[0] as $match ) {
+         
+            $injected_wrapper = '<div class="prices-wrapper">' . $match . '</div>';
+            $purchase_form = str_replace( $match, $injected_wrapper, $purchase_form );
+            
+        }
+        
     }
     
     return $purchase_form;
