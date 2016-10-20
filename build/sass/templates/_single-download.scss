@@ -143,9 +143,73 @@
 
         }
         
-        // Font Awesome Icons for Radio Buttons
+        // Let's force Foundation's Grid since we can't really modify the class names!
+        .edd_download_purchase_form {
+            
+            margin-bottom: 0;
+            
+            @include grid_row();
+            
+            & > div {
+                
+                &, .button {
+                    margin-bottom: 0;
+                }
+                
+                @include grid_column( 12 );
+                
+                @media #{$medium-up} {
+                
+                    @include grid_column( 5 );
+                    
+                }
+                
+                // The way Foundation handles this by default won't work here
+                &:last-of-type:not(:first-child) {
+                    float: right;
+                }
+                
+            }
+            
+            @media #{$medium-up} {
+            
+                // Offset
+                .edd_price_options {
+                    @include grid-column-position( 1 );
+                }
+
+                .edd_purchase_submit_wrapper {
+                    @include grid-column-position( -1 );
+                }
+                
+            }
+            
+        }
+        
         .edd_price_options {
             
+            li {
+                
+                transition: all ease 300ms;
+                padding: 0.1em 0.35em 0.1em 0.25em;
+                
+                &, * {
+                    font-size: 1rem;
+                }
+                
+                label {
+                    
+                    display: block;
+                    
+                    &:hover {
+                        cursor: pointer;
+                    }
+                    
+                }
+                
+            }
+            
+            // Font Awesome Icons for Radio Buttons
             input[type="radio"] {
                 
                 border: 0;
@@ -157,12 +221,6 @@
                 position: absolute;
                 width: 1px;
                 
-                & ~ span:hover {
-                    
-                    cursor: pointer;
-                    
-                }
-                
                 & ~ span:first-of-type {
             
                     &:before {
@@ -171,7 +229,6 @@
                         font-family: 'FontAwesome';
                         display: inline-block;
                         letter-spacing: 10px;
-                        font-size: 1.2em;
                         width: 1.4em;
 
                     }
@@ -190,35 +247,33 @@
                 
             }
             
-        }
-        
-        // Let's force Foundation's Grid since we can't really modify the class names!
-        .edd_download_purchase_form {
+            .edd_price_option_sep {
+                display: none;
+            }
             
-            margin-bottom: 0;
-            
-            @include grid_row();
-            
-            & > div {
+            .edd_price_option_price {
                 
-                &, .button {
-                    margin-bottom: 0;
-                }
+                float: right;
                 
-                @include grid_column( 12 );
-                
-                @media #{$medium-up} {
-                
-                    @include grid_column( 6 );
-                    
-                }
-                
-                // The way Foundation handles this by default won't work here
-                &:last-of-type:not(:first-child) {
-                    float: right;
+                &:after {
+                    clear: both;
                 }
                 
             }
+            
+            ul:after {
+                
+                margin-bottom: 1em;
+                
+                @media #{$medium-up} {
+                    margin-bottom: 0;
+                }
+                
+            }
+            
+        }
+        
+        .edd_purchase_submit_wrapper {
             
             .support-link {
                 

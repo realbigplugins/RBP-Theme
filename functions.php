@@ -515,6 +515,16 @@ add_action( 'wp_print_styles', function() {
 
             }
             
+            #download-buy .edd_price_options li.active {
+                
+                <?php if ( rbp_is_light( $secondary-color ) ) : ?>
+                    background-color: <?php echo rbp_lighten_hex( $secondary_color, 15 ); ?>;
+                <?php else : ?>
+                    background-color: <?php echo rbp_darken_hex( $secondary_color, 15 ); ?>;
+                <?php endif; ?>
+                
+            }
+            
             #download-buy .edd_price_options del {
                 color: <?php echo $secondary_color; ?>;
             }
