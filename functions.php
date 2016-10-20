@@ -519,6 +519,18 @@ add_action( 'wp_print_styles', function() {
                 color: <?php echo $secondary_color; ?>;
             }
             
+            #download-buy .edd_price_options input[type="radio"] ~ span:first-of-type:before {
+                
+                color: <?php echo $secondary_color; ?>;
+                
+            }
+            
+            #download-buy .edd_price_options input[type="radio"]:checked ~ span:first-of-type:before {
+                
+                color: <?php echo ( rbp_is_light( $primary_color ) ) ? '#000' : '#fff'; ?>;
+                
+            }
+            
             #download-buy .edd_purchase_submit_wrapper .support-link {   
                 color: <?php echo $secondary_color; ?>;
             }

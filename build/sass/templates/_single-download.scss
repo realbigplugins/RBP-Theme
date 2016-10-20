@@ -143,6 +143,55 @@
 
         }
         
+        // Font Awesome Icons for Radio Buttons
+        .edd_price_options {
+            
+            input[type="radio"] {
+                
+                border: 0;
+                clip: rect(0 0 0 0);
+                height: 1px;
+                margin: -1px;
+                overflow: hidden;
+                padding: 0;
+                position: absolute;
+                width: 1px;
+                
+                & ~ span:hover {
+                    
+                    cursor: pointer;
+                    
+                }
+                
+                & ~ span:first-of-type {
+            
+                    &:before {
+
+                        content: "\f10c";
+                        font-family: 'FontAwesome';
+                        display: inline-block;
+                        letter-spacing: 10px;
+                        font-size: 1.2em;
+                        width: 1.4em;
+
+                    }
+                    
+                }
+                
+                &:checked ~ span:first-of-type {
+                    
+                    &:before {
+                        
+                        content: "\f05d";
+                        
+                    }
+                    
+                }
+                
+            }
+            
+        }
+        
         // Let's force Foundation's Grid since we can't really modify the class names!
         .edd_download_purchase_form {
             
