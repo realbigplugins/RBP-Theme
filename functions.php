@@ -515,12 +515,24 @@ add_action( 'wp_print_styles', function() {
 
             }
             
-            #download-buy .edd_price_options li.active {
+            #download-buy .edd_price_options ul li.active {
                 
-                <?php if ( rbp_is_light( $secondary-color ) ) : ?>
-                    background-color: <?php echo rbp_lighten_hex( $secondary_color, 15 ); ?>;
-                <?php else : ?>
+                <?php if ( rbp_is_light( $secondary_color ) ) : ?>
                     background-color: <?php echo rbp_darken_hex( $secondary_color, 15 ); ?>;
+                    color: #fff;
+                <?php else : ?>
+                    background-color: <?php echo rbp_lighten_hex( $secondary_color, 15 ); ?>;
+                    color: #000;
+                <?php endif; ?>
+                
+            }
+            
+            #download-buy .edd_price_options ul li.active * {
+                
+                <?php if ( rbp_is_light( $secondary_color ) ) : ?>
+                    color: #fff;
+                <?php else : ?>
+                    color: #000;
                 <?php endif; ?>
                 
             }
@@ -537,7 +549,11 @@ add_action( 'wp_print_styles', function() {
             
             #download-buy .edd_price_options input[type="radio"]:checked ~ span:first-of-type:before {
                 
-                color: <?php echo ( rbp_is_light( $primary_color ) ) ? '#000' : '#fff'; ?>;
+                <?php if ( rbp_is_light( $secondary_color ) ) : // Background color has been darkend accordingly above ?>
+                    color: #fff;
+                <?php else : ?>
+                    color: #000;
+                <?php endif; ?>
                 
             }
             
