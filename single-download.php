@@ -23,6 +23,10 @@ remove_action( 'the_content', 'edd_after_download_content', 10 );
     
     <h1 class="title"><span itemprop="name"><?php the_title(); ?></span></h1>
     
+    <div class="content">
+        <?php the_content(); ?>
+    </div>
+    
     <?php the_post_thumbnail( 'medium' ); ?>
     
 </div>

@@ -10,7 +10,12 @@
     
     .downloads-header {
         
-        padding-top: $site-content-padding; // #site-content padding
+        padding-top: $site-content-padding * 1.5; // #site-content padding
+        
+        @media #{$medium-up} {
+            padding-top: $site-content-padding;
+        }
+        
         padding-bottom: $site-content-padding * 0.5;
         
         font-size: 1.25rem;
@@ -18,6 +23,27 @@
         
         .title {
             font-weight: bold;
+        }
+        
+        .content {
+            
+            @media #{$medium-up} {
+                width: 60%;
+                margin: 0 auto;
+            }
+            
+        }
+        
+        @each $breakpoint, $gutter in $grid-column-gutter {
+            $padding: rem-calc($gutter) / 2;
+
+            @include breakpoint($breakpoint) {
+
+                padding-left: ( $padding * 2 );
+                padding-right: ( $padding * 2 );
+
+            }
+
         }
         
     }
@@ -31,7 +57,7 @@
 
             @include breakpoint($breakpoint) {
 
-                padding: ( $padding * 4 ) 0;
+                padding: ( $padding * 4 ) ( $padding * 2 );
 
             }
 
