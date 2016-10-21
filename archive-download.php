@@ -42,7 +42,7 @@ get_header();
                         $max_columns = 2;
                         break;
                     default:
-                        $column_classes = 'small-12 medium-4';
+                        $column_classes = 'small-12 medium-6 large-4';
                         $max_columns = 3;
                         break;
                 }
