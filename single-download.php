@@ -229,13 +229,17 @@ if ( ! empty( $video_url ) ) : ?>
     
         <?php 
         
-        $column_class = 'medium-6';
+        $column_class = 'medium-12';
         
-        if ( $requirements = rbm_get_field( 'requirements' ) ) : $column_class = 'medium-4'; endif; ?>
+        if ( $requirements = rbm_get_field( 'requirements' ) ) : $column_class = 'medium-4'; endif;
+        
+        $external_url = get_post_meta( get_the_ID(), '_edd_external_product_url', true );
+        
+        if ( $external_url && $requirements ) : $column_class = 'medium-6'; endif; ?>
 
-        <div class="download-meta requirements small-12 <?php echo $column_class; ?> columns">
-
-            <?php if ( $requirements ) : ?>
+        <?php if ( $requirements ) : ?>
+        
+            <div class="download-meta requirements small-12 <?php echo $column_class; ?> columns">
 
                 <div class="download-meta-container">
 
@@ -251,9 +255,9 @@ if ( ! empty( $video_url ) ) : ?>
 
                 </div>
 
-            <?php endif; ?>
-            
-        </div>
+            </div>
+        
+        <?php endif; ?>
         
         <div class="download-meta support small-12 <?php echo $column_class; ?> columns">
 
@@ -291,45 +295,49 @@ if ( ! empty( $video_url ) ) : ?>
             
         </div>
         
-        <div class="download-meta plugin-details small-12 <?php echo $column_class; ?> columns">
+        <?php if ( ! $external_url ) : ?>
+        
+            <div class="download-meta plugin-details small-12 <?php echo $column_class; ?> columns">
 
-            <div class="download-meta-container">
+                <div class="download-meta-container">
 
-                <h3><?php echo _x( 'Plugin Details', 'Plugin Details Header', THEME_ID ); ?></h3>
-                
-                <ul>
-                
-                    <?php if ( $current_version = get_post_meta( get_the_ID(), '_edd_sl_version', true ) ) : ?>
-                    
-                        <li>
-                            <?php echo sprintf( _x( 'Version %s', 'Current Version Text', THEME_ID ), $current_version ); ?>
-                        </li>
+                    <h3><?php echo _x( 'Plugin Details', 'Plugin Details Header', THEME_ID ); ?></h3>
 
-                    <?php endif; ?>
-                    
-                    <?php if ( $documentation ) : ?>
-                    
-                        <?php if ( $changelog = get_post_meta( get_the_ID(), '_edd_sl_changelog', true ) ) : 
-                    
-                            $changelog_link_text = _x( 'Changelog', 'Changelog Link Text', THEME_ID );
-                    
-                            ?>
-                    
+                    <ul>
+
+                        <?php if ( $current_version = get_post_meta( get_the_ID(), '_edd_sl_version', true ) ) : ?>
+
                             <li>
-                                <a href="<?php echo get_permalink( $documentation ); ?>#changelog" title="<?php echo $changelog_link_text; ?>">
-                                    <?php echo $changelog_link_text; ?>
-                                </a>
+                                <?php echo sprintf( _x( 'Version %s', 'Current Version Text', THEME_ID ), $current_version ); ?>
                             </li>
-                    
+
                         <?php endif; ?>
-                    
-                    <?php endif; ?>
-                    
-                </ul>
+
+                        <?php if ( $documentation ) : ?>
+
+                            <?php if ( $changelog = get_post_meta( get_the_ID(), '_edd_sl_changelog', true ) ) : 
+
+                                $changelog_link_text = _x( 'Changelog', 'Changelog Link Text', THEME_ID );
+
+                                ?>
+
+                                <li>
+                                    <a href="<?php echo get_permalink( $documentation ); ?>#changelog" title="<?php echo $changelog_link_text; ?>">
+                                        <?php echo $changelog_link_text; ?>
+                                    </a>
+                                </li>
+
+                            <?php endif; ?>
+
+                        <?php endif; ?>
+
+                    </ul>
+
+                </div>
 
             </div>
-
-        </div>
+        
+        <?php endif; ?>
         
     </div>
     
