@@ -27,36 +27,29 @@ get_header();
 
         <div class="animate-on-scroll scale-in-up">
 
-            <?php if ( have_posts() ) : $index = 1; ?>
+            <?php if ( have_posts() ) : ?>
 
                 <?php
                 // Get column classes
                 global $posts;
                 switch ( count( $posts ) ) {
                     case 1:
-                        $column_classes = 'small-12';
-                        $max_columns = 1;
+                        $column_classes = 'small-up-1';
                         break;
                     case 2:
-                        $column_classes = 'small-12 medium-6';
-                        $max_columns = 2;
+                        $column_classes = 'small-up-1 medium-up-2';
                         break;
                     default:
-                        $column_classes = 'small-12 medium-6 large-4';
-                        $max_columns = 3;
+                        $column_classes = 'small-up-1 medium-up-2 large-up-3';
                         break;
                 }
                 ?>
+            
+            <div class="row <?php echo $column_classes; ?>">
 
                 <?php while ( have_posts() ) : the_post(); ?>
 
-                    <?php if ( $index == 1 ) : ?>
-
-                        <div class="row">
-
-                    <?php endif; ?>
-
-                        <div class="product columns <?php echo $column_classes; ?>">
+                        <div class="product column">
                             
                             <div class="product-container">
                                 
@@ -88,27 +81,7 @@ get_header();
                                 
                         </div><!--end .product-->
 
-                    <?php if ( $index == $max_columns ) : ?>
-
-                        </div>
-
-                    <?php
-
-                        $index = 1;
-
-                    else : 
-
-                        $index++; 
-
-                    endif; ?>
-
                 <?php endwhile; ?>
-
-                <?php if ( $index !== 1 ) : ?>
-
-                    </div> 
-
-                <?php endif; ?>
 
             </div>
 
