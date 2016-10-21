@@ -64,7 +64,7 @@ if ( ! empty( $features ) ) : ?>
                     <?php endif; ?>
 
                     <div class="small-6 medium-6 columns">
-                        <h3><?php echo $feature['title']; ?></h3>
+                        <h3><strong><?php echo $feature['title']; ?></strong></h3>
                         <?php echo apply_filters( 'the_content', $feature['content'] ); ?>
                     </div>
 
