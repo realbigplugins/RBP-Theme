@@ -16,7 +16,7 @@ get_header();
 
 <section class="downloads-header">
     
-    <h3>Our Products</h3>
+    <h3>Our Plugins</h3>
     Made with <span class="cursive">love</span>
     
 </section>
