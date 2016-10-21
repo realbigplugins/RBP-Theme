@@ -191,6 +191,28 @@ if ( ! empty( $testimonials ) ) : ?>
 
 <?php endif; ?>
 
+<?php $video_url = rbm_get_field( 'video' );
+
+if ( ! empty( $video_url ) ) : ?>
+
+    <div class="video-section">
+
+        <div class="row">
+            <div class="small-12 columns">
+
+                <div class="video-container">
+
+                    <?php echo wp_oembed_get( $video_url ); ?>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+<?php endif; ?>
+
 <div id="download-buy" class="download-color-section">
     
     <?php echo edd_get_purchase_link( array(
