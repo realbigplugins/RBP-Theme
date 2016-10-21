@@ -587,6 +587,17 @@ add_action( 'wp_print_styles', function() {
                 
             }
             
+            <?php if ( $external_url = get_post_meta( get_the_ID(), '_edd_external_product_url', true ) ) : ?>
+            
+            .single-download #download-buy .edd_download_purchase_form .edd_purchase_submit_wrapper {
+                
+                width: 100%;
+                left: 0 !important;
+                
+            }
+            
+            <?php endif; ?>
+            
         </style>
 
     <?php endif;
