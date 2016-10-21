@@ -69,7 +69,7 @@ get_header();
                                     </div>
                             
                                     <a href="<?php the_permalink(); ?>">
-                                        <h4 class="title"><?php the_title(); ?></h4>
+                                        <h4 class="title"><strong><?php the_title(); ?></strong></h4>
                                     </a>
                                     
                                     <?php the_excerpt(); ?>
