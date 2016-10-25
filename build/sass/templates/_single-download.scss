@@ -215,7 +215,7 @@
         // Let's force Foundation's Grid since we can't really modify the class names!
         .edd_download_purchase_form {
             
-            margin-bottom: 0;
+            //margin-bottom: 0;
             
             @include grid_row();
             
@@ -241,7 +241,7 @@
             }
             
             @media #{$medium-up} {
-            
+
                 // Offset
                 .edd_price_options {
                     @include grid-column-position( 1 );
@@ -250,12 +250,21 @@
                 .edd_purchase_submit_wrapper {
                     @include grid-column-position( -1 );
                 }
-                
+
             }
-            
+
         }
         
         .edd_price_options {
+
+            .edd_price_option_wrap {
+                display: block;
+                text-align: right;
+
+                .edd_price_option_name {
+                    float: left;
+                }
+            }
             
             li {
                 
@@ -296,8 +305,8 @@
 
                         content: "\f10c";
                         font-family: 'FontAwesome';
-                        display: inline-block;
                         letter-spacing: 10px;
+                        float: left;
                         width: 1.4em;
 
                     }
@@ -320,7 +329,7 @@
                 display: none;
             }
             
-            .prices-wrapper, .edd_price_option_price:last-of-type {
+            .edd_price_option_price:last-of-type {
                 
                 float: right;
                 

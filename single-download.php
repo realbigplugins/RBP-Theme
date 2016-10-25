@@ -11,12 +11,217 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die;
 }
 
+add_action( 'wp_print_styles', 'rbp_single_download_colors' );
+
+/**
+ * Add Post Meta-controlled Styling to the Download Single
+ * I really don't like doing this, but this is about the only way to get DB-stored Colors into the Styling
+ *
+ * @since       1.1.0
+ * @return      string
+ */
+function rbp_single_download_colors() {
+
+	if ( is_single() && get_post_type() == 'download' ) :
+
+		$primary_color = get_post_meta( get_the_ID(), '_rbm_primary_color', true );
+		$primary_color = ( $primary_color ) ? $primary_color : '#12538f';
+
+		$secondary_color = get_post_meta( get_the_ID(), '_rbm_secondary_color', true );
+		$secondary_color = ( $secondary_color ) ? $secondary_color : '#51a0e9';
+
+		?>
+
+		<style type="text/css">
+
+			/* Same styling as Downloads Archive, but controlled via Post Meta */
+			.download-color-section {
+
+				background-color: <?php echo $primary_color; ?>;
+				border-bottom: 0.5rem solid <?php echo $secondary_color; ?>;
+
+				color: <?php echo ( rbp_is_light( $primary_color ) ) ? '#000' : '#fff'; ?>;
+
+			}
+
+			.download-color-section ul * {
+
+				color: <?php echo ( rbp_is_light( $primary_color ) ) ? '#000' : '#fff'; ?>;
+
+			}
+
+			.download-buy-link {
+
+				background-color: <?php echo $primary_color; ?> !important;
+				box-shadow: 7.5px 7.5px <?php echo $secondary_color; ?>;
+
+				color: <?php echo ( rbp_is_light( $primary_color ) ) ? '#000' : '#fff'; ?> !important;
+
+			}
+
+			.download-buy-link:hover {
+
+				background-color: <?php echo rbp_darken_hex( $primary_color, 15 ); ?> !important;
+				box-shadow: 7.5px 7.5px <?php echo rbp_darken_hex( $secondary_color, 15 ); ?>;
+
+				color: <?php echo ( rbp_is_light( rbp_darken_hex( $primary_color, 15 ) ) ) ? '#000' : '#fff'; ?> !important;
+
+			}
+
+			#download-buy .edd_price_options ul:after {
+
+				border-top: solid 3px <?php echo $secondary_color; ?>;
+				display: block;
+				width: 100%;
+				content: '<?php echo _x( 'All price options are billed yearly at a 20% discount. You may cancel your subscription at any time.', 'Price Options Disclaimer Text', THEME_ID ); ?>';
+				font-style: italic;
+				margin-top: 0.5em;
+				padding-top: 0.5em;
+
+			<?php if ( rbp_is_light( $primary_color ) ) : ?> color: <?php echo rbp_darken_hex( $secondary_color, 15 ); ?>;
+			<?php else : ?> color: <?php echo $secondary_color; ?>;
+			<?php endif; ?>
+			}
+
+			#download-buy .edd_price_options ul li.active {
+
+			<?php if ( rbp_is_light( $secondary_color ) ) : ?> background-color: <?php echo rbp_darken_hex( $secondary_color, 15 ); ?>;
+				color: #fff;
+			<?php else : ?> background-color: <?php echo rbp_lighten_hex( $secondary_color, 15 ); ?>;
+				color: #000;
+			<?php endif; ?>
+
+			}
+
+			#download-buy .edd_price_options ul li.active * {
+
+			<?php if ( rbp_is_light( $secondary_color ) ) : ?> color: #fff;
+			<?php else : ?> color: #000;
+			<?php endif; ?>
+
+			}
+
+			#download-buy .edd_price_options ul li.active del {
+
+				color: <?php echo $secondary_color; ?>;
+
+			}
+
+			#download-buy .edd_price_options del {
+				color: <?php echo $secondary_color; ?>;
+			}
+
+			#download-buy .edd_price_options input[type="radio"] ~ span:first-of-type:before {
+
+				color: <?php echo $secondary_color; ?>;
+
+			}
+
+			#download-buy .edd_price_options input[type="radio"]:checked ~ span:first-of-type:before {
+
+			<?php if ( rbp_is_light( $secondary_color ) ) : // Background color has been darkend accordingly above ?> color: #fff;
+			<?php else : ?> color: #000;
+			<?php endif; ?>
+
+			}
+
+			#download-buy .edd_purchase_submit_wrapper .support-link:before, #download-buy .edd_purchase_submit_wrapper .support-link:after {
+
+			<?php if ( rbp_is_light( $primary_color ) ) : ?> border-color: <?php echo rbp_darken_hex( $secondary_color, 25 ); ?>;
+			<?php else : ?> border-color: <?php echo rbp_lighten_hex( $secondary_color, 25 ); ?>;
+			<?php endif; ?>
+
+			}
+
+			#download-buy .edd_purchase_submit_wrapper .button {
+
+				color: <?php echo $primary_color; ?>;
+
+			<?php if ( rbp_is_light( $primary_color ) ) : ?> background-color: #222;
+			<?php else: ?> background-color: #fff;
+			<?php endif; ?>
+
+			}
+
+			#download-buy .edd_purchase_submit_wrapper .button:hover {
+
+				background-color: transparent;
+
+			<?php if ( rbp_is_light( $primary_color ) ) : ?> color: #222;
+				border-color: #222;
+			<?php else: ?> color: #fff;
+				border-color: #fff;
+			<?php endif; ?>
+
+			}
+
+			#download-buy .edd_purchase_submit_wrapper .button.hollow {
+
+				background-color: transparent !important;
+				border-color: <?php echo $primary_color; ?> !important;
+				color: <?php echo $primary_color; ?> !important;
+
+			}
+
+			#download-buy .edd_purchase_submit_wrapper .button.hollow:hover {
+
+				background-color: <?php echo $primary_color; ?> !important;
+				border-color: <?php echo $primary_color; ?> !important;
+				color: <?php echo ( rbp_is_light( $primary_color ) ) ? '#000' : '#fff'; ?> !important;
+
+			}
+
+			#download-buy .edd-cart-added-alert {
+			<?php if ( rbp_is_light( $primary_color ) ) : ?> color: <?php echo rbp_darken_hex( $secondary_color, 15 ); ?>;
+			<?php else : ?> color: <?php echo $secondary_color; ?>;
+			<?php endif; ?>
+			}
+
+			#download-buy .support-link {
+			<?php if ( rbp_is_light( $primary_color ) ) : ?> color: <?php echo rbp_darken_hex( $secondary_color, 15 ); ?>;
+			<?php else : ?> color: <?php echo $secondary_color; ?>;
+			<?php endif; ?>
+			}
+
+			<?php if ( $external_url = get_post_meta( get_the_ID(), '_edd_external_product_url', true ) ) : ?>
+
+			.single-download #download-buy .edd_download_purchase_form .edd_purchase_submit_wrapper {
+
+				width: 100%;
+				left: 0 !important;
+
+			}
+
+			<?php endif; ?>
+
+			<?php if ( edd_item_in_cart( get_the_ID() ) && ! edd_single_price_option_mode( get_the_ID() ) ) : ?>
+			/* Item already in cart */
+			#download-buy .edd_download_purchase_form .edd_purchase_submit_wrapper {
+				width: 100% !important;
+				text-align: center !important;
+				left: auto !important;
+			}
+
+			#download-buy .edd_download_purchase_form .edd_purchase_submit_wrapper .edd_go_to_checkout {
+				width: auto;
+				display: inline-block;
+			}
+			<?php endif; ?>
+
+		</style>
+
+	<?php endif;
+
+}
+
 get_header();
 the_post();
 
 // Don't show the add to cart stuff here as well as the sidebar. Reduntant
 remove_action( 'the_content', 'edd_after_download_content', 10 );
 
+$primary_color = get_post_meta( get_the_ID(), '_rbm_primary_color', true );
+$primary_color = ( $primary_color ) ? $primary_color : '#12538f';
 ?>
 
 	<div class="downloads-header download-color-section">
@@ -207,8 +412,12 @@ if ( ! empty( $video_url ) ) : ?>
 		<?php echo edd_get_purchase_link( array(
 			'download_id' => get_the_ID(),
 			'text'        => sprintf( _x( 'Add %s to your cart', 'Add to Cart Text', THEME_ID ), get_the_title() ),
-			'class'       => 'primary large expanded invert',
+			'class'       => 'primary large expanded',
 		) ); ?>
+
+		<div class="text-center">
+			<a href="/support/" class="support-link" title="Text">Questions or concerns?</a>
+		</div>
 
 	</div>
 

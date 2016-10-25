@@ -86,18 +86,6 @@ img[class*=" wp-image-"] { // Catch-all to grab images added via "Add Media" but
 
 }
 
-a[href$=".png"], a[href$=".jpg"], a[href$=".jpeg"], a[data-featherlight] {
-    
-    &, &:hover {
-        
-        &:before, &:after {
-            border: none !important;
-        }
-        
-    }
-    
-}
-
 .pagination {
     text-align: center;
 }
@@ -136,7 +124,11 @@ ul.multi-column, ol.multi-column {
 
 // This ensures we can ignore other areas wehere we don't want these styles
 .off-canvas-content a:not(.button) {
-    @include link-hover-style( $anchor-color-hover );
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: underline;
+    }
 }
 
 .cursive {
