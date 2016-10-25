@@ -78,7 +78,7 @@
     }
     
     .features-section .feature {
-        
+        height: 100%;
         background-color: $white;
         border-bottom: 0.5rem solid $medium-gray;
         
@@ -94,7 +94,7 @@
 
         }
         
-        &:last-of-type() {
+        &:last-of-type {
             
             margin-bottom: 0;
             
@@ -109,7 +109,7 @@
             }
             
         }
-        
+
     }
     
     .testimonials-section {
