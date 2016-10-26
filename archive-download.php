@@ -45,7 +45,7 @@ get_header();
                 }
                 ?>
             
-            <div class="row <?php echo $column_classes; ?>">
+            <div class="row <?php echo $column_classes; ?>" data-equalizer data-equalize-by-row="true">
 
                 <?php while ( have_posts() ) : the_post(); ?>
 
@@ -53,7 +53,7 @@ get_header();
                             
                             <div class="product-container">
                                 
-                                <div class="product-container-top">
+                                <div class="product-container-top" data-equalizer-watch>
 
                                     <div class="product-image">
                                         <a href="<?php the_permalink(); ?>">
