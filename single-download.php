@@ -416,7 +416,7 @@ if ( ! empty( $video_url ) ) : ?>
 		) ); ?>
 
 		<div class="text-center">
-			<a href="/support/" class="support-link" title="Text">Questions or concerns?</a>
+			<a href="/support/" class="support-link" title="Questions or concerns?">Questions or concerns?</a>
 		</div>
 
 	</div>
