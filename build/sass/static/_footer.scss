@@ -1,66 +1,94 @@
 #site-footer {
-    
-    background-color: $topbar-background;
-    
-    &, * {
-        color: $topbar-link-color;
+  background-color: $black;
+  color: $light-gray;
+  padding-top: 1em;
+  padding-bottom: 1em;
+
+  .site-footer-head {
+    @extend h3;
+  }
+
+  .site-footer-subhead {
+    color: $dark-gray;
+  }
+
+  .site-footer-top {
+    width: 600px;
+    max-width: 100%;
+  }
+
+  // Mailchimp signup
+  .input-group-field {
+    input {
+      margin-bottom: 0;
     }
-    
-    @each $breakpoint, $gutter in $grid-column-gutter {
-        $padding: rem-calc($gutter) / 2;
+  }
 
-        @include breakpoint($breakpoint) {
+  .site-footer-divider {
+    border-bottom: 2px solid $dark-gray;
+    height: 87px;
+    width: 100%;
+    background: url("images/rbm-logo-footer.png") 50% bottom no-repeat;
+    background-size: 127px 85px;
+    margin: $paragraph-margin-bottom auto;
+    width: $grid-row-width;
+    max-width: 100%;
+  }
 
-            padding: $padding;
-
-        }
-
+  .site-footer-bottom {
+    .site-footer-bottom-widgets {
+      margin-left: 0;
+      list-style: none;
     }
-    
-    .button {
-        
-        @include button-style( $primary-color );
 
+    .footer-widget-title {
+      @extend h4;
     }
-    
+
     .menu {
-        
-        & > li {
-            
-            & > a {
-                
-                display: inline-block;
-                color: $topbar-link-color;
-                
-                &:hover {
-                    
-                    color: $secondary-color;
-                    
-                    &:before, &:after {
-                        
-                        border-color: $secondary-color;
-                        
-                    }
-                    
-                }
-                
-            }
-            
+      @include menu-direction(vertical);
+      margin-left: 0;
+      list-style: none;
+
+      .menu-item {
+        display: block;
+
+        a {
+          color: inherit;
+          padding: 0.3em 0;
         }
-        
+      }
     }
-    
-    .widget_edd_cart_widget {
-        
-        .edd-cart-meta.edd_total, .edd-cart-meta.edd_subtotal {
-            
-            background-color: $topbar-background;
-            background-color: transparent;
-            
-            color: $topbar-link-color;
-            
+
+    .footer-left {
+      @include breakpoint(large) {
+        padding-left: 0;
+      }
+    }
+
+    .footer-center {
+      @include breakpoint(medium) {
+        text-align: center;
+      }
+    }
+
+    .footer-right {
+      @include breakpoint(large) {
+        padding-right: 0;
+      }
+
+      > .widget {
+        @include breakpoint(medium) {
+          float: right;
         }
-        
+
+        // Help with shrinking width for better right alignment
+        .widget-title, .menu {
+          @include breakpoint(medium) {
+            display: inline-block;
+          }
+        }
+      }
     }
-    
+  }
 }
