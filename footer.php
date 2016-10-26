@@ -1,7 +1,7 @@
 <?php
 /**
  * The theme's footer file that appears on EVERY page.
- * 
+ *
  * @since 1.0.0
  * @package RealBigPlugins
  */
@@ -14,31 +14,42 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 <?php if ( ! edd_is_checkout() ) : ?>
 
-    <footer id="site-footer">
+	<footer id="site-footer">
 
-        <div class="row">
+		<div class="site-footer-top text-center row">
+			<div class="columns small-12">
+				<h1 class="site-footer-head">Subscribe to our Newsletter</h1>
+				<p class="site-footer-subhead">
+					Subscribe to our newsletter to receive special discounts, new product announcements and helpful resources from Real Big Plugins.
+				</p>
 
-            <?php 
+				<?php get_template_part( 'includes/html-mailchimp-signup-form' ); ?>
+			</div>
+		</div>
 
-            $footer_sidebars = array(
-                'footer-left',
-                'footer-center',
-                'footer-right',
-            ); 
+		<div class="site-footer-divider"></div>
 
-            foreach ( $footer_sidebars as $sidebar ) : ?>
+		<div class="site-footer-bottom row">
 
-                <div class="small-12 medium-4 columns">
+			<?php foreach (
+				array(
+					'footer-left',
+					'footer-center',
+					'footer-right',
+				) as $sidebar
+			) : ?>
 
-                    <?php dynamic_sidebar( $sidebar ); ?>
+				<ul class="<?php echo $sidebar; ?> site-footer-bottom-widgets small-12 medium-4 columns">
 
-                </div>
+					<?php dynamic_sidebar( $sidebar ); ?>
 
-            <?php endforeach; ?>
+				</ul>
 
-        </div>
+			<?php endforeach; ?>
 
-    </footer>
+		</div>
+
+	</footer>
 
 <?php endif; ?>
 
