@@ -43,7 +43,7 @@ $documentation_sections = get_page_children( get_the_ID(), $all_documentation );
             <h1 id="<?php echo $parent_magellan_link; ?>" data-magellan-target="<?php echo $parent_magellan_link; ?>" class="page-title">
                 <?php the_title(); ?>
             </h1>
-            <?php if ( current_user_can( 'edit_post' ) ) : ?>
+            <?php if ( current_user_can( 'edit_post', get_the_ID() ) ) : ?>
                 <a href="<?php echo get_edit_post_link( get_the_ID() ); ?>"><span class="fa fa-edit"></span> <?php _e( 'Edit Documentation Section', THEME_ID ); ?></a>
             <?php endif; ?>
 
@@ -62,7 +62,7 @@ $documentation_sections = get_page_children( get_the_ID(), $all_documentation );
                     <h2 id="<?php echo $child_magellan_link; ?>" data-magellan-target="<?php echo $child_magellan_link; ?>" class="section-title">
                         <?php the_title(); ?>
                     </h1>
-                    <?php if ( current_user_can( 'edit_post' ) ) : ?>
+                    <?php if ( current_user_can( 'edit_post', get_the_ID() ) ) : ?>
                         <a href="<?php echo get_edit_post_link( get_the_ID() ); ?>"><span class="fa fa-edit"></span> <?php _e( 'Edit Documentation Section', THEME_ID ); ?></a>
                     <?php endif; ?>
 
