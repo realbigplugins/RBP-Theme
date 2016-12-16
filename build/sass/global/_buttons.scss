@@ -1,5 +1,5 @@
 .off-canvas-content {
-    
+
     .button {
 
         @each $name, $color in $foundation-palette {
@@ -19,7 +19,7 @@
                 }
 
             }
-            
+
             // Add inverted version
             &.invert.#{$name} {
 
@@ -37,7 +37,7 @@
                 }
 
             }
-            
+
             // Create slide-in background buttons
             &.#{$name}.slide-left {
                 @include background-slide-in( $color, 'left' );
@@ -58,5 +58,13 @@
         }
 
     }
-    
+
+    // Catch-all for WP Search Fields and stuff
+    input[type="submit"] {
+
+        @include button( false, $primary-color, scale-color( $primary-color, $lightness: -15% ), 'auto', 'solid' );
+        margin-bottom: 0;
+
+    }
+
 }

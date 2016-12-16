@@ -403,5 +403,28 @@ add_action( 'customize_register', function( $wp_customize ) {
     
 } );
 
+/**
+ * Conditionally Add Account or Login Links to the Menu
+ * 
+ * @param       string $items The HTML list content for the menu items
+ * @param       object $args  An object containing wp_nav_menu() arguments
+ *                                                               
+ * @since       1.2.1
+ * @return      string The HTML list content for the menu items
+ */
+add_filter( 'wp_nav_menu_items', 'rbp_conditional_menu_items', 10, 2 );
+function rbp_conditional_menu_items( $items, $args ) {
+    
+    if ( is_user_logged_in() && $args->theme_location == 'primary-right' ) {
+        $items .= '<li><a href="/checkout/purchase-history/">' . _x( 'My Account', 'My Account Menu Item Text', THEME_ID ) . '</a></li>';
+    }
+    else if ( ! is_user_logged_in() && $args->theme_location == 'primary-right' ) {
+        $items .= '<li><a href="/login/">' . _x( 'Login', 'Login Menu Item Text', THEME_ID ) . '</a></li>';
+    }
+    
+    return $items;
+    
+}
+
 // Include other static files
 require_once __DIR__ . '/includes/shortcodes/mailchimp-embed.php';

@@ -1,0 +1,11 @@
+#edd_register_form, #edd_login_form {
+
+    @include grid_column( 12 );
+
+    @media #{$medium-up} {
+
+        @include grid_column( 6 );
+
+    }
+
+}
