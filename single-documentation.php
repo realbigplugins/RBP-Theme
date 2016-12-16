@@ -136,7 +136,7 @@ if ( $link_download_ID = get_post_meta( get_the_ID(), "p2p_children_downloads", 
 		<div id="docs" class="small-12 <?php echo $has_children ? 'medium-9' : ''; ?> columns">
 
 			<header class="documentation-header"
-			        class="<?php echo $documentation_page_styled ? 'documentation-header-styled' : ''; ?>">
+			        class="<?php echo $documentation_page_styled ? 'documentation-styled' : ''; ?>">
 
 				<?php $parent_magellan_link = Foundation_Magellan_Walker::magellan_target( get_the_title() ); ?>
 
