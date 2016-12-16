@@ -1,13 +1,63 @@
 .single-documentation {
-    
-    @media #{$medium-up} {
-    
-        overflow-x: visible; // Allows Magellan to function properly while maintaining proper Off Canvas
-        
+
+  @media #{$medium-up} {
+    overflow-x: visible; // Allows Magellan to function properly while maintaining proper Off Canvas
+  }
+
+  .documentation-header {
+    margin-bottom: 1em;
+
+    &.documentation-styled {
+      padding: 1em;
     }
-    
-    article.documentation {
-        overflow: hidden; // Ensure it expands to Aligned Image Height
+
+    .page-title {
+      margin-bottom: 0;
     }
-    
+  }
+
+  .documentation-subheader {
+    @extend h2;
+    font-style: italic;
+  }
+
+  article.documentation {
+
+    &:after {
+      content: '';
+      display: table;
+      clear: both;
+    }
+
+    &.depth-0 {
+      margin-top: 2em;
+
+      .section-title {
+        border-bottom: 1px solid #ddd;
+        margin-bottom: 0.5em;
+        padding-bottom: 0.5em;
+      }
+    }
+
+    .section-title {
+      position: relative;
+
+      &:hover {
+        .post-edit-link {
+          display: inline-block;
+        }
+      }
+
+      .post-edit-link {
+        display: none;
+        font-size: 30px;
+      }
+    }
+
+    &.depth-1 {
+      .section-title {
+        color: lighten($body-font-color, 15%);
+      }
+    }
+  }
 }

@@ -36,7 +36,7 @@ define( 'THEME_VERSION', $theme_header->get( 'Version' ) );
  * Fonts for the theme. Must be hosted font (Google fonts for example).
  */
 $theme_fonts = array(
-	'open-sans' => '//fonts.googleapis.com/css?family=Open+Sans:300italic,700,300,800',
+	'open-sans' => '//fonts.googleapis.com/css?family=Open+Sans:400italic,700,400,800',
     'font-awesome' => '//maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css',
     'leckerli-one' => '//fonts.googleapis.com/css?family=Leckerli+One',
 );
