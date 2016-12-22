@@ -80,7 +80,7 @@ function rbp_documentation_loop( $parent_ID, $depth = 0 ) {
 	$docs = get_posts( array(
 		'post_type'   => 'documentation',
 		'post_parent' => $parent_ID,
-		'orderby'     => 'title',
+		'orderby'     => 'menu_order title',
 		'order'       => 'ASC',
 		'numberposts' => - 1,
 	) );
