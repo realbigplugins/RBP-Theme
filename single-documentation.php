@@ -204,7 +204,7 @@ if ( $link_download_ID = get_post_meta( get_the_ID(), "p2p_children_downloads", 
 
 						<?php if ( isset( $changelog ) && $changelog ) : ?>
 
-							<li <?php post_class( array(), $linked_download[0] ); ?>>
+							<li <?php post_class( array(), $link_download_ID ); ?>>
 								<a href="#changelog">
 									<?php _e( 'Changelog', THEME_ID ); ?>
 								</a>
