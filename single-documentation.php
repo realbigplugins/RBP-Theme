@@ -9,7 +9,7 @@
 // Don't load directly
 defined( 'ABSPATH' ) || die;
 
-add_action( 'wp_print_styles', 'rbp_single_documentation_colors', 100 );
+add_action( 'wp_head', 'rbp_single_documentation_colors' );
 
 /**
  * Outputs some CSS for coloring based on the specific download.
@@ -53,6 +53,13 @@ function rbp_single_documentation_colors() {
 			color: <?php echo $primary_color; ?>;
 		}
 
+		.button {
+			background-color: <?php echo $primary_color; ?>;
+		}
+
+		.button:hover {
+			background-color: <?php echo rbp_darken_hex( $primary_color, 10 ); ?>;
+		}
 		<?php endif; ?>
 	</style>
 	<?php
@@ -154,6 +161,14 @@ if ( $link_download_ID = get_post_meta( get_the_ID(), "p2p_children_downloads", 
 				</p>
 
 			</header>
+
+			<?php if ( $link_download_ID ) : ?>
+				<div class="documentation-plugin-link">
+					<a href="<?php echo get_permalink( $link_download_ID ); ?>" class="button large">
+						View Plugin <span class="fa fa-arrow-right"></span>
+					</a>
+				</div>
+			<?php endif; ?>
 
 			<section class="documentation-content">
 				<?php the_content(); ?>
