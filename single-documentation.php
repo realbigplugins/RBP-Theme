@@ -23,12 +23,10 @@ function rbp_single_documentation_colors() {
 
 	$documentation_page_styled = false;
 
-	if ( ! ( $link_download_ID = get_post_meta( get_the_ID(), "p2p_children_downloads", true ) ) ) {
+	if ( ! ( $link_download_ID = rbm_cpts_get_p2p_parent( 'download' ) ) {
 
 		return;
 	}
-
-	$link_download_ID = $link_download_ID[0];
 
 	if ( ! ( $primary_color = get_post_meta( $link_download_ID, '_rbm_primary_color', true ) ) ) {
 
