@@ -23,7 +23,7 @@ function rbp_single_documentation_colors() {
 
 	$documentation_page_styled = false;
 
-	if ( ! ( $link_download_ID = rbm_cpts_get_p2p_parent( 'download' ) ) {
+	if ( ! ( $link_download_ID = rbm_cpts_get_p2p_parent( 'download' ) ) ) {
 
 		return;
 	}
