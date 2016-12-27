@@ -136,10 +136,7 @@ $has_children = get_posts( array(
 	) ) || false;
 
 
-if ( $link_download_ID = get_post_meta( get_the_ID(), "p2p_children_downloads", true ) ) {
-
-	$link_download_ID = $link_download_ID[0];
-}
+$link_download_ID = rbm_cpts_get_p2p_parent( 'download' );
 ?>
 
 	<div class="page-content row">
