@@ -177,7 +177,7 @@ $link_download_ID = rbm_cpts_get_p2p_parent( 'download' );
 
 					<article id="documentation-<?php the_ID(); ?>-changelog" class="documentation depth-0">
 
-						<h2 id="documentation-changelog" class="section-title"
+						<h2 id="changelog" class="section-title"
 						    data-magellan-target="changelog"><?php _e( 'Changelog', THEME_ID ); ?></h2>
 
 						<?php echo apply_filters( 'the_content', wp_unslash( $changelog ) ); ?>
