@@ -465,10 +465,11 @@ if ( ! empty( $video_url ) ) : ?>
 
 					<ul>
 
-						<?php if ( $documentation = get_post_meta( get_the_ID(), '_rbm_p2p_documentation', true ) ) :
+						<?php if ( $documentations = rbm_cpts_get_p2p_children( 'documentation' ) ) :
 
 							$documentation_link_text = _x( 'View plugin documentation', 'View Documentaion Link Text', THEME_ID );
 
+							$documentation = array_shift( $documentations );
 							?>
 
 							<li>
