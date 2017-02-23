@@ -43,6 +43,20 @@ function rbp_single_download_colors() {
 				color: <?php echo ( rbp_is_light( $primary_color ) ) ? '#000' : '#fff'; ?>;
 
 			}
+			
+			.download-color-section a {
+				
+				color: <?php echo ( rbp_is_light( $primary_color ) ) ? '#000' : '#fff'; ?>;
+				text-decoration: underline !important;
+				
+			}
+			
+			.download-color-section a:hover {
+				
+				color: <?php echo ( rbp_is_light( $primary_color ) ) ? '#000' : '#fff'; ?>;
+				text-decoration: none !important;
+				
+			}
 
 			.download-color-section ul * {
 
