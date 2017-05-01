@@ -87,7 +87,7 @@ function rbp_single_download_colors() {
 				border-top: solid 3px <?php echo $secondary_color; ?>;
 				display: block;
 				width: 100%;
-				content: '<?php echo _x( 'All price options are billed yearly at a 20% discount. You may cancel your subscription at any time.', 'Price Options Disclaimer Text', THEME_ID ); ?>';
+				content: '<?php echo _x( 'All price options are billed yearly. You may cancel your subscription at any time.', 'Price Options Disclaimer Text', THEME_ID ); ?>';
 				font-style: italic;
 				margin-top: 0.5em;
 				padding-top: 0.5em;
