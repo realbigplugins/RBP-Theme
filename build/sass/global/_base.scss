@@ -110,6 +110,7 @@ ul.multi-column, ol.multi-column {
 
     &:hover {
         text-decoration: underline;
+		text-decoration-skip: ink;
     }
 }
 
