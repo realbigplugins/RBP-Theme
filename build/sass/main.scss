@@ -26,6 +26,7 @@ Text Domain: real-big-plugins
 @include foundation-dropdown;
 @include foundation-dropdown-menu;
 @include foundation-visibility-classes;
+@include foundation-media-object;
 @include foundation-sticky;
 @include foundation-table;
 
@@ -51,3 +52,5 @@ Text Domain: real-big-plugins
 @import "templates/single-documentation";
 @import "templates/checkout";
 @import "templates/frontend-login";
+@import "templates/blog";
+@import "templates/single-post";

@@ -19,6 +19,14 @@ the_post();
 <div class="page-content row">
 
     <article id="page-<?php the_ID(); ?>" <?php post_class( array( 'columns', 'small-12' ) ); ?>>
+		
+		<?php if ( has_post_thumbnail() ) : ?>
+			<div class="thumbnail">
+				<?php the_post_thumbnail( 'medium', array(
+					'class' => 'attachment-medium size-medium wp-post-image alignleft',
+				) ); ?>
+			</div>
+		<?php endif; ?>
 
         <h1 class="page-title">
             <?php the_title(); ?>
