@@ -46,13 +46,13 @@ $date_format = get_option( 'date_format', 'F j, Y' );
 		
 		<h3><?php _e( 'About the Author' ); ?></h3>
 		
-		<div class="row">
+		<div class="media-object stack-for-small">
 	
-			<div class="small-2 columns avatar-column text-center">
+			<div class="media-object-section image-section">
 				<?php echo get_avatar( get_the_author_meta( 'ID' ) ); ?>
 			</div>
 
-			<div class="small-10 columns content-column">
+			<div class="media-object-section main-section">
 				
 				<h5><?php echo get_the_author_meta( 'display_name' ); ?></h5>
 				<?php if ( $website = get_the_author_meta( 'url' ) ) : ?>
