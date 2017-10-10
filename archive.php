@@ -34,17 +34,39 @@ get_header();
                 'small-12'
             ) ); ?>>
 
-                <h2 class="post-title">
-                    <a href="<?php the_permalink(); ?>" class="force-color">
-                        <?php the_title(); ?>
-                    </a>
-                </h2>
+                <h1 class="post-title">
+					<a href="<?php the_permalink(); ?>">
+						<?php the_title(); ?>
+					</a>
+				</h1>
+				<span class="timestamp"><span class="fa fa-clock-o"></span>&nbsp;<?php the_time( $date_format ); ?></span>&nbsp;<span class="author"><?php printf( __( 'by %s' ), get_the_author_meta( 'display_name' ) ); ?></span>
+				<br /><br />
+				
+				<div class="media-object stack-for-small">
+					
+					<?php if ( has_post_thumbnail() ) : ?>
 
-                <?php the_excerpt(); ?>
+                        <div class="media-object-section image-section">
+                                <div class="thumbnail">
+                                    <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
+                                        <?php the_post_thumbnail( 'medium' ); ?>
+                                    </a>
+                                </div>
+                        </div>
+					
+					<?php endif; ?>
 
-                <a href="<?php the_permalink(); ?>" class="button dark">
-                    Read more
-                </a>
+					<div class="media-object-section main-section">
+
+						<?php the_excerpt(); ?>
+
+						<a href="<?php the_permalink(); ?>" class="button secondary alignright">
+							Read more
+						</a>
+							
+					</div>
+					
+				</div>
 
             </article>
         <?php endwhile; ?>

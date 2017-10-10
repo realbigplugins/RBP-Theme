@@ -107,7 +107,7 @@ if ( post_password_required() ) { ?>
 
 				<label>
 					<?php _e( 'Comment' ); ?>
-					<textarea name="comment" id="comment" cols="58" rows="10" tabindex="4" required></textarea>
+					<textarea name="comment" id="comment" cols="58" rows="5" tabindex="4" required></textarea>
 					<small class="error">Required</small>
 				</label>
 
@@ -116,7 +116,7 @@ if ( post_password_required() ) { ?>
 				</p>
 
 				<p>
-					<input type="submit" name="submit" id="submit" tabindex="5" value="Submit Comment" class="button" />
+					<input type="submit" name="submit" id="submit" tabindex="5" value="Submit Comment" class="button secondary alignright" />
 					<?php comment_id_fields(); ?>
 				</p>
 				<?php

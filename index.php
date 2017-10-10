@@ -34,7 +34,7 @@ $date_format = get_option( 'date_format', 'F j, Y' );
 						<?php the_title(); ?>
 					</a>
 				</h1>
-				<span class="timestamp"><span class="fa fa-clock-o"></span>&nbsp;<?php the_time( $date_format ); ?></span>
+				<span class="timestamp"><span class="fa fa-clock-o"></span>&nbsp;<?php the_time( $date_format ); ?></span>&nbsp;<span class="author"><?php printf( __( 'by %s' ), get_the_author_meta( 'display_name' ) ); ?></span>
 				<br /><br />
 				
 				<div class="media-object stack-for-small">

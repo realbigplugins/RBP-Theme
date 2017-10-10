@@ -4,4 +4,19 @@
 		margin-bottom: 0;
 	}
 	
+	.about-author {
+		
+		margin-top: 1em;
+		margin-bottom: 1em;
+		
+	}
+	
+	// Catch-all for WP Search Fields and stuff
+    input[type="submit"] {
+
+        @include button( false, $secondary-color, scale-color( $secondary-color, $lightness: -15% ), 'auto', 'solid' );
+        margin-bottom: 0;
+
+    }
+	
 }
