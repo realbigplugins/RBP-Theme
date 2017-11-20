@@ -426,5 +426,21 @@ function rbp_conditional_menu_items( $items, $args ) {
     
 }
 
+/**
+ * Adds MailChimp JS to <head>
+ * 
+ * @since		1.3.1
+ * @return		void
+ */
+add_action( 'wp_head', function() {
+	
+	?>
+
+<script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/82db87321b6e03e3d7c4d9445/91d077eb907a6caf00fcf02d2.js");</script>
+
+	<?php
+	
+} );
+
 // Include other static files
 require_once __DIR__ . '/includes/shortcodes/mailchimp-embed.php';
