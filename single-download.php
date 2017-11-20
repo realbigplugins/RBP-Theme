@@ -435,117 +435,76 @@ if ( ! empty( $video_url ) ) : ?>
 
 	</div>
 
-	<div class="download-meta-section">
+	<?php if ( get_post_meta( get_the_ID(), '_edd_product_type', true ) !== 'bundle' ) : ?>
 
-		<div class="row">
+		<div class="download-meta-section">
 
-			<?php
+			<div class="row">
 
-			$column_class = 'medium-12';
+				<?php
 
-			if ( $requirements = rbm_get_field( 'requirements' ) ) : $column_class = 'medium-4'; endif;
+				$column_class = 'medium-12';
 
-			$external_url = get_post_meta( get_the_ID(), '_edd_external_product_url', true );
+				if ( $requirements = rbm_get_field( 'requirements' ) ) : $column_class = 'medium-4'; endif;
 
-			if ( $external_url && $requirements ) : $column_class = 'medium-6'; endif; ?>
+				$external_url = get_post_meta( get_the_ID(), '_edd_external_product_url', true );
 
-			<?php if ( $requirements ) : ?>
+				if ( $external_url && $requirements ) : $column_class = 'medium-6'; endif; ?>
 
-				<div class="download-meta requirements small-12 <?php echo $column_class; ?> columns">
+				<?php if ( $requirements ) : ?>
 
-					<div class="download-meta-container">
+					<div class="download-meta requirements small-12 <?php echo $column_class; ?> columns">
 
-						<h3><?php echo _x( 'Requirements', 'Requirements Header', THEME_ID ); ?></h3>
+						<div class="download-meta-container">
 
-						<ul>
+							<h3><?php echo _x( 'Requirements', 'Requirements Header', THEME_ID ); ?></h3>
 
-							<?php foreach ( $requirements as $item ) : ?>
-								<li><?php echo $item['requirement']; ?></li>
-							<?php endforeach; ?>
+							<ul>
 
-						</ul>
+								<?php foreach ( $requirements as $item ) : ?>
+									<li><?php echo $item['requirement']; ?></li>
+								<?php endforeach; ?>
+
+							</ul>
+
+						</div>
 
 					</div>
 
-				</div>
+				<?php endif; ?>
 
-			<?php endif; ?>
-
-			<div class="download-meta support small-12 <?php echo $column_class; ?> columns">
-
-				<div class="download-meta-container">
-
-					<h3><?php echo _x( 'Support', 'Support Header', THEME_ID ); ?></h3>
-
-					<ul>
-
-						<?php if ( $documentations = rbm_cpts_get_p2p_children( 'documentation' ) ) :
-
-							$documentation_link_text = _x( 'View plugin documentation', 'View Documentaion Link Text', THEME_ID );
-
-							$documentation = array_shift( $documentations );
-							?>
-
-							<li>
-								<a href="<?php echo get_permalink( $documentation ); ?>"
-								   title="<?php echo $documentation_link_text; ?>">
-									<?php echo $documentation_link_text; ?>
-								</a>
-							</li>
-
-						<?php endif; ?>
-
-						<?php
-						$support_link_text = _x( 'Contact support', 'Contact Support Link Text', THEME_ID );
-						?>
-
-						<li>
-							<a href="/support/"
-							   title="<?php echo $support_link_text; ?>"><?php echo $support_link_text; ?></a>
-						</li>
-
-					</ul>
-
-				</div>
-
-			</div>
-
-			<?php if ( ! $external_url ) : ?>
-
-				<div class="download-meta plugin-details small-12 <?php echo $column_class; ?> columns">
+				<div class="download-meta support small-12 <?php echo $column_class; ?> columns">
 
 					<div class="download-meta-container">
 
-						<h3><?php echo _x( 'Plugin Details', 'Plugin Details Header', THEME_ID ); ?></h3>
+						<h3><?php echo _x( 'Support', 'Support Header', THEME_ID ); ?></h3>
 
 						<ul>
 
-							<?php if ( $current_version = get_post_meta( get_the_ID(), '_edd_sl_version', true ) ) : ?>
+							<?php if ( $documentations = rbm_cpts_get_p2p_children( 'documentation' ) ) :
+
+								$documentation_link_text = _x( 'View plugin documentation', 'View Documentaion Link Text', THEME_ID );
+
+								$documentation = array_shift( $documentations );
+								?>
 
 								<li>
-									<?php echo sprintf( _x( 'Version %s', 'Current Version Text', THEME_ID ), $current_version ); ?>
+									<a href="<?php echo get_permalink( $documentation ); ?>"
+									   title="<?php echo $documentation_link_text; ?>">
+										<?php echo $documentation_link_text; ?>
+									</a>
 								</li>
 
 							<?php endif; ?>
 
-							<?php if ( $documentation ) : ?>
+							<?php
+							$support_link_text = _x( 'Contact support', 'Contact Support Link Text', THEME_ID );
+							?>
 
-								<?php if ( $changelog = get_post_meta( get_the_ID(), '_edd_sl_changelog', true ) ) :
-
-									$changelog_link_text = _x( 'Changelog', 'Changelog Link Text', THEME_ID );
-
-									?>
-
-									<li>
-										<a href="<?php echo get_permalink( $documentation ); ?>#changelog"
-										   title="<?php echo $changelog_link_text; ?>">
-											<?php echo $changelog_link_text; ?>
-										</a>
-									</li>
-
-								<?php endif; ?>
-
-							<?php endif; ?>
+							<li>
+								<a href="/support/"
+								   title="<?php echo $support_link_text; ?>"><?php echo $support_link_text; ?></a>
+							</li>
 
 						</ul>
 
@@ -553,10 +512,55 @@ if ( ! empty( $video_url ) ) : ?>
 
 				</div>
 
-			<?php endif; ?>
+				<?php if ( ! $external_url ) : ?>
+
+					<div class="download-meta plugin-details small-12 <?php echo $column_class; ?> columns">
+
+						<div class="download-meta-container">
+
+							<h3><?php echo _x( 'Plugin Details', 'Plugin Details Header', THEME_ID ); ?></h3>
+
+							<ul>
+
+								<?php if ( $current_version = get_post_meta( get_the_ID(), '_edd_sl_version', true ) ) : ?>
+
+									<li>
+										<?php echo sprintf( _x( 'Version %s', 'Current Version Text', THEME_ID ), $current_version ); ?>
+									</li>
+
+								<?php endif; ?>
+
+								<?php if ( $documentation ) : ?>
+
+									<?php if ( $changelog = get_post_meta( get_the_ID(), '_edd_sl_changelog', true ) ) :
+
+										$changelog_link_text = _x( 'Changelog', 'Changelog Link Text', THEME_ID );
+
+										?>
+
+										<li>
+											<a href="<?php echo get_permalink( $documentation ); ?>#changelog"
+											   title="<?php echo $changelog_link_text; ?>">
+												<?php echo $changelog_link_text; ?>
+											</a>
+										</li>
+
+									<?php endif; ?>
+
+								<?php endif; ?>
+
+							</ul>
+
+						</div>
+
+					</div>
+
+				<?php endif; ?>
+
+			</div>
 
 		</div>
 
-	</div>
+	<?php endif; ?>
 
 <?php get_footer();
