@@ -429,7 +429,7 @@ function rbp_conditional_menu_items( $items, $args ) {
 /**
  * Adds MailChimp JS to <head>
  * 
- * @since		1.3.1
+ * @since		1.3.2
  * @return		void
  */
 add_action( 'wp_head', function() {
