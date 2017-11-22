@@ -442,5 +442,21 @@ add_action( 'wp_head', function() {
 	
 } );
 
+/**
+ * Google Site Verification
+ * 
+ * @since		{{VERSION}}
+ * @return		void
+ */
+add_action( 'wp_head', function() {
+	
+	?>
+
+<meta name="google-site-verification" content="3Nq8ltyd1lGWOrfOU-TUAmX5hjC6Ap0UMxap8URgK0o" />
+
+	<?php
+	
+} );
+
 // Include other static files
 require_once __DIR__ . '/includes/shortcodes/mailchimp-embed.php';
