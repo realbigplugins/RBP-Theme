@@ -445,7 +445,7 @@ add_action( 'wp_head', function() {
 /**
  * Google Site Verification
  * 
- * @since		{{VERSION}}
+ * @since		1.3.4
  * @return		void
  */
 add_action( 'wp_head', function() {
