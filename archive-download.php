@@ -15,9 +15,19 @@ get_header();
 ?>
 
 <section class="downloads-header">
+	
+	<?php if ( is_tax() ) : ?>
+	
+		<h3>
+			All "<?php echo get_queried_object()->name; ?>" Plugins
+		</h3>
+	
+	<?php else : ?>
     
-    <h3>Our Plugins</h3>
-    Made with <span class="cursive">love</span>
+		<h3>Our Plugins</h3>
+		Made with <span class="cursive">love</span>
+	
+	<?php endif; ?>
     
 </section>
 
