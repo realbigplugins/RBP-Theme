@@ -19,7 +19,7 @@ get_header();
 	<?php if ( is_tax() ) : ?>
 	
 		<h3>
-			All "<?php echo get_queried_object()->name; ?>" Plugins
+			All <?php echo get_queried_object()->name; ?> Plugins
 		</h3>
 	
 	<?php else : ?>
