@@ -16,17 +16,21 @@ get_header();
 the_post();
 ?>
 
-<article id="page-404" class="columns small-12">
+<div class="page-content row">
 
-    <h1 class="page-title">
-        404 - Not Found
-    </h1>
+	<article id="page-404" class="columns small-12">
 
-    <p>
-        Sorry, but there's nothing here.
-    </p>
+		<h1 class="page-title">
+			404 - Not Found
+		</h1>
 
-</article>
+		<p>
+			Sorry, but there's nothing here.
+		</p>
+
+	</article>
+	
+</div>
 
 <?php
 get_footer();
