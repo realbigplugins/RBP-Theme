@@ -421,7 +421,7 @@ if ( ! empty( $video_url ) ) : ?>
 
 <?php endif; ?>
 
-	<div id="download-buy" class="download-color-section">
+	<div id="download-buy" class="download-color-section<?php echo ( edd_is_bundled_product( get_the_ID() ) ) ? ' is-bundle' : ''; ?>">
 
 		<?php echo edd_get_purchase_link( array(
 			'download_id' => get_the_ID(),
