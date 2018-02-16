@@ -59,6 +59,13 @@ sass:
       - ""
     notification: "Running Admin Sass"
     src: "build/sass/admin/main.scss"
+  login:
+    notification: "Running Login Sass"
+    root: "."
+    filename: "login.css"
+    vendor:
+      - ""
+    src: "build/sass/login/main.scss"
 
 watch:
   javascript:
@@ -73,6 +80,7 @@ watch:
       - "build/sass/**/*.scss"
       - "!build/sass/admin/**/*.scss"
     admin: "build/sass/admin/**/*.scss"
+    login: "build/sass/login/**/*.scss"
 
 release:
   type: 'theme'

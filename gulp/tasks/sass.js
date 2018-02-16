@@ -64,6 +64,32 @@ gulp.task( 'sass:admin', function() {
 
 } );
 
-gulp.task( 'sass', ['sass:front', 'sass:admin'], function( done ) {
+gulp.task( 'sass:login', function() {
+
+	return gulp.src( config.login.src )
+		.pipe( $.sourcemaps.init() )
+		.pipe( 
+			$.sass( {
+				includePaths: config.login.vendor
+			} )
+			.on( 'error', notify.onError( {
+				title: pkg.name,
+				message: "<%- error.message -%>",
+			} )
+		 ) )
+		.pipe( concat( config.login.filename ) )
+		.pipe( autoprefixer( config.compatibility ) )
+		.pipe( $.cssnano() )
+		.pipe( gulpif( ! isRelease, $.sourcemaps.write( '.' ) ) )
+		.pipe( gulp.dest( config.login.root ) )
+		.pipe( notify( {
+			title: pkg.name,
+			message: 'SASS Complete',
+			onLast: true
+		} ) );
+
+} );
+
+gulp.task( 'sass', ['sass:front', 'sass:admin', 'sass:login'], function( done ) {
 	done();
 } );

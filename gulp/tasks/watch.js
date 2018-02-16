@@ -8,4 +8,5 @@ gulp.task( 'watch', function() {
 	gulp.watch( config.javascript.tinymce, ['uglify:tinymce'] );
 	gulp.watch( config.sass.front, ['sass:front'] );
 	gulp.watch( config.sass.admin, ['sass:admin'] );
+	gulp.watch( config.sass.login, ['sass:login'] );
 } );
