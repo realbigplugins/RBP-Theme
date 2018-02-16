@@ -256,7 +256,7 @@ $primary_color = ( $primary_color ) ? $primary_color : '#12538f';
 		</a>
 	</div>
 
-<?php $features = rbm_get_field( 'features' );
+<?php $features = rbm_fh_get_field( 'features' );
 
 if ( ! empty( $features ) ) : ?>
 
@@ -299,7 +299,7 @@ if ( ! empty( $features ) ) : ?>
 
 <?php endif; ?>
 
-<?php $testimonials = rbm_get_field( 'testimonials' );
+<?php $testimonials = rbm_fh_get_field( 'testimonials' );
 
 if ( ! empty( $testimonials ) ) : ?>
 
@@ -399,7 +399,7 @@ if ( ! empty( $testimonials ) ) : ?>
 
 <?php endif; ?>
 
-<?php $video_url = rbm_get_field( 'video' );
+<?php $video_url = rbm_fh_get_field( 'video' );
 
 if ( ! empty( $video_url ) ) : ?>
 
@@ -445,7 +445,7 @@ if ( ! empty( $video_url ) ) : ?>
 
 				$column_class = 'medium-12';
 
-				if ( $requirements = rbm_get_field( 'requirements' ) ) : $column_class = 'medium-4'; endif;
+				if ( $requirements = rbm_fh_get_field( 'requirements' ) ) : $column_class = 'medium-4'; endif;
 
 				$external_url = get_post_meta( get_the_ID(), '_edd_external_product_url', true );
 
