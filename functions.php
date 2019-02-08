@@ -67,7 +67,7 @@ add_action( 'init', function () {
 	// Theme styles
 	wp_register_style(
 		THEME_ID,
-		get_template_directory_uri() . '/app.css',
+		get_template_directory_uri() . '/dist/assets/css/app.css',
 		null,
 		defined( 'WP_DEBUG' ) && WP_DEBUG ? time() : THEME_VERSION
 	);
@@ -75,7 +75,7 @@ add_action( 'init', function () {
 	// Theme script
 	wp_register_script(
 		THEME_ID,
-		get_template_directory_uri() . '/script.js',
+		get_template_directory_uri() . '/dist/assets/js/script.js',
 		array( 'jquery' ),
 		defined( 'WP_DEBUG' ) && WP_DEBUG ? time() : THEME_VERSION,
 		true
@@ -224,7 +224,7 @@ add_action( 'init', function() {
     // Theme styles
     wp_register_style(
         THEME_ID,
-        get_template_directory_uri() . '/style.css',
+        get_template_directory_uri() . '/dist/assets/css/style.css',
         null,
         defined( 'WP_DEBUG' ) && WP_DEBUG ? time() : THEME_VERSION
     );
@@ -232,7 +232,7 @@ add_action( 'init', function() {
     // Login styles
     wp_register_style(
         THEME_ID . '-login',
-        get_template_directory_uri() . '/login.css',
+        get_template_directory_uri() . '/dist/assets/css/login.css',
         null,
         defined( 'WP_DEBUG' ) && WP_DEBUG ? time() : THEME_VERSION
     );

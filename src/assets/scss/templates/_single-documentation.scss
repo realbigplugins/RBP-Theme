@@ -1,6 +1,6 @@
 .single-documentation {
 
-  @media #{$medium-up} {
+  @include breakpoint( medium ) {
     overflow-x: visible; // Allows Magellan to function properly while maintaining proper Off Canvas
   }
 

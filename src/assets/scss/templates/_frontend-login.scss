@@ -2,7 +2,7 @@
 
     @include grid_column( 12 );
 
-    @media #{$medium-up} {
+    @include breakpoint( medium ) {
 
         @include grid_column( 6 );
 

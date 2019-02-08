@@ -53,8 +53,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 <?php endif; ?>
 
-</div> <!-- #site-content -->
-
 <?php wp_footer(); ?>
 
 </body>

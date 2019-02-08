@@ -12,7 +12,7 @@
         
         padding-top: $site-content-padding * 1.5; // #site-content padding
         
-        @media #{$medium-up} {
+        @include breakpoint( medium ) {
             padding-top: $site-content-padding;
         }
         
@@ -27,7 +27,7 @@
         
         .content {
             
-            @media #{$medium-up} {
+            @include breakpoint( medium ) {
                 width: 60%;
                 margin: 0 auto;
             }
@@ -69,7 +69,7 @@
         text-align: center;
     }
 
-    @media #{$small-only} {
+    @include breakpoint( small only ) {
 
         .product-title, .product-image {
             text-align: center;
@@ -227,7 +227,7 @@
                 
                 @include grid_column( 12 );
                 
-                @media #{$medium-up} {
+                @include breakpoint( medium ) {
                 
                     @include grid_column( 5 );
                     
@@ -240,7 +240,7 @@
                 
             }
             
-            @media #{$medium-up} {
+            @include breakpoint( medium ) {
 
                 // Offset
                 .edd_price_options {
@@ -343,7 +343,7 @@
                 
                 margin-bottom: 1em;
                 
-                @media #{$medium-up} {
+                @include breakpoint( medium ) {
                     margin-bottom: 0;
                 }
                 

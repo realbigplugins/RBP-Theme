@@ -4,7 +4,7 @@
 
     margin-top: -1px !important;
 
-    @media #{$medium-up} {
+    @include breakpoint( medium ) {
         margin-top: 0 !important;
     }
     
@@ -13,12 +13,28 @@
 }
 
 .admin-bar {
+	
+	#notice-banner {
+		
+		@include breakpoint( small only ) {
+			
+			margin-top: 45px !important;
+			
+		}
+		
+	}
+	
+	#notice-banner ~ .top-bar {
+		
+		margin-top: 0 !important;
+		
+	}
 
     .top-bar {
         
         margin-top: 45px !important;
         
-        @media #{$medium-up} {
+        @include breakpoint( medium ) {
             
             margin-top: 0 !important;
             
@@ -26,7 +42,7 @@
 
         &.sticky.is-stuck {
 
-            @media #{$medium-up} {
+            @include breakpoint( medium ) {
 
                 margin-top: 32px !important;
 

@@ -28,7 +28,7 @@ Base element settings (no classes or id's).
 
 html {
     
-    @media #{$small-only} {
+    @include breakpoint( small only ) {
         
         &.off-canvas-fix {
         
@@ -65,7 +65,7 @@ section {
 .admin-bar {
     #site-content {
         
-        @media #{$small-only} {
+        @include breakpoint( small only ) {
             
             padding-top: $site-content-padding + 22;
             
