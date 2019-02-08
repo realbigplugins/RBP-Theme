@@ -63,7 +63,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 			<div id="notice-banner" class="banner text-center">
 				<p>
-					PayPal is currently unavailable as a payment method. You can still use a credit card for payment securely on our website in the meantime. <br />
+					We are currently troubleshooting integration issues with PayPal. You can still use a credit card for payment securely on our website in the meantime. <br />
 					We appologize for the inconvenience. 
 				</p>
 			</div>
