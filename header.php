@@ -62,10 +62,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<div class="off-canvas-content" data-off-canvas-content data-sticky-container>
 
 			<div id="notice-banner" class="banner text-center">
-				<p>
-					We are currently troubleshooting integration issues with PayPal. You can still use a credit card for payment securely on our website in the meantime. <br />
-					We appologize for the inconvenience. 
-				</p>
 			</div>
 
 			<nav class="sticky top-bar" data-sticky data-sticky-on="small" data-margin-top="1" style="width:100%" data-top-anchor="notice-banner:bottom">

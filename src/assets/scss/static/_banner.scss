@@ -2,7 +2,7 @@
 	
 	background-color: $primary-color;
 	@include light-or-dark-text( $primary-color );
-	padding: rem-calc( 15 );
+	//padding: rem-calc( 15 );
 	
 	p:last-of-type {
 		margin-bottom: 0;
