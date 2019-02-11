@@ -460,3 +460,38 @@ add_action( 'wp_head', function() {
 
 // Include other static files
 require_once __DIR__ . '/includes/shortcodes/mailchimp-embed.php';
+
+add_filter( 'gform_get_form_filter_3', 'realbigplugins_add_form_response_time_notice', 10, 2 );
+
+/**
+ * Add notice above our Support Form about our hours
+ * 
+ * @param		string $form_string The form markup, including the init scripts (unless the gform_init_scripts_footer filter was used to move them to the footer)
+ * @param		array  $form        The form currently being processed
+ *                                                      
+ * @since		{{VERSION}}
+ * @return		string HTML
+ */
+function realbigplugins_add_form_response_time_notice( $form_html, $form ) {
+	
+	?>
+
+	<div class="callout secondary">
+		
+		<h4>
+			Support Turnaround
+		</h4>
+		
+		<p>
+			Support hours are Monday through Friday, 9:00 a.m. to 5:00 p.m. Eastern Time. Tickets are answered in the order in which they are received. Average response time is one business day.
+		</p>
+		
+	</div>
+
+	<?php 
+	
+	$callout = ob_get_clean();
+	
+	return $callout . $form_html;
+	
+}
