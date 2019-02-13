@@ -1,8 +1,13 @@
 .magellan {
   border: 1px solid $medium-gray;
+	
+	.menu.expanded>li {
+		display: block;
+	}
 
   .menu {
     > li {
+		display: block;
       .menu {
         > li {
           > a {
