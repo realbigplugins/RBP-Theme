@@ -29,7 +29,17 @@ if ( ! defined( 'ABSPATH' ) ) {
         <?php wp_head(); ?>
     </head>
 
-    <body <?php body_class(); ?>>
+	<?php
+	
+		$body_class = array();
+
+		if ( has_post_thumbnail() ) {
+			$body_class[] = 'has-post-thumbnail';
+		}
+
+	?>
+
+    <body <?php body_class( $body_class ); ?>>
             
 		<?php if ( ! edd_is_checkout() ) : ?>
 

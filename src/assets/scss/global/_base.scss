@@ -58,6 +58,14 @@ section {
     
 }
 
+body.page.has-post-thumbnail {
+
+    #site-content {
+        padding-top: 0;
+    }
+
+}
+
 .page-content {
     padding: 30px;
 }
