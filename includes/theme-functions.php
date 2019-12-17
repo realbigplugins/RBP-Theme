@@ -38,7 +38,7 @@ function rbp_is_light( $hex, $percentage = 60 ) {
  * @param		string $hex  Hex Color
  * @param		array  $args Arguments, such as 'lightness'
  *                                         
- * @since		{{VERSION}}
+ * @since		1.3.11
  * @return		string Scaled Hex Color
  */
 function rbp_scale_color( $hex, $args ) {
@@ -52,7 +52,7 @@ function rbp_scale_color( $hex, $args ) {
  * 
  * @param		string $hex Hex Color
  *                         
- * @since		{{VERSION}}
+ * @since		1.3.11
  * @return		array  RGB Color Array
  */
 function rbp_hex_to_rgb( $hex ) {
