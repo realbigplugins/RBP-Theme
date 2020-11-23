@@ -270,19 +270,23 @@ if ( ! empty( $features ) ) : ?>
 
 			<div class="feature">
 
-				<div class="row">
+				<div class="row" data-equalizer data-equalize-on="medium">
 
 					<div class="feature-content small-12 medium-6 columns
-                    <?php echo $index % 2 !== 0 ? 'medium-push-6' : ''; ?>">
-						<h3><strong><?php echo $feature['title']; ?></strong></h3>
-						<?php echo apply_filters( 'the_content', $feature['content'] ); ?>
+                    <?php echo $index % 2 !== 0 ? 'medium-push-6' : ''; ?>" data-equalizer-watch>
+						<div class="medium-vertical-align">
+							<h3><strong><?php echo $feature['title']; ?></strong></h3>
+							<?php echo apply_filters( 'the_content', $feature['content'] ); ?>
+						</div>
 					</div>
 
 					<div class="feature-image small-12 medium-6 columns
-                    <?php echo $index % 2 !== 0 ? 'medium-pull-6' : ''; ?>">
-						<a href="<?php echo wp_get_attachment_url( $feature['image'], 'full' ); ?>">
-							<?php echo wp_get_attachment_image( $feature['image'], 'full' ); ?>
-						</a>
+                    <?php echo $index % 2 !== 0 ? 'medium-pull-6' : ''; ?>" data-equalizer-watch>
+						<div class="medium-vertical-align">
+							<a href="<?php echo wp_get_attachment_url( $feature['image'], 'full' ); ?>">
+								<?php echo wp_get_attachment_image( $feature['image'], 'full' ); ?>
+							</a>
+						</div>
 					</div>
 
 				</div>

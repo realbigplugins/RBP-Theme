@@ -125,3 +125,36 @@ ul.multi-column, ol.multi-column {
 .cursive {
     font-family: 'Leckerli One', cursive;
 }
+
+@each $size, $breakpoint in $breakpoints {
+
+    @if $size == 'small' {
+
+        // Parent element needs a fixed height
+        // This is normally achieved via Equalizer
+        .vertical-align {
+
+            position: relative;
+            top: 50%;
+            transform: translateY( -50% );
+            
+        }
+
+    }
+    @else {
+
+        .#{$size}-vertical-align {
+
+            @include breakpoint( $size ) {
+
+                position: relative;
+                top: 50%;
+                transform: translateY( -50% );
+
+            }
+
+        }
+
+    }
+
+}
