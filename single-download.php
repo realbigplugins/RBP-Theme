@@ -240,7 +240,9 @@ $primary_color = ( $primary_color ) ? $primary_color : '#12538f';
 
 	<div class="downloads-header download-color-section">
 
+		<?php add_filter( 'the_title', 'rbp_alternate_download_title' ); ?>
 		<h1 class="title"><span itemprop="name"><?php the_title(); ?></span></h1>
+		<?php remove_filter( 'the_title', 'rbp_alternate_download_title' ); ?>
 
 		<div class="content">
 			<?php the_content(); ?>

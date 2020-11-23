@@ -96,3 +96,20 @@ function rbp_lighten_hex( $hex, $percentage = 15 ) {
     return lighten( $hex, $percentage );
 
 }
+
+/**
+ * Filter for the_title to override the Download Title with an alternate one
+ * Check single-download.php for usage
+ *
+ * @param   string  $title  Post Title
+ *
+ * @since	{{VERSION}}
+ * @return  string          Post Title
+ */
+function rbp_alternate_download_title( $title ) {
+
+	if ( $alternate_title = rbm_fh_get_field( 'alternate_title' ) ) return $alternate_title;
+
+	return $title;
+
+}
