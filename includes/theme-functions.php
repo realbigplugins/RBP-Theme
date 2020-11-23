@@ -103,7 +103,7 @@ function rbp_lighten_hex( $hex, $percentage = 15 ) {
  *
  * @param   string  $title  Post Title
  *
- * @since	{{VERSION}}
+ * @since	1.3.12
  * @return  string          Post Title
  */
 function rbp_alternate_download_title( $title ) {
