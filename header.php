@@ -40,6 +40,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	?>
 
     <body <?php body_class( $body_class ); ?>>
+
+		<?php do_action( 'rbp_after_body_open' ); ?>
             
 		<?php if ( ! edd_is_checkout() ) : ?>
 
