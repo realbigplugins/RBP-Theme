@@ -536,9 +536,13 @@ if ( ! empty( $video_url ) ) : ?>
 
 								<?php endif; ?>
 
-								<?php if ( $documentation ) : ?>
+								<?php if ( $documentation && class_exists( 'EDD_SL_Download' ) ) : 
 
-									<?php if ( $changelog = get_post_meta( get_the_ID(), '_edd_sl_changelog', true ) ) :
+									$sl_download = new EDD_SL_Download( get_the_ID() );
+									
+									?>
+
+									<?php if ( $changelog = $sl_download->get_changelog() ) :
 
 										$changelog_link_text = _x( 'Changelog', 'Changelog Link Text', THEME_ID );
 

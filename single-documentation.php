@@ -171,9 +171,11 @@ $link_download_ID = rbm_cpts_get_p2p_parent( 'download' );
 
 			<?php rbp_documentation_loop( get_the_ID() ); ?>
 
-			<?php if ( $link_download_ID ) :
+			<?php if ( $link_download_ID && class_exists( 'EDD_SL_Download' ) ) : 
 
-				if ( $changelog = get_post_meta( $link_download_ID, '_edd_sl_changelog', true ) ) : ?>
+				$sl_download = new EDD_SL_Download( $link_download_ID );
+
+				if ( $changelog = $sl_download->get_changelog() ) : ?>
 
 					<article id="documentation-<?php the_ID(); ?>-changelog" class="documentation depth-0">
 
