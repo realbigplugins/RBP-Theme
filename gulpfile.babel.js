@@ -241,14 +241,18 @@ function version() {
 	var pkg = JSON.parse( fs.readFileSync( './package.json' ) );
 	
     return gulp.src([
-        'admin/**/*',
-        'assets/src/**/*',
-        'core/**/*',
-        '!core/library/**/*',
-        'languages/**/*',
-        'templates/**/*',
-        'pyis-optinmonster.php',
-        'readme.txt'
+      'admin/**/*',
+      'assets/src/**/*',
+      'core/**/*',
+      '!vendor/**/*',
+      'languages/**/*',
+      'templates/**/*',
+      'style.css',
+      'readme.txt',
+      'edd_templates/**/*',
+      'includes/**/*',
+      'src/**/*',
+      '*.php',
     ], { base: './', allowEmpty: true } )
 		// Doc block versions, only update on non-Betas and 1.0.0+ releases
         .pipe( $.if( ( pkg.version.indexOf( 'b' ) == -1 && compareVersions( pkg.version, '1.0.0' ) !== -1 ), $.replace( /\{\{VERSION}}/g, pkg.version ) ) )
@@ -260,6 +264,8 @@ function version() {
 		} ) )
         .pipe(gulp.dest('./'));
 }
+
+gulp.task( 'version', version );
 
 function setProd( done ) {
 	

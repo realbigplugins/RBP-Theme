@@ -480,7 +480,7 @@ add_filter( 'gform_get_form_filter_3', 'realbigplugins_add_form_response_time_no
  * @param		string $form_string The form markup, including the init scripts (unless the gform_init_scripts_footer filter was used to move them to the footer)
  * @param		array  $form        The form currently being processed
  *                                                      
- * @since		{{VERSION}}
+ * @since		1.3.9
  * @return		string HTML
  */
 function realbigplugins_add_form_response_time_notice( $form_html, $form ) {

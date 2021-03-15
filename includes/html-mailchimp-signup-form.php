@@ -4,7 +4,7 @@
  *
  * LIST: Real Big Plugins
  *
- * @since {{VERSION}}
+ * @since 1.2.0
  */
 
 defined( 'ABSPATH' ) || die();

@@ -14,7 +14,7 @@ add_action( 'wp_head', 'rbp_single_documentation_colors' );
 /**
  * Outputs some CSS for coloring based on the specific download.
  *
- * @since {{VERSION}}
+ * @since 1.2.1
  * @access private
  */
 function rbp_single_documentation_colors() {
@@ -66,7 +66,7 @@ function rbp_single_documentation_colors() {
 /**
  * Loops through documentation descendents and outputs them.
  *
- * @since {{VERSION}}
+ * @since 1.2.1
  * @access private
  *
  * @param int $parent_ID
