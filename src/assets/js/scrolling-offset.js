@@ -10,6 +10,8 @@
          * Establish events, and fix initial scroll position if a hash is provided.
          */
         init: function() {
+
+            this.OFFSET_HEIGHT_PX = this.OFFSET_HEIGHT_PX + ( this.OFFSET_HEIGHT_PX / 2 );
             
             this.scrollToCurrent();
             $( window ).on( 'hashchange', $.proxy( this, 'scrollToCurrent' ) );
@@ -85,6 +87,7 @@
         }
     };
 
-    $( document ).ready( $.proxy( anchorScrolls, 'init' ) );
+    let init = anchorScrolls.init;
+    $( document ).on( 'ready', init.bind( anchorScrolls ) );
     
 } )( jQuery, window.document, window.history, window.location );
