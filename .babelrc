@@ -1,5 +1,4 @@
 {
-"presets": ["@babel/env"],
-"plugins": ["@babel/plugin-transform-runtime", "@babel/plugin-syntax-dynamic-import"],
-"compact": false
+    "presets": ["es2015"],
+    "compact": false
 }

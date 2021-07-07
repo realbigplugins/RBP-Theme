@@ -22,7 +22,7 @@ const $ = plugins();
 var PRODUCTION = !!(yargs.argv.production);
 
 // Check for --development flag unminified with sourcemaps
-var DEV = !!(yargs.argv.dev);
+var DEV = ! PRODUCTION;
 
 // Load settings from settings.yml
 const { BROWSERSYNC, COMPATIBILITY, REVISIONING, PATHS } = loadConfig();
@@ -95,10 +95,10 @@ function sass() {
 			} )
 		)
 		.pipe(
-			$.if( PRODUCTION, $.cleanCss( { compatibility: 'ie9' } ) )
+			$.cleanCss( { compatibility: 'ie9' } )
 		)
 		.pipe(
-			$.if( ! PRODUCTION, $.sourcemaps.write() )
+			$.sourcemaps.write( '.' ),
 		)
 		.pipe(
 			$.if( REVISIONING && PRODUCTION || REVISIONING && DEV, $.rev() )
@@ -119,7 +119,7 @@ function sass() {
 // In production, the file is minified
 var webpack = {
   config: {
-	  mode: 'development',
+    devtool: 'inline-source-map',
     module: {
       rules: [
         {
@@ -147,9 +147,9 @@ var webpack = {
     return gulp.src(PATHS.entries.js, { allowEmpty: true } )
       .pipe(named())
       .pipe(webpackStream(webpack.config, webpack2))
-	  .pipe($.if(PRODUCTION, $.uglify()
-        .on('error', e => { console.log(e); }),
-      ))
+      .pipe( $.sourcemaps.init( { loadMaps: true } ) )
+	    .pipe( $.uglify().on('error', e => { console.log(e); }) )
+      .pipe( $.sourcemaps.write( '.' ) )
       .pipe($.if(REVISIONING && PRODUCTION || REVISIONING && DEV, $.rev()))
       .pipe(gulp.dest(PATHS.dist + '/assets/js'))
       .pipe($.if(REVISIONING && PRODUCTION || REVISIONING && DEV, $.rev.manifest()))
