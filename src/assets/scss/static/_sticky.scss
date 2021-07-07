@@ -1,55 +1,23 @@
-// We have to override a lot of inline garbage for this
-
-.top-bar.sticky {
-
-    margin-top: -1px !important;
-
-    @include breakpoint( medium ) {
-        margin-top: 0 !important;
-    }
-    
-    top: 0 !important;
-
+// Fix the issue where the WP admin-bar overlaps the mobile menu
+#wpadminbar {
+	position: fixed !important;
 }
 
-.admin-bar {
-	
-	#notice-banner {
-		
-		@include breakpoint( small only ) {
-			
-			margin-top: 45px !important;
-			
+// Make sure that the WP admin-bar does not overlap Foundation components
+body.admin-bar {
+	// Offset sticky top bar
+	&.f-topbar-fixed {
+		.sticky.fixed {
+			margin-top: rem-calc(32);
 		}
-		
 	}
-	
-	#notice-banner ~ .top-bar {
-		
-		margin-top: 0 !important;
-		
+	// Offset mobile off-canvas menu
+	&.offcanvas {
+		.off-canvas.is-open {
+			top: rem-calc(46);
+			@include breakpoint(783) {
+				top: rem-calc(32);
+			}
+		}
 	}
-
-    .top-bar {
-        
-        margin-top: 45px !important;
-        
-        @include breakpoint( medium ) {
-            
-            margin-top: 0 !important;
-            
-        }
-
-        &.sticky.is-stuck {
-
-            @include breakpoint( medium ) {
-
-                margin-top: 32px !important;
-
-            }
-
-        }
-
-    }
-    
 }

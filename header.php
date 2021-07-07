@@ -76,7 +76,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<div id="notice-banner" class="banner text-center">
 			</div>
 
-			<nav class="sticky top-bar" data-sticky data-sticky-on="small" data-margin-top="1" style="width:100%" data-top-anchor="notice-banner:bottom">
+			<nav class="sticky top-bar" data-sticky data-sticky-on="small" data-margin-top="<?php echo is_admin_bar_showing() ? 2 : 0; ?>" style="width:100%" data-top-anchor="notice-banner:bottom">
 
 				<div class="top-bar-left mobile-menu show-for-small-only">
 					<div class="menu-icon-wrapper">
@@ -94,7 +94,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 					</div>
 				</div>
 
-				<div class="top-bar-left nav-menu">
+				<div class="top-bar-section top-bar nav-menu">
+
+					<div class="top-bar-logo">
+						<ul class="menu">
+							<li>
+								<a href="<?php bloginfo( 'url' ); ?>" title="<?php _e( 'Home', THEME_ID ); ?>">
+									<span class="stacked-rbm-logo"><span></span></span>
+								</a>
+							</li>
+						</ul>
+					</div>
 
 					<?php if ( ! edd_is_checkout() ) : ?>
 
@@ -107,30 +117,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 							'fallback_cb' => false,
 							'walker' => new Foundation_Nav_Walker(),
 						) ); ?>
-
-					<?php else : // Make a fake Menu Item so the height stays the same ?>
-
-						<ul class="menu fake hide-for-small-only">
-							<li><a>&nbsp;</a></li>
-						</ul>
-
-					<?php endif; ?>
-
-				</div>
-
-				<div class="top-bar-section top-bar-logo nav-menu">
-					<ul class="menu">
-						<li>
-							<a href="<?php bloginfo( 'url' ); ?>" title="<?php _e( 'Home', THEME_ID ); ?>">
-								<span class="stacked-rbm-logo"><span></span></span>
-							</a>
-						</li>
-					</ul>
-				</div>
-
-				<div class="top-bar-right nav-menu">
-
-					<?php if ( ! edd_is_checkout() ) : ?>
 
 						<?php wp_nav_menu( array(
 							'container' => false,
@@ -151,6 +137,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 					<?php endif; ?>
 
 				</div>
+				
 			</nav>
 
 			<section id="site-content"<?php echo ( is_front_page() ) ? ' style="background-image: url(' . wp_get_attachment_image_url( get_theme_mod( 'home_background' ), 'full' ) . '); background-size: cover;"' : ''; ?>>

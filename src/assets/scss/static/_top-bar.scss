@@ -9,8 +9,7 @@
 	
 	background: $topbar-background;
 
-    .top-bar-left, .top-bar-right {
-        width: 45%;
+    &, .top-bar-left, .top-bar-right {
 
         > ul {
 			
@@ -66,6 +65,10 @@
 
     }
 
+    & > ul {
+        display: inline-block;
+    }
+
     .top-bar-left.mobile-menu {
         width: 100%;
         text-align: left;
@@ -97,6 +100,7 @@
     }
 
     .top-bar-logo {
+
         width: 6.5em;
 		
 		@include breakpoint( small only ) {
@@ -105,7 +109,7 @@
 		
 		@include breakpoint( medium ) {
 		
-			float: left;
+			display: inline-block;
 			
 		}
 
@@ -119,7 +123,11 @@
                 left: 50%;
                 margin-left: -3.5em;
                 border-radius: 50%;
-                top: -0.1em;
+                top: -0.25em;
+
+                @include breakpoint( medium ) {
+                    top: -1.7em;
+                }
 
                 a {
                     font-size: 5em;
