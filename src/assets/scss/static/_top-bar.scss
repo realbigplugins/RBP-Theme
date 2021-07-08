@@ -9,7 +9,14 @@
 	
 	background: $topbar-background;
 
-    &, .top-bar-left, .top-bar-right {
+    &.row {
+
+        padding-left: 0;
+        padding-right: 0;
+
+    }
+
+    &, .top-bar-left, .top-bar-right, .top-bar-menus {
 
         > ul {
 			
@@ -65,7 +72,7 @@
 
     }
 
-    & > ul {
+    & > ul, .top-bar-menus > ul {
         display: inline-block;
     }
 
@@ -110,6 +117,7 @@
 		@include breakpoint( medium ) {
 		
 			display: inline-block;
+            float: left;
 			
 		}
 
@@ -123,11 +131,7 @@
                 left: 50%;
                 margin-left: -3.5em;
                 border-radius: 50%;
-                top: -0.25em;
-
-                @include breakpoint( medium ) {
-                    top: -1.7em;
-                }
+                top: -0.125em;
 
                 a {
                     font-size: 5em;
@@ -185,6 +189,14 @@
                 }
 
             }
+        }
+
+    }
+
+    .top-bar-menus {
+
+        @include breakpoint( medium ) {
+            float: right;
         }
 
     }

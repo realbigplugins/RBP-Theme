@@ -94,7 +94,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 					</div>
 				</div>
 
-				<div class="top-bar-section top-bar nav-menu">
+				<div class="top-bar-section top-bar row nav-menu">
 
 					<div class="top-bar-logo">
 						<ul class="menu">
@@ -108,25 +108,29 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 					<?php if ( ! edd_is_checkout() ) : ?>
 
-						<?php wp_nav_menu( array(
-							'container' => false,
-							'menu' => __( 'Primary Left Menu', THEME_ID ),
-							'menu_class' => 'menu hide-for-small-only',
-							'theme_location' => 'primary-left',
-							'items_wrap'      => '<ul id="%1$s" class="%2$s">%3$s</ul>',
-							'fallback_cb' => false,
-							'walker' => new Foundation_Nav_Walker(),
-						) ); ?>
+						<div class="top-bar-menus">
 
-						<?php wp_nav_menu( array(
-							'container' => false,
-							'menu' => __( 'Primary Right Menu', THEME_ID ),
-							'menu_class' => 'menu hide-for-small-only',
-							'theme_location' => 'primary-right',
-							'items_wrap'      => '<ul id="%1$s" class="%2$s">%3$s</ul>',
-							'fallback_cb' => false,
-							'walker' => new Foundation_Nav_Walker(),
-						) ); ?>
+							<?php wp_nav_menu( array(
+								'container' => false,
+								'menu' => __( 'Primary Left Menu', THEME_ID ),
+								'menu_class' => 'menu hide-for-small-only',
+								'theme_location' => 'primary-left',
+								'items_wrap'      => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+								'fallback_cb' => false,
+								'walker' => new Foundation_Nav_Walker(),
+							) ); ?>
+
+							<?php wp_nav_menu( array(
+								'container' => false,
+								'menu' => __( 'Primary Right Menu', THEME_ID ),
+								'menu_class' => 'menu hide-for-small-only',
+								'theme_location' => 'primary-right',
+								'items_wrap'      => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+								'fallback_cb' => false,
+								'walker' => new Foundation_Nav_Walker(),
+							) ); ?>
+					
+						</div>
 
 					<?php else : // Make a fake Menu Item so the height stays the same ?>
 
