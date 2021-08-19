@@ -286,7 +286,7 @@ add_action( 'login_enqueue_scripts', function() {
  * Register Nav Menus
  * 
  * @since 1.0.0
- * return void
+ * @return void
  */
 add_action( 'after_setup_theme', function () {
     
@@ -308,10 +308,25 @@ add_action( 'after_setup_theme', function() {
 } );
 
 /**
+ * Change number of posts per page on download archive page
+ * 
+ * @param array $query archive query
+ * 
+ * @since {{ VERSION }}
+ * @return void
+ */
+function rbp_download_query( $query ) {
+    if ( $query->is_post_type_archive( 'download' ) && ! is_admin() && $query->is_main_query() ) {
+        $query->set( 'posts_per_page', '9' );
+    }
+}
+add_action( 'pre_get_posts', 'rbp_download_query' );
+
+/**
  * Run Big Brother scripts only for non-logged in Users
  * 
  * @since 1.0.0
- * return void
+ * @return void
  */
 add_action( 'wp_footer', function () {
 

@@ -35,6 +35,8 @@ get_header();
 
     <section class="store-template">
 
+        <?php echo do_shortcode( '[facetwp facet="categories"]' ); ?>
+
         <div class="animate-on-scroll scale-in-up">
 
             <?php if ( have_posts() ) : ?>
