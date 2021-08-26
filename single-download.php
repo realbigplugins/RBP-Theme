@@ -85,14 +85,12 @@ $secondary_color = ( $secondary_color ) ? $secondary_color : '#51a0e9';
 			$index = 1;
 
 			switch ( count( $testimonials ) ) {
-
-			case 1 :
-				$max_columns = 1;
-				break;
-			default :
-				$max_columns = 2;
-				break;
-
+				case 1 :
+					$max_columns = 1;
+					break;
+				default :
+					$max_columns = 2;
+					break;
 			}
 			?>
 
@@ -104,15 +102,10 @@ $secondary_color = ( $secondary_color ) ? $secondary_color : '#51a0e9';
 					<div class="row">
 				<?php endif; ?>
 
-				<div
-					class="testimonial small-12 medium-6<?php echo ( count( $testimonials ) == 1 ) ? ' medium-offset-3' : ' columns'; ?>">
-
+				<div class="testimonial small-12 medium-6<?php echo ( count( $testimonials ) == 1 ) ? ' medium-offset-3' : ' columns'; ?>">
 					<div class="testimonial-container">
-
 						<div class="testimonial-top row">
-
 							<div class="small-9 columns testimonial-meta">
-
 								<?php echo get_avatar( $testimonial['gravatar_email'], 96, null, false, array(
 									'class' => 'alignleft',
 								) ); ?>
@@ -122,44 +115,34 @@ $secondary_color = ( $secondary_color ) ? $secondary_color : '#51a0e9';
 										<?php echo $testimonial['name']; ?>
 									</strong>
 								</h6>
-										<span class="testimonial-company">
-											<?php echo $testimonial['company']; ?>
-										</span>
-
+								<span class="testimonial-company">
+									<?php echo $testimonial['company']; ?>
+								</span>
 							</div>
-
 							<div class="small-3 columns testimonial-quotation-mark">
 								<span class="fa fa-4x fa-quote-left"></span>
 							</div>
-
 						</div>
 
 						<div class="testimonial-bottom row">
-
 							<div class="small-12 columns testimonial-content">
 
-								<blockquote><?php echo apply_filters( 'the_content', '"' . $testimonial['content'] . '"' ); ?></blockquote>
+								<blockquote><?php echo apply_filters( 'the_content', $testimonial['content'] ); ?></blockquote>
 
 							</div>
-
 						</div>
-
 					</div>
-
 				</div>
 
 				<?php if ( $index == $max_columns ) : ?>
 
-				</div>
+					</div>
 
 				<?php
-
 				$index = 1;
 
 				else :
-
 					$index ++;
-
 				endif;
 
 			endforeach;
