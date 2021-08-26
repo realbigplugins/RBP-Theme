@@ -37,7 +37,7 @@ $secondary_color = ( $secondary_color ) ? $secondary_color : '#51a0e9';
 			<li><a href="/">Home</a></li>
 			<li><a href="/plugins">Plugins</a></li>
 			<li>
-			<span class="show-for-sr">Current: </span> <?php the_title(); ?>
+				<span class="show-for-sr">Current: </span><?php the_title(); ?>
 			</li>
 		</ul>
 
@@ -82,7 +82,6 @@ $secondary_color = ( $secondary_color ) ? $secondary_color : '#51a0e9';
 		if ( ! empty( $testimonials ) ) : ?>
 
 			<?php
-
 			$index = 1;
 
 			switch ( count( $testimonials ) ) {
@@ -95,7 +94,6 @@ $secondary_color = ( $secondary_color ) ? $secondary_color : '#51a0e9';
 				break;
 
 			}
-
 			?>
 
 			<div class="testimonials-section">
@@ -169,13 +167,13 @@ $secondary_color = ( $secondary_color ) ? $secondary_color : '#51a0e9';
 			if ( $index !== 1 ) : ?>
 
 				</div>
-			</div>
+				</div>
 
 			<?php endif; ?>
 
-		</div>
+			</div>
 
-	<?php endif; ?>
+		<?php endif; ?>
 	</main>
 	<aside>
 		<div class="aside-container">
@@ -213,7 +211,7 @@ $secondary_color = ( $secondary_color ) ? $secondary_color : '#51a0e9';
 					<!-- Accordion tab content: it would start in the open state due to using the `is-active` state class. -->
 					<div class="accordion-content" data-tab-content>
 
-							<?php if ( $documentations = rbm_cpts_get_p2p_children( 'documentation' ) ) :
+						<?php if ( $documentations = rbm_cpts_get_p2p_children( 'documentation' ) ) :
 
 							$documentation_link_text = _x( 'View plugin documentation', 'View Documentaion Link Text', THEME_ID );
 
@@ -226,66 +224,68 @@ $secondary_color = ( $secondary_color ) ? $secondary_color : '#51a0e9';
 								<?php echo $documentation_link_text; ?>
 							</a>
 
-							<?php endif; ?>
+						<?php endif; ?>
 
-							<?php $support_link_text = _x( 'Contact support', 'Contact Support Link Text', THEME_ID ); ?>
-							
-							<a href="/support/" class="button" title="<?php echo $support_link_text; ?>"><?php echo $support_link_text; ?></a>
+						<?php $support_link_text = _x( 'Contact support', 'Contact Support Link Text', THEME_ID ); ?>
+						
+						<a href="/support/" class="button" title="<?php echo $support_link_text; ?>"><?php echo $support_link_text; ?></a>
 							
 					</div>
 				</li>
-				<li class="accordion-item" data-accordion-item>
-					<!-- Accordion tab title -->
-					<a href="#" class="accordion-title">Details and Compatability</a>
+				<?php if ( get_post_meta( get_the_ID(), '_edd_sl_version', true ) || rbm_fh_get_field( 'requirements' ) ) : ?>
+					<li class="accordion-item" data-accordion-item>
+						<!-- Accordion tab title -->
+						<a href="#" class="accordion-title">Details and Compatability</a>
 
-					<!-- Accordion tab content: it would start in the open state due to using the `is-active` state class. -->
-					<div class="accordion-content" data-tab-content>
-						<?php if ( $current_version = get_post_meta( get_the_ID(), '_edd_sl_version', true ) ) : ?>
-							<div class="grid-x">
-								<div class="small-12 medium-5"><strong><?php echo _x( 'Version', 'Current Version Text', THEME_ID ); ?>: </strong></div>
-								<div class="small-12 medium-7">
-									<?php echo $current_version; ?>
+						<!-- Accordion tab content: it would start in the open state due to using the `is-active` state class. -->
+						<div class="accordion-content" data-tab-content>
+							<?php if ( $current_version = get_post_meta( get_the_ID(), '_edd_sl_version', true ) ) : ?>
+								<div class="grid-x">
+									<div class="small-12 medium-5"><strong><?php echo _x( 'Version', 'Current Version Text', THEME_ID ); ?>: </strong></div>
+									<div class="small-12 medium-7">
+										<?php echo $current_version; ?>
 
-									<?php if ( $documentation && class_exists( 'EDD_SL_Download' ) ) : 
+										<?php if ( $documentation && class_exists( 'EDD_SL_Download' ) ) : 
 
-										$sl_download = new EDD_SL_Download( get_the_ID() );
+											$sl_download = new EDD_SL_Download( get_the_ID() );
 
-										?>
-
-										<?php if ( $changelog = $sl_download->get_changelog() ) :
-
-											$changelog_link_text = _x( 'Changelog', 'Changelog Link Text', THEME_ID );
 											?>
-											<br />
-											<a href="<?php echo get_permalink( $documentation ); ?>#changelog"
-											title="<?php echo $changelog_link_text; ?>">
-												<?php echo $changelog_link_text; ?>
-											</a>
+
+											<?php if ( $changelog = $sl_download->get_changelog() ) :
+
+												$changelog_link_text = _x( 'Changelog', 'Changelog Link Text', THEME_ID );
+												?>
+												<br />
+												<a href="<?php echo get_permalink( $documentation ); ?>#changelog"
+												title="<?php echo $changelog_link_text; ?>">
+													<?php echo $changelog_link_text; ?>
+												</a>
+
+											<?php endif; ?>
 
 										<?php endif; ?>
-
-									<?php endif; ?>
+									</div>
 								</div>
-							</div>
-						<?php endif; ?>
+							<?php endif; ?>
 
-						<?php if ( $requirements = rbm_fh_get_field( 'requirements' ) ) : ?>
+							<?php if ( $requirements = rbm_fh_get_field( 'requirements' ) ) : ?>
 
-							<div class="grid-x padding-x">
+								<div class="grid-x padding-x">
 
-								<div class="small-12 medium-5"><strong><?php echo _x( 'Requirements', 'Requirements Header', THEME_ID ); ?>:</strong></div>
-								<div class="small-12 medium-7">
-									<ul class="requirements">
-										<?php foreach ( $requirements as $item ) : ?>
-											<li><?php echo $item['requirement']; ?></li>
-										<?php endforeach; ?>
-									</ul>
+									<div class="small-12 medium-5"><strong><?php echo _x( 'Requirements', 'Requirements Header', THEME_ID ); ?>:</strong></div>
+									<div class="small-12 medium-7">
+										<ul class="requirements">
+											<?php foreach ( $requirements as $item ) : ?>
+												<li><?php echo $item['requirement']; ?></li>
+											<?php endforeach; ?>
+										</ul>
+									</div>
 								</div>
-							</div>
 
-						<?php endif; ?>
-					</div>
-				</li>
+							<?php endif; ?>
+						</div>
+					</li>
+				<?php endif; ?>
 			</ul>
 		</div>
 	</aside>
