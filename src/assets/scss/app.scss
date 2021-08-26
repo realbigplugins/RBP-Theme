@@ -6,8 +6,11 @@
 @include foundation-global-styles;
 @include foundation-typography;
 @include foundation-forms;
+@include foundation-accordion;
+@include foundation-breadcrumbs;
 @include foundation-button;
 @include foundation-callout;
+@include foundation-xy-grid-classes;
 @include foundation-grid;
 @include foundation-top-bar;
 @include foundation-menu;
@@ -15,6 +18,7 @@
 @include foundation-off-canvas;
 @include foundation-dropdown;
 @include foundation-dropdown-menu;
+@include foundation-responsive-embed;
 @include foundation-visibility-classes;
 @include foundation-media-object;
 @include foundation-sticky;

@@ -318,6 +318,8 @@ add_action( 'after_setup_theme', function() {
 function rbp_download_query( $query ) {
     if ( $query->is_post_type_archive( 'download' ) && ! is_admin() && $query->is_main_query() ) {
         $query->set( 'posts_per_page', '9' );
+        $query->set( 'orderby', 'menu_order' );
+        $query->set( 'order', 'ASC' );
     }
 }
 add_action( 'pre_get_posts', 'rbp_download_query' );

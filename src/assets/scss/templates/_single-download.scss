@@ -1,6 +1,272 @@
 .single-download {
+
+    .container {
+        // Auto-centered box
+        max-width: 1300px;
+        margin: 0 auto;
+        padding: 30px;
+
+        // Set up the grid
+        display: grid;
+        grid-template-columns: 1fr 450px;
+        grid-template-rows: 1fr;
+        grid-auto-columns: 1fr;
+        gap: 0px 20px;
+        grid-auto-flow: column;
+        grid-template-areas:
+          "main aside";
+
+        @include breakpoint( medium down ) {
+            grid-template-columns: 1fr;
+            grid-template-areas:
+            "main"
+            "aside";
+            padding: 30px 0 0 0;
+        }
+    }
     
-    &, .off-canvas-content {
+    main {
+        grid-area: main;
+
+        @include breakpoint( medium down ) {
+            padding: 0 30px;
+        }
+
+        // Add spacing between all of the immediate children. Let the kids breathe!
+        > * {
+            margin: 2em 0;
+        }
+
+        > :first-child {
+            margin-top: 0;
+        }
+
+        > :last-child {
+            margin-bottom: 0;
+        }
+
+        .banner-image {
+            img {
+                object-fit: cover;
+                height: 200px;
+                width: 100%;
+                border-radius: 10px;
+                background-color: var(--primary-color);
+            }
+        }
+
+        .product-heading {
+            padding-bottom: 0.8em;
+            border-bottom: 1px solid $light-gray;
+
+            h1 {
+                margin-left: 0.8em;
+            }
+
+            .heading-row {
+                display: flex;
+                flex-direction: row;
+
+                img {
+                    width: 80px;
+                    height: 80px;
+                    object-fit: cover;
+                    border-radius: 10px;
+                    background-color: var(--primary-color);
+                }
+
+                &:first-of-type {
+                    margin-bottom: 20px;
+                }
+
+                p {
+                    font-size: 1.5em;
+
+                    @include breakpoint( medium down ) {
+                        font-size: 1.2em;
+                    }
+                }
+            }
+        }
+
+        .content {
+            h2 {
+                margin-top: 2em;
+                margin-bottom: .5em;
+            }
+        }
+    }
+    
+    aside {
+        grid-area: aside;
+
+        @include breakpoint( medium down ) {
+            margin-top: 1em;
+        }
+
+        .aside-container {
+            background-color: $light-gray;
+            padding: 10px 20px 20px 20px;
+
+            @include breakpoint( medium down ) {
+                padding: 20px;
+            }
+
+            position: sticky;
+            top: 120px;
+
+            @include breakpoint( medium down ) {
+                position: inherit;
+                top: inherit;
+            }
+        }
+
+        #download-buy {
+            margin-bottom: 1em;
+
+            .edd_download_purchase_form {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin-bottom: 0;
+        
+                .edd_price_options {
+                    text-align: center;
+
+                    &:after {
+                        display: block;
+                        width: 100%;
+                        content: var(--disclaimer);
+                        font-style: italic;
+                        font-size: .8em;
+                        color: #333;
+                    }
+
+                    ul {
+                        display: flex;
+                        margin-bottom: 1em;
+
+                        @include breakpoint( medium down ) {
+                            flex-direction: column;
+                        }
+
+                        li {
+                            padding: 0 5px;
+                            border-bottom: 3px solid $light-gray;
+
+                            @include breakpoint( medium down ) {
+                                border: none;
+                                padding-bottom: 15px;
+                            }
+
+                            &:hover, &:active {
+                                border-bottom-color: $secondary-color;
+
+                                @include breakpoint( medium down ) {
+                                    border: none;
+                                    background-color: #fff;
+                                }
+                            }
+
+                            &.active {
+                                border-bottom: 3px solid $primary-color;
+
+                                @include breakpoint( medium down ) {
+                                    border: none;
+                                    background-color: #fff;
+                                }
+                            }
+
+                            label {
+                                display: flex;
+                                flex-direction: column;
+
+                                input[type=radio] {
+                                    visibility: hidden;
+                                    margin: 0;
+                                    height: 0;
+                                    width: 0;
+                                }
+
+                                .edd_price_option_name {
+                                    font-weight: bold;
+                                    line-height: 1.2em;
+                                    color: $primary-color;
+                                }
+
+                                .edd_price_option_sep {
+                                    display: none;
+                                }
+
+                                .edd_price_option_price {
+                                    font-weight: bold;
+                                    font-size: 1.5em;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .accordion {
+            background: none;
+
+            a.accordion-title {
+                color: $black;
+                font-weight: bold;
+                font-size: 1.2em;
+                border: none;
+
+                &:hover {
+                    text-decoration: none;
+                    color: $primary-color;
+                }
+            }
+
+            .accordion-content {
+                background: none;
+                padding: 0.5em 1em;
+
+                > .grid-x {
+                    margin: 2em 0;
+                }
+        
+                > .grid-x:first-child {
+                    margin-top: 0;
+                }
+        
+                > .grid-x:last-child {
+                    margin-bottom: 0;
+                }
+
+                ul.included-features {
+                    list-style-type: none;
+                    margin-left: 0;
+
+                    li:before {
+                        content: "\2714";
+                        color: $secondary-color;
+                        margin-right: 0.5em;
+                    }
+                }
+
+                ul.requirements {
+                    list-style: none;
+                    margin-left: 0;
+                }
+
+                .secondary {
+                    color: #fff;
+                }
+            }
+        }
+    }
+
+}
+      
+    
+/*    &, .off-canvas-content {
         background: $light-gray;
     }
     
@@ -488,4 +754,4 @@
         
     }
 
-}
+}*/

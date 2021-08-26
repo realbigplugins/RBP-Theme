@@ -35,7 +35,7 @@ get_header();
 
     <section class="store-template">
 
-        <?php echo do_shortcode( '[facetwp facet="categories"]' ); ?>
+        <?php echo facetwp_display( 'facet', 'categories' ); ?>
 
         <div class="animate-on-scroll scale-in-up">
 
@@ -98,18 +98,7 @@ get_header();
             </div>
 
             <div class="pagination">
-                <?php
-                global $wp_query;
-
-                $big = 999999999; // need an unlikely integer
-
-                echo paginate_links( array(
-                    'base'    => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
-                    'format'  => '?paged=%#%',
-                    'current' => max( 1, get_query_var( 'paged' ) ),
-                    'total'   => $wp_query->max_num_pages
-                ) );
-                ?>
+                <?php echo facetwp_display( 'facet', 'load_more_pager' ); ?>
             </div>
 
         <?php else : ?>

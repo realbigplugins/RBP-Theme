@@ -27,6 +27,36 @@
         
     }
 
+    .facetwp-facet-categories {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .facetwp-radio {
+        background-image: none;
+        padding-left: 0;
+        @include button( false, $primary-color, scale-color( $primary-color, $lightness: -15% ), 'auto', 'solid' );
+        margin: 0 5px;
+
+
+        &.checked {
+            background-image: none;
+            background-color: $secondary-color;
+        }
+
+        .facetwp-counter {
+            display: none;
+        }
+    }
+
+    .facetwp-load-more {
+        @include button( false, $primary-color, scale-color( $primary-color, $lightness: -15% ), 'auto', 'solid' );
+        margin-top: 2.5em;
+        padding: 1.2em 2em;
+        font-size: 1rem;
+    }
+
     .product-image {
 
         a {
