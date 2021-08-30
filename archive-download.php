@@ -12,6 +12,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 get_header();
+
+global $wp_query;
 ?>
 
 <section class="downloads-header">
@@ -98,7 +100,11 @@ get_header();
             </div>
 
             <div class="pagination">
-                <?php echo facetwp_display( 'facet', 'load_more_pager' ); ?>
+                <?php
+                if ( $wp_query->have_posts() ) : 
+                    echo facetwp_display( 'facet', 'load_more_pager' ); 
+                endif;
+                ?>
             </div>
 
         <?php else : ?>
