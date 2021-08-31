@@ -59,11 +59,11 @@ global $wp_query;
                 }
                 ?>
             
-            <div class="row <?php echo $column_classes; ?>" data-equalizer data-equalize-by-row="true">
+            <div class="grid-x <?php echo $column_classes; ?>" data-equalizer data-equalize-by-row="true">
 
                 <?php while ( have_posts() ) : the_post(); ?>
 
-                        <div class="product column">
+                        <div class="product cell">
                             
                             <div class="product-container">
                                 
@@ -97,14 +97,6 @@ global $wp_query;
 
                 <?php endwhile; ?>
 
-            </div>
-
-            <div class="pagination">
-                <?php
-                if ( $wp_query->have_posts() ) : 
-                    echo facetwp_display( 'facet', 'load_more_pager' ); 
-                endif;
-                ?>
             </div>
 
         <?php else : ?>
