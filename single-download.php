@@ -54,9 +54,12 @@ $secondary_color = ( $secondary_color ) ? $secondary_color : '#51a0e9';
 				<h1 class="title"><span itemprop="name"><?php the_title(); ?></span></h1>
 				<?php remove_filter( 'the_title', 'rbp_alternate_download_title' ); ?>
 			</div>
+
+			<?php if ( $subheading = rbm_fh_get_field( 'subheading' ) ) : ?>
 			<div class="heading-row">
-				<p class="subheading">Introducing a powerful front-end Gradebook and Report Card System for LearnDash</p>
+				<p class="subheading"><?php echo $subheading; ?></p>
 			</div>
+			<?php endif; ?>
 		</div>
 
 		<?php $video_url = rbm_fh_get_field( 'video' );
@@ -74,89 +77,6 @@ $secondary_color = ( $secondary_color ) ? $secondary_color : '#51a0e9';
 		<div class="content">
 			<?php the_content(); ?>
 		</div>
-
-		<hr />
-
-		<?php $testimonials = rbm_fh_get_field( 'testimonials' );
-
-		if ( ! empty( $testimonials ) ) : ?>
-
-			<?php
-			$index = 1;
-
-			switch ( count( $testimonials ) ) {
-				case 1 :
-					$max_columns = 1;
-					break;
-				default :
-					$max_columns = 2;
-					break;
-			}
-			?>
-
-			<div class="testimonials-section">
-
-				<?php foreach ( $testimonials as $testimonial ) : ?>
-
-				<?php if ( $index == 1 ) : ?>
-					<div class="row">
-				<?php endif; ?>
-
-				<div class="testimonial small-12 medium-6<?php echo ( count( $testimonials ) == 1 ) ? ' medium-offset-3' : ' columns'; ?>">
-					<div class="testimonial-container">
-						<div class="testimonial-top row">
-							<div class="small-9 columns testimonial-meta">
-								<?php echo get_avatar( $testimonial['gravatar_email'], 96, null, false, array(
-									'class' => 'alignleft',
-								) ); ?>
-
-								<h6 class="testimonial-name">
-									<strong>
-										<?php echo $testimonial['name']; ?>
-									</strong>
-								</h6>
-								<span class="testimonial-company">
-									<?php echo $testimonial['company']; ?>
-								</span>
-							</div>
-							<div class="small-3 columns testimonial-quotation-mark">
-								<span class="fa fa-4x fa-quote-left"></span>
-							</div>
-						</div>
-
-						<div class="testimonial-bottom row">
-							<div class="small-12 columns testimonial-content">
-
-								<blockquote><?php echo apply_filters( 'the_content', $testimonial['content'] ); ?></blockquote>
-
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<?php if ( $index == $max_columns ) : ?>
-
-					</div>
-
-				<?php
-				$index = 1;
-
-				else :
-					$index ++;
-				endif;
-
-			endforeach;
-
-			if ( $index !== 1 ) : ?>
-
-				</div>
-				</div>
-
-			<?php endif; ?>
-
-			</div>
-
-		<?php endif; ?>
 	</main>
 	<aside>
 		<div class="aside-container">
