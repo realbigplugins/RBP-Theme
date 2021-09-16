@@ -19,22 +19,7 @@ $hire_us_page = get_page_by_title( 'Hire Us' );
 
 <div class="page-content row">
 
-	<section class="row text-center call-to-action animate-on-scroll fade-in">
-        
-        <div class="small-12 columns">
-		
-            <h1>
-                <?php echo get_theme_mod( 'home_tagline', __( 'Quality WordPress Plugins<br />Built With Love', THEME_ID ) ); ?>
-            </h1>
-            <a href="/<?php echo EDD_SLUG; ?>/" class="button large secondary slide-right">
-                <span class="button-text">
-                    <?php echo get_theme_mod( 'home_button_text', __( 'View Our Plugins', THEME_ID ) ); ?>
-                </span>
-            </a>
-            
-        </div>
-        
-	</section>
+    <?php the_content() ?>
     
 </div>
 
