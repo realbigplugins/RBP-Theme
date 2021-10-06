@@ -79,3 +79,8 @@ add_theme_support( 'title-tag' );
  * Enables post and comment RSS feed links to the head.
  */
 //add_theme_support( 'automatic-feed-links' );
+
+/**
+ * Adds theme support for full-width and wide-width blocks in the block editor
+ */
+add_theme_support( 'align-wide' );

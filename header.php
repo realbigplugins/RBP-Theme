@@ -76,7 +76,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<div id="notice-banner" class="banner text-center">
 			</div>
 
-			<nav class="sticky top-bar" data-sticky data-sticky-on="small" data-margin-top="<?php echo is_admin_bar_showing() ? 2 : 0; ?>" style="width:100%" data-top-anchor="notice-banner:bottom">
+			<nav class="sticky top-bar is-stuck" data-sticky data-sticky-on="small" data-margin-top="<?php echo is_admin_bar_showing() ? 2 : 0; ?>" style="width:100%" data-top-anchor="notice-banner:bottom">
 
 				<div class="top-bar-left mobile-menu show-for-small-only">
 					<div class="menu-icon-wrapper">

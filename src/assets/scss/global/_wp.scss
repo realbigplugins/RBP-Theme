@@ -85,6 +85,24 @@ a img.aligncenter {
     padding: 0 4px 5px;
 }
 
+/* Full-width and wide-width support in the block editor */
+.alignfull {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+}
+
+.alignwide {
+    width: 100vw;
+    margin: 2rem calc(50% - 50vw);
+}
+  
+@media (min-width: 960px) {
+    .alignwide {
+        width: calc(100% + 20vw);
+        margin: 2rem -10vw;
+    }
+}
+
 /* Text meant only for screen readers. */
 .screen-reader-text {
 	clip: rect(1px, 1px, 1px, 1px);

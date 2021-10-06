@@ -27,18 +27,12 @@ Base element settings (no classes or id's).
 }
 
 html {
-    
     @include breakpoint( small only ) {
-        
         &.off-canvas-fix {
-        
             height: 100%;
             margin-top: 0 !important; // EDD or some other plugin is adding in-line CSS below my inclusion of our styles.
-            
         }
-        
     }
-    
 }
 
 section {
@@ -51,23 +45,9 @@ section {
 }
 
 #site-content {
-    
     height: 100%;
     padding-top: $site-content-padding;
     //background-color: $body-background;
-    
-}
-
-body.page.has-post-thumbnail {
-
-    #site-content {
-        padding-top: 0;
-    }
-
-}
-
-.page-content {
-    padding: 30px;
 }
 
 .admin-bar {
@@ -83,7 +63,6 @@ body.page.has-post-thumbnail {
 }
 
 img[class*=" wp-image-"] { // Catch-all to grab images added via "Add Media" button
-
     @include thumbnail;
     border: none;
     box-shadow: none;
@@ -91,7 +70,6 @@ img[class*=" wp-image-"] { // Catch-all to grab images added via "Add Media" but
     &:hover, &:focus {
         box-shadow: none;
     }
-
 }
 
 .pagination {
@@ -99,17 +77,14 @@ img[class*=" wp-image-"] { // Catch-all to grab images added via "Add Media" but
 }
 
 .widget {
-
     list-style-type: none;
 
 }
 
 ul.multi-column, ol.multi-column {
-    
     li {
         float: left !important; // Just apply Column Classes to the <li>s as you would anything else and they will span multiple columns
     }
-    
 }
 
 // This ensures we can ignore other areas wehere we don't want these styles
@@ -129,32 +104,22 @@ ul.multi-column, ol.multi-column {
 @each $size, $breakpoint in $breakpoints {
 
     @if $size == 'small' {
-
         // Parent element needs a fixed height
         // This is normally achieved via Equalizer
         .vertical-align {
-
             position: relative;
             top: 50%;
             transform: translateY( -50% );
-            
         }
-
     }
+
     @else {
-
         .#{$size}-vertical-align {
-
             @include breakpoint( $size ) {
-
                 position: relative;
                 top: 50%;
                 transform: translateY( -50% );
-
             }
-
         }
-
     }
-
 }
