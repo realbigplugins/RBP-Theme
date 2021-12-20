@@ -84,3 +84,6 @@ add_theme_support( 'title-tag' );
  * Adds theme support for full-width and wide-width blocks in the block editor
  */
 add_theme_support( 'align-wide' );
+
+add_theme_support( 'editor-styles' );
+add_editor_style( 'dist/assets/css/app.css' );

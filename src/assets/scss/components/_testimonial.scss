@@ -1,0 +1,115 @@
+.columns, .wp-block-column {
+
+    @include drop-shadow-column( 'testimonial' );
+
+}
+
+.testimonial {
+
+    figcaption {
+        display: inline-block;
+    }
+    
+    .testimonial-container {
+        
+        background-color: white;
+        
+        @each $breakpoint, $gutter in $grid-column-gutter {
+            $padding: rem-calc($gutter) / 2;
+
+            @include breakpoint($breakpoint) {
+
+                padding: $padding * 1.5;
+
+            }
+
+        }
+        
+        .testimonial-top {
+            
+            .testimonial-meta {
+                
+                .avatar.alignleft {
+                    margin-top: 0;
+                }
+
+                cite {
+
+                    &:before {
+                        content: '';
+                    }
+    
+                }
+                
+                .testimonial-name {
+
+                    margin-bottom: 0;
+
+                    input {
+                        font-weight: $global-weight-bold;
+                    }
+
+                }
+                
+                .testimonial-company {
+
+                    font-style: initial;
+                    font-size: inherit;
+
+                    &, input {
+                        color: $dark-gray;
+                    }
+
+                }
+
+                .testimonial-name, .testimonial-company {
+
+                    .components-base-control, input {
+                        font-size: inherit;
+                    }
+
+                    input {
+                        margin-bottom: 0;
+                        border: none;
+                        box-shadow: none;
+                        padding: 0;
+                        height: auto;
+                        line-height: inherit;
+                    }
+
+                }
+                
+            }
+            
+            .testimonial-quotation-mark {
+                
+                text-align: right;
+                color: $light-gray;
+                
+                .fa {
+                    font-size: 4.5em;
+                }
+                
+            }
+            
+        }
+
+        blockquote {
+
+            border: none;
+            margin-bottom: 0;
+            padding: 0;
+
+            &, p {
+                color: $black;
+            }
+
+            p:last-of-type {
+                margin-bottom: 0;
+            }
+
+        }
+        
+    }
+    
+}
