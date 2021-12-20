@@ -37,7 +37,21 @@ global $wp_query;
 
     <section class="store-template">
 
-        <?php echo facetwp_display( 'facet', 'categories' ); ?>
+        <?php if ( function_exists( 'facetwp_display' ) ) : ?>
+
+            <?php echo facetwp_display( 'facet', 'download_categories' ); ?>
+
+        <?php elseif ( current_user_can( 'manage_options' ) ) : ?>
+
+            <p>
+                Please activate FacetWP and then add the following under Settings -> FacetWP -> Settings -> Import/Export in the Import Field:
+            </p>
+
+            <code>
+                {"facets":[{"name":"download_categories","label":"Download Categories","type":"checkboxes","source":"tax/download_category","parent_term":"","modifier_type":"off","modifier_values":"","hierarchical":"yes","show_expanded":"no","ghosts":"no","preserve_ghosts":"no","operator":"or","orderby":"count","count":"9999","soft_limit":"10"}]}
+            </code>
+
+        <?php endif; ?>
 
         <div class="animate-on-scroll scale-in-up">
 
