@@ -171,18 +171,75 @@ $secondary_color = ( $secondary_color ) ? $secondary_color : '#51a0e9';
 								</div>
 							<?php endif; ?>
 
-							<?php if ( $requirements = rbm_fh_get_field( 'requirements' ) ) : ?>
+							<?php 
+
+							$readme = false;
+							if ( function_exists( 'rbm_get_readme' ) ) {
+								$readme = rbm_get_readme();
+							}
+
+							$requirements = rbm_fh_get_field( 'requirements' );
+							
+							if ( $readme || $requirements ) : ?>
 
 								<div class="grid-x padding-x">
 
-									<div class="small-12 medium-5"><strong><?php echo _x( 'Requirements', 'Requirements Header', THEME_ID ); ?>:</strong></div>
-									<div class="small-12 medium-7">
+									<div class="small-12 medium-5 cell">
+										<strong><?php echo _x( 'Requirements', 'Requirements Header', THEME_ID ); ?>:</strong>
+									</div>
+
+									<div class="small-12 medium-7 cell">
 										<ul class="requirements">
-											<?php foreach ( $requirements as $item ) : ?>
-												<li><?php echo $item['requirement']; ?></li>
-											<?php endforeach; ?>
+
+											<?php if ( $readme && function_exists( 'rbm_get_custom_readme_headers' ) && function_exists( 'rbm_get_readme_header' ) ) : 
+
+												$custom_headers = rbm_get_custom_readme_headers();
+
+												$custom_headers = array_filter( $custom_headers, function( $key, $text ) {
+
+													if ( strpos( $key, 'requires' ) === false ) return false;
+
+													return true;
+
+												}, ARRAY_FILTER_USE_BOTH );
+
+												// WP uses some not especially descriptive names for WP vs PHP headers, so this helps account for this
+												// The data has already been read via rbm_get_readme(), so we don't need to worry about the array keys below not matching
+												$all_headers = array_unique( array_merge( array(
+													//'Tested up to WordPress' => 'tested',
+													'Requires at least WordPress' => 'requires',
+													'Requires at least PHP' => 'requires_php',
+												), $custom_headers ) );
+
+												foreach ( $all_headers as $text => $key ) : 
+
+													$value = rbm_get_readme_header( $key );
+
+													if ( ! $value ) continue;
+
+													if ( array_key_exists( $text, $custom_headers ) ) : 
+
+														$text = preg_replace( '/(Requires)/i', '$1 at least', $text );	
+
+													endif; ?>
+
+													<li><?php echo $text; ?> v<?php echo $value; ?></li>
+
+													<?php
+
+												endforeach;
+
+											else : ?>
+											
+												<?php foreach ( $requirements as $item ) : ?>
+													<li><?php echo $item['requirement']; ?></li>
+												<?php endforeach; ?>
+
+											<?php endif; ?>
+
 										</ul>
 									</div>
+
 								</div>
 
 							<?php endif; ?>
