@@ -178,6 +178,72 @@ $secondary_color = ( $secondary_color ) ? $secondary_color : '#51a0e9';
 								$readme = rbm_get_readme();
 							}
 
+							if ( $readme ) {
+
+								if ( function_exists( 'rbm_get_custom_readme_headers' ) && function_exists( 'rbm_get_readme_header' ) ) : 
+
+									$custom_headers = rbm_get_custom_readme_headers();
+
+									$custom_headers = array_filter( $custom_headers, function( $key, $text ) {
+
+										if ( strpos( $key, 'tested' ) === false ) return false;
+
+										return true;
+
+									}, ARRAY_FILTER_USE_BOTH );
+
+									// The only default header for this in WP is for WP itself
+									// WP's official header text doesn't specify it is WordPress though, so we've added that here
+									$all_headers = array_unique( array_merge( array(
+										'WordPress' => 'tested',
+									), $custom_headers ) );
+
+									$found_headers = array_filter( $all_headers, function( $key, $text ) use ( $readme ) {
+
+										return array_key_exists( $key, $readme );
+
+									}, ARRAY_FILTER_USE_BOTH );
+								
+									if ( ! empty( $found_headers ) ) : ?>
+
+										<div class="grid-x padding-x">
+
+											<div class="small-12 medium-5 cell">
+												<strong><?php echo _x( 'Tested With', 'Tested With Header', THEME_ID ); ?>:</strong>
+											</div>
+
+											<div class="small-12 medium-7 cell">
+												<ul class="tested-to">
+
+													<?php foreach ( $found_headers as $text => $key ) : 
+
+														$value = rbm_get_readme_header( $key );
+
+														if ( ! $value ) continue;
+
+														if ( array_key_exists( $text, $custom_headers ) ) : 
+
+															$text = preg_replace( '/tested up to/i', '', $text );	
+
+														endif;
+														
+													?>
+
+														<li><?php echo $text; ?> v<?php echo $value; ?></li>
+
+													<?php endforeach; ?>
+
+												</ul>
+											</div>
+
+										</div>
+
+									<?php endif;
+
+								endif;
+
+							}
+
 							$requirements = rbm_fh_get_field( 'requirements' );
 							
 							if ( $readme || $requirements ) : ?>
