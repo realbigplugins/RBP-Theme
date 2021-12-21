@@ -273,8 +273,8 @@ $secondary_color = ( $secondary_color ) ? $secondary_color : '#51a0e9';
 												// The data has already been read via rbm_get_readme(), so we don't need to worry about the array keys below not matching
 												$all_headers = array_unique( array_merge( array(
 													//'Tested up to WordPress' => 'tested',
-													'Requires at least WordPress' => 'requires',
-													'Requires at least PHP' => 'requires_php',
+													'WordPress' => 'requires',
+													'PHP' => 'requires_php',
 												), $custom_headers ) );
 
 												foreach ( $all_headers as $text => $key ) : 
@@ -285,11 +285,11 @@ $secondary_color = ( $secondary_color ) ? $secondary_color : '#51a0e9';
 
 													if ( array_key_exists( $text, $custom_headers ) ) : 
 
-														$text = preg_replace( '/(Requires)/i', '$1 at least', $text );	
+														$text = preg_replace( '/Requires/i', '', $text );
 
 													endif; ?>
 
-													<li><?php echo $text; ?> v<?php echo $value; ?></li>
+													<li><?php echo $text; ?> v<?php echo $value; ?> <?php _e( 'or higher', 'real-big-plugins' ); ?></li>
 
 													<?php
 
