@@ -245,8 +245,38 @@ $secondary_color = ( $secondary_color ) ? $secondary_color : '#51a0e9';
 							}
 
 							$requirements = rbm_fh_get_field( 'requirements' );
+
+							$found_headers = array();
+
+							if ( function_exists( 'rbm_get_custom_readme_headers' ) && function_exists( 'rbm_get_readme_header' ) ) : 
+
+								$custom_headers = rbm_get_custom_readme_headers();
+
+								$custom_headers = array_filter( $custom_headers, function( $key, $text ) {
+
+									if ( strpos( $key, 'requires' ) === false ) return false;
+
+									return true;
+
+								}, ARRAY_FILTER_USE_BOTH );
+
+								// WP uses some not especially descriptive names for WP vs PHP headers, so this helps account for this
+								// The data has already been read via rbm_get_readme(), so we don't need to worry about the array keys below not matching
+								$all_headers = array_unique( array_merge( array(
+									//'Tested up to WordPress' => 'tested',
+									'WordPress' => 'requires',
+									'PHP' => 'requires_php',
+								), $custom_headers ) );
+
+								$found_headers = array_filter( $all_headers, function( $key, $text ) use ( $readme ) {
+
+									return array_key_exists( $key, $readme );
+
+								}, ARRAY_FILTER_USE_BOTH );
+
+							endif;
 							
-							if ( $readme || $requirements ) : ?>
+							if ( ! empty( $found_headers ) || $requirements ) : ?>
 
 								<div class="grid-x padding-x">
 
@@ -257,27 +287,9 @@ $secondary_color = ( $secondary_color ) ? $secondary_color : '#51a0e9';
 									<div class="small-12 medium-7 cell">
 										<ul class="requirements">
 
-											<?php if ( $readme && function_exists( 'rbm_get_custom_readme_headers' ) && function_exists( 'rbm_get_readme_header' ) ) : 
+											<?php if ( ! empty( $found_headers ) ) : 
 
-												$custom_headers = rbm_get_custom_readme_headers();
-
-												$custom_headers = array_filter( $custom_headers, function( $key, $text ) {
-
-													if ( strpos( $key, 'requires' ) === false ) return false;
-
-													return true;
-
-												}, ARRAY_FILTER_USE_BOTH );
-
-												// WP uses some not especially descriptive names for WP vs PHP headers, so this helps account for this
-												// The data has already been read via rbm_get_readme(), so we don't need to worry about the array keys below not matching
-												$all_headers = array_unique( array_merge( array(
-													//'Tested up to WordPress' => 'tested',
-													'WordPress' => 'requires',
-													'PHP' => 'requires_php',
-												), $custom_headers ) );
-
-												foreach ( $all_headers as $text => $key ) : 
+												foreach ( $found_headers as $text => $key ) : 
 
 													$value = rbm_get_readme_header( $key );
 
