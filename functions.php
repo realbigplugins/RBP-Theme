@@ -552,3 +552,36 @@ add_action( 'wp_head', function() {
     <?php
 
 } );
+
+/**
+ * Enable Gutenberg for Downloads
+ * 
+ * @since	{{VERSION}}
+ * @return  boolean
+ */
+add_filter( 'use_block_editor_for_post_type', function( $bool, $post_type ) {
+
+    if ( $post_type !== 'download' ) return $bool;
+
+    return true;
+
+}, 999, 2 );
+
+/**
+ * This arg needs to be true for Gutenberg to load
+ *
+ * @param   array   $args       Register Post Type Args
+ * @param   string  $post_type  Post Type
+ *
+ * @since   {{VERSION}}
+ * @return  array               Register Post Type Args
+ */
+add_filter( 'register_post_type_args', function( $args, $post_type ) {
+
+    if ( $post_type !== 'download' ) return $args;
+
+    $args['show_in_rest'] = true;
+
+    return $args;
+
+}, 10, 2 );
