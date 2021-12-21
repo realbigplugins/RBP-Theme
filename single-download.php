@@ -62,21 +62,185 @@ $secondary_color = ( $secondary_color ) ? $secondary_color : '#51a0e9';
 			<?php endif; ?>
 		</div>
 
-		<?php $video_url = rbm_fh_get_field( 'video' );
+		<?php if ( has_blocks() ) : ?>
+
+			<div class="content">
+				<?php the_content(); ?>
+			</div>
+
+		<?php else : ?>
+
+			<?php $features = rbm_fh_get_field( 'features' );
+
+			if ( ! empty( $features ) ) : ?>
+
+				<div class="features-section">
+
+					<?php
+
+					$index = 0;
+
+					foreach ( $features as $feature ) : ?>
+
+						<div class="feature">
+
+							<div class="row" data-equalizer data-equalize-on="medium">
+
+								<div class="feature-content small-12 medium-6 columns
+								<?php echo $index % 2 !== 0 ? 'medium-push-6' : ''; ?>" data-equalizer-watch>
+									<div class="medium-vertical-align">
+										<h3><strong><?php echo $feature['title']; ?></strong></h3>
+										<?php echo apply_filters( 'the_content', $feature['content'] ); ?>
+									</div>
+								</div>
+
+								<div class="feature-image small-12 medium-6 columns
+								<?php echo $index % 2 !== 0 ? 'medium-pull-6' : ''; ?>" data-equalizer-watch>
+									<div class="medium-vertical-align">
+										<a href="<?php echo wp_get_attachment_url( $feature['image'], 'full' ); ?>">
+											<?php echo wp_get_attachment_image( $feature['image'], 'full' ); ?>
+										</a>
+									</div>
+								</div>
+
+							</div>
+
+						</div>
+
+						<?php
+
+						$index ++;
+
+					endforeach; ?>
+
+				</div>
+
+			<?php endif; ?>
+
+			<?php $testimonials = rbm_fh_get_field( 'testimonials' );
+
+			if ( ! empty( $testimonials ) ) : ?>
+
+				<?php
+
+				$index = 1;
+
+				switch ( count( $testimonials ) ) {
+
+					case 1 :
+						$max_columns = 1;
+						break;
+					default :
+						$max_columns = 2;
+						break;
+
+				}
+
+				?>
+
+				<div class="testimonials-section">
+
+				<?php foreach ( $testimonials as $testimonial ) : ?>
+
+					<?php if ( $index == 1 ) : ?>
+						<div class="row">
+					<?php endif; ?>
+
+					<div
+						class="testimonial small-12 medium-6<?php echo ( count( $testimonials ) == 1 ) ? ' medium-offset-3' : ' columns'; ?>">
+
+						<div class="testimonial-container">
+
+							<div class="testimonial-top row">
+
+								<div class="small-9 columns testimonial-meta">
+
+									<?php echo get_avatar( $testimonial['gravatar_email'], 96, null, false, array(
+										'class' => 'alignleft',
+									) ); ?>
+
+									<h6 class="testimonial-name">
+										<strong>
+											<?php echo $testimonial['name']; ?>
+										</strong>
+									</h6>
+											<span class="testimonial-company">
+												<?php echo $testimonial['company']; ?>
+											</span>
+
+								</div>
+
+								<div class="small-3 columns testimonial-quotation-mark">
+									<span class="fa fa-4x fa-quote-left"></span>
+								</div>
+
+							</div>
+
+							<div class="testimonial-bottom row">
+
+								<div class="small-12 columns testimonial-content">
+
+									<blockquote><?php echo apply_filters( 'the_content', '"' . $testimonial['content'] . '"' ); ?></blockquote>
+
+								</div>
+
+							</div>
+
+						</div>
+
+					</div>
+
+					<?php if ( $index == $max_columns ) : ?>
+
+						</div>
+
+						<?php
+
+						$index = 1;
+
+					else :
+
+						$index ++;
+
+					endif;
+
+				endforeach;
+
+				if ( $index !== 1 ) : ?>
+
+					</div>
+					</div>
+
+				<?php endif; ?>
+
+				</div>
+
+			<?php endif; ?>
+
+			<?php $video_url = rbm_fh_get_field( 'video' );
 
 			if ( ! empty( $video_url ) ) : ?>
 
 				<div class="video-section">
-					<div class="responsive-embed widescreen">
-						<?php echo wp_oembed_get( $video_url ); ?>
+
+					<div class="row">
+						<div class="small-12 columns">
+
+							<div class="video-container">
+
+								<?php echo wp_oembed_get( $video_url ); ?>
+
+							</div>
+
+						</div>
 					</div>
+
 				</div>
+
+			<?php endif; ?>
 
 		<?php endif; ?>
 
-		<div class="content">
-			<?php the_content(); ?>
-		</div>
 	</main>
 	<aside>
 		<div class="aside-container">
