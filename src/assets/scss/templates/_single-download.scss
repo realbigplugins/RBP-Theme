@@ -1,36 +1,6 @@
 .single-download {
-
-    .container {
-        // Auto-centered box
-        max-width: 1300px;
-        margin: 0 auto;
-        padding: 80px 30px 30px 30px;
-
-        // Set up the grid
-        display: grid;
-        grid-template-columns: 1fr 450px;
-        grid-template-rows: 1fr;
-        grid-auto-columns: 1fr;
-        gap: 0px 40px;
-        grid-auto-flow: column;
-        grid-template-areas:
-          "main aside";
-
-        @include breakpoint( medium down ) {
-            grid-template-columns: 1fr;
-            grid-template-areas:
-            "main"
-            "aside";
-            padding: 30px 0 0 0;
-        }
-    }
     
     main {
-        grid-area: main;
-
-        @include breakpoint( medium down ) {
-            padding: 0 30px;
-        }
 
         // Add spacing between all of the immediate children. Let the kids breathe!
         > * {
@@ -48,16 +18,16 @@
         .banner-image {
             img {
                 object-fit: cover;
-                height: 200px;
+                height: rem-calc( 200 );
                 width: 100%;
-                border-radius: 10px;
+                border-radius: rem-calc( 10 );
                 background-color: var(--primary-color);
             }
         }
 
         .product-heading {
             padding-bottom: 0.8em;
-            border-bottom: 1px solid $light-gray;
+            border-bottom: rem-calc( 1 ) solid $light-gray;
 
             h1 {
                 margin-left: 0.8em;
@@ -68,15 +38,15 @@
                 flex-direction: row;
 
                 img {
-                    width: 80px;
-                    height: 80px;
+                    width: rem-calc( 80 );
+                    height: rem-calc( 80 );
                     object-fit: cover;
-                    border-radius: 10px;
+                    border-radius: rem-calc( 10 );
                     background-color: var(--primary-color);
                 }
 
                 &:first-of-type {
-                    margin-bottom: 20px;
+                    margin-bottom: rem-calc( 20 );
                 }
 
                 p {
@@ -98,17 +68,16 @@
     }
     
     aside {
-        grid-area: aside;
 
-        @include breakpoint( medium down ) {
-            margin-top: 1em;
+        @include breakpoint( medium ) {
+            width: rem-calc( 450 );
         }
 
         .aside-container {
             background-color: $light-gray;
-            padding: 20px;
+            padding: rem-calc( 20 );
             position: sticky;
-            top: 120px;
+            top: rem-calc( 120 );
 
             @include breakpoint( medium down ) {
                 position: inherit;
@@ -131,7 +100,7 @@
         
                 .edd_price_options {
                     text-align: center;
-                    margin-top: -10px;
+                    margin-top: -rem-calc( 10 );
 
                     @include breakpoint( medium down ) {
                         margin-top: 0;
@@ -155,12 +124,12 @@
                         }
 
                         li {
-                            padding: 0 5px;
-                            border-bottom: 3px solid $light-gray;
+                            padding: 0 rem-calc( 5 );
+                            border-bottom: rem-calc( 3 ) solid $light-gray;
 
                             @include breakpoint( medium down ) {
                                 border: none;
-                                padding-bottom: 15px;
+                                padding-bottom: rem-calc( 15 );
                             }
 
                             &:hover, &:active {
@@ -173,7 +142,7 @@
                             }
 
                             &.active {
-                                border-bottom: 3px solid $primary-color;
+                                border-bottom: rem-calc( 3 ) solid $primary-color;
 
                                 @include breakpoint( medium down ) {
                                     border: none;
@@ -278,6 +247,11 @@
                 }
             }
         }
+    }
+
+    main, aside {
+        padding-top: $site-content-padding; // #site-content padding
+        padding-bottom: $site-content-padding / 2;
     }
 
     .wp-block-yoast-faq-block  {
