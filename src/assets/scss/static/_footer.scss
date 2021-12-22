@@ -1,15 +1,17 @@
 #site-footer {
-  background-color: $black;
-  color: $light-gray;
+  background-color: $white;
+  color: $black;
   padding-top: 1em;
   padding-bottom: 1em;
+
+  border-top: rem-calc( 1 ) solid $dark-gray;
 
   .site-footer-head {
     @extend h3;
   }
 
   .site-footer-subhead {
-    color: $dark-gray;
+    color: $black;
   }
 
   .site-footer-top {
@@ -28,7 +30,7 @@
     border-bottom: 2px solid $dark-gray;
     height: 87px;
     width: 100%;
-    background: url("../../../images/rbm-logo-footer.png") 50% bottom no-repeat;
+    background: url("../img/rbm-logo-footer.png") 50% bottom no-repeat;
     background-size: 127px 85px;
     margin: $paragraph-margin-bottom auto;
     width: $grid-row-width;

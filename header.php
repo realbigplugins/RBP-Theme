@@ -80,7 +80,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 						<?php if ( ! edd_is_checkout() ) : ?>
 
-							<button class="menu-icon" type="button" data-toggle="offCanvasLeft" aria-expanded="false" aria-controls="offCanvasLeft"></button>
+							<button class="menu-icon dark" type="button" data-toggle="offCanvasLeft" aria-expanded="false" aria-controls="offCanvasLeft"></button>
 
 						<?php else : // Make a fake hamburger button so the height stays the same ?>
 

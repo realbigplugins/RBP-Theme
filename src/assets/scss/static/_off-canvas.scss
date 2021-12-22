@@ -31,5 +31,11 @@
 }
 
 .off-canvas-content {
+
     box-shadow: none;
+
+    & > .top-bar {
+        border-bottom: rem-calc( 1 ) solid $dark-gray;
+    }
+    
 }

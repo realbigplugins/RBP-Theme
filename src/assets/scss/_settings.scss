@@ -404,7 +404,7 @@ $meter-fill-bad: $alert-color;
 // --------------
 
 $offcanvas-size: 250px;
-$offcanvas-background: $black;
+$offcanvas-background: $white;
 $offcanvas-zindex: -1;
 $offcanvas-transition-length: 0.5s;
 $offcanvas-transition-timing: ease;
@@ -576,7 +576,7 @@ $topbar-unstack-breakpoint: medium;
 // -----------
 $site-content-padding: 100px;
 
-$topbar-background: $black;
+$topbar-background: $white;
 
 $topbar-link-color: null;
 @if lightness( $topbar-background ) < 50% {
@@ -585,6 +585,6 @@ $topbar-link-color: null;
 
 } @else {
 
-  $topbar-link-color: $black;
+  $topbar-link-color: $primary-color;
 
 }
