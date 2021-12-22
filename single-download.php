@@ -300,7 +300,7 @@ $secondary_color = ( $secondary_color ) ? $secondary_color : '#51a0e9';
 					</div>
 				</li>
 				<?php if ( get_post_meta( get_the_ID(), '_edd_sl_version', true ) || rbm_fh_get_field( 'requirements' ) ) : ?>
-					<li class="accordion-item" data-accordion-item>
+					<li class="accordion-item is-active" data-accordion-item>
 						<!-- Accordion tab title -->
 						<a href="#" class="accordion-title">Details and Compatability</a>
 
