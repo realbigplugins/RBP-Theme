@@ -1,53 +1,66 @@
 .home {
-    
-    .call-to-action {
-        
-        margin-top: 40px;
-        visibility: hidden;
-    
-        h1 {
-            color: $white;
+
+    &:not( .has-blocks ) {
+
+        #site-content {
+            min-height: 600px;
         }
         
-        .button {
+        .page-content {
+            background-color: transparent;
+            min-height: 450px;
+        }
+        
+        .call-to-action {
             
-            border-color: $white !important;
+            margin-top: 40px;
+            visibility: hidden;
+        
+            h1 {
+                color: $white;
+            }
             
-            .button-text {
-                color: $white !important;
+            .button {
+                
+                border-color: $white !important;
+                
+                .button-text {
+                    color: $white !important;
+                }
+                
             }
             
         }
-        
-    }
-
-    .plugins, .hire {
-        text-align: center;
-        margin: 30px 0;
-
-        p {
-            margin-bottom: 1.25rem;
-        }
-
-        h2 {
-            font-size: 2.3125rem;
-            margin-top: 0.2rem;
-        }
-
-        &:hover {
+    
+        .plugins, .hire {
+            text-align: center;
+            margin: 30px 0;
+    
+            p {
+                margin-bottom: 1.25rem;
+            }
+    
+            h2 {
+                font-size: 2.3125rem;
+                margin-top: 0.2rem;
+            }
+    
+            &:hover {
+                img {
+                    height: 250px;
+                    top: -25px;
+                }
+            }
+    
             img {
-                height: 250px;
-                top: -25px;
+                position: relative;
+                height: 200px;
+                width: auto;
+                top: 0;
+                transition: all 500ms;
             }
         }
 
-        img {
-            position: relative;
-            height: 200px;
-            width: auto;
-            top: 0;
-            transition: all 500ms;
-        }
     }
 
 }

@@ -1,4 +1,4 @@
-jQuery( function( $ ) {
+( function( $ ) {
 
     var transitionIn = [ ".slide-in-down", ".slide-in-left", ".slide-in-up", ".slide-in-right", ".fade-in", ".hinge-in-from-top", ".hinge-in-from-right", ".hinge-in-from-bottom", ".hinge-in-from-left", ".hinge-in-from-middle-x", ".hinge-in-from-middle-y", ".scale-in-up", ".scale-in-down", ".spin-in", ".spin-in-ccw" ];
     var transitionInRegex = '\\b(' + transitionIn.join( '|' ) + ')\\b';
@@ -66,7 +66,7 @@ jQuery( function( $ ) {
 
     }
 
-    $( document ).ready( function() {
+    $( document ).on( 'ready', function() {
 
         // If it is on-screen at load, then animate
         var percent = 0;
@@ -133,7 +133,7 @@ jQuery( function( $ ) {
     } );
 
     // Scroll down effect
-    $( 'body' ).scroll(function () {
+    $( 'body' ).on( 'scroll', function () {
 
         // Percentage FROM bottom of window to start animation
         var percent = 25;
@@ -172,4 +172,4 @@ jQuery( function( $ ) {
 
     } );
 
-} );
+} )( jQuery );

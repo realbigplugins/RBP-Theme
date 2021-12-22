@@ -11,17 +11,53 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die;
 }
 
+if ( has_blocks() ) {
+
+    add_filter( 'body_class', function( $body_classes ) {
+
+        $body_classes[] = 'has-blocks';
+
+        return $body_classes;
+
+    } );
+
+}
+
 get_header();
 
-$plugins_archive_link = get_post_type_archive_link( 'download' );
-$hire_us_page = get_page_by_title( 'Hire Us' );
-?>
+if ( has_blocks() ) : ?>
 
-<div class="page-content row">
+    <div class="page-content">
+        <?php the_content(); ?>
+    </div>
 
-    <?php the_content() ?>
-    
-</div>
+<?php else : 
 
-<?php
+    $plugins_archive_link = get_post_type_archive_link( 'download' );
+    $hire_us_page = get_page_by_title( 'Hire Us' );
+    ?>
+
+    <div class="page-content row">
+
+        <section class="row text-center call-to-action animate-on-scroll fade-in">
+            
+            <div class="small-12 columns">
+            
+                <h1>
+                    <?php echo get_theme_mod( 'home_tagline', __( 'Quality WordPress Plugins<br />Built With Love', THEME_ID ) ); ?>
+                </h1>
+                <a href="/<?php echo EDD_SLUG; ?>/" class="button large secondary slide-right">
+                    <span class="button-text">
+                        <?php echo get_theme_mod( 'home_button_text', __( 'View Our Plugins', THEME_ID ) ); ?>
+                    </span>
+                </a>
+                
+            </div>
+            
+        </section>
+        
+    </div>
+
+<?php endif;
+
 get_footer();
