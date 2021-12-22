@@ -22,10 +22,6 @@ if ( ! defined( 'ABSPATH' ) ) {
         <link rel="profile" href="http://gmpg.org/xfn/11">
         <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 
-        <!--[if lt IE 9]>
-<script src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/vendor/js/html5.js"></script>
-<![endif]-->
-
         <?php wp_head(); ?>
     </head>
 
@@ -42,6 +38,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     <body <?php body_class( $body_class ); ?>>
 
 		<?php do_action( 'rbp_after_body_open' ); ?>
+		<?php wp_body_open(); ?>
             
 		<?php if ( ! edd_is_checkout() ) : ?>
 
@@ -96,11 +93,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 				<div class="top-bar-section top-bar row nav-menu">
 
-					<div class="top-bar-logo">
+					<div class="top-bar-logo top-bar-left">
 						<ul class="menu">
 							<li>
 								<a href="<?php bloginfo( 'url' ); ?>" title="<?php _e( 'Home', THEME_ID ); ?>">
-									<span class="stacked-rbm-logo"><span></span></span>
+									<?php
+
+										$logo_src = locate_template( 'dist/assets/img/rbp-logo.png', false, false );
+
+										$logo_src = str_replace( trailingslashit( ABSPATH ), '', $logo_src );
+
+									?>
+
+									<img src="<?php echo esc_attr( '/' . $logo_src ); ?>" />
+
 								</a>
 							</li>
 						</ul>

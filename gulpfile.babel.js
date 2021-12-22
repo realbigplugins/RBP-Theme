@@ -194,9 +194,9 @@ function tinymce() {
 // In production, the images are compressed
 function images() {
   return gulp.src('src/assets/img/**/*')
-    .pipe($.if(PRODUCTION, $.imagemin({
+    .pipe($.imagemin({
       progressive: true
-    })))
+    }))
     .pipe(gulp.dest(PATHS.dist + '/assets/img'));
 }
 

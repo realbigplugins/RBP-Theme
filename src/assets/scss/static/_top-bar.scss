@@ -77,8 +77,16 @@
     }
 
     .top-bar-left.mobile-menu {
-        width: 100%;
+        
+        display: inline-block;
         text-align: left;
+        width: auto;
+        z-index: 43;
+
+        position: absolute;
+        top: 50%;
+        transform: translateY( -50% );
+        left: 0;
 
         .menu-icon-wrapper {
             padding: $menu-item-padding;
@@ -104,91 +112,22 @@
 
     .top-bar-section {
         display: block;
+        position: relative;
     }
 
     .top-bar-logo {
 
-        width: 6.5em;
-		
-		@include breakpoint( small only ) {
-			margin: 0 auto;
-		}
-		
-		@include breakpoint( medium ) {
-		
-			display: inline-block;
-            float: left;
-			
-		}
+        @include breakpoint( small only ) {
 
-        ul {
-            li {
+            display: inline-block;
+            width: auto;
+            float: right;
 
-                background: $topbar-background;
-                width: 6.5em;
-                height: 6.5em;
-                position: absolute;
-                left: 50%;
-                margin-left: -3.5em;
-                border-radius: 50%;
-                top: -0.125em;
+        }
 
-                a {
-                    font-size: 5em;
-                    font-weight: normal;
-
-                    &:before, &:after {
-                        border: none;
-                    }
-
-                    span.stacked-rbm-logo {
-                        margin-left: -0.25em;
-                        margin-top: -0.12em;
-
-                        &:before {
-                            color: $gear-color;
-                        }
-
-                        &:after {
-                            color: $bulb-color;
-                        }
-
-                        &:before, &:after {
-                            color: $topbar-link-color;
-                        }
-
-                        span { // Extra layers of icons
-                            &:after {
-                                color: $topbar-link-color;
-                            }
-                        }
-
-                    }
-
-                    &:hover {
-
-                        span.stacked-rbm-logo {
-                            
-                            &:before {
-                                color: $gear-color;
-                            }
-                            
-                            &:after {
-                                color: $bulb-color;
-                            }
-
-                            span:after {
-                                content: '\e900';
-                                color: $bulb-color;
-                            }
-
-                        }
-
-                    }
-
-                }
-
-            }
+        img {
+            max-height: rem-calc( 75 );
+            width: auto;
         }
 
     }
@@ -196,7 +135,21 @@
     .top-bar-menus {
 
         @include breakpoint( medium ) {
+
             float: right;
+            display: flex;
+            flex-direction: initial;
+
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+
+            ul {
+                margin-top: auto;
+                margin-bottom: rem-calc( 4 );
+            }
+
         }
 
     }
