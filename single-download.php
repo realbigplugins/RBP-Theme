@@ -257,7 +257,7 @@ $secondary_color = ( $secondary_color ) ? $secondary_color : '#51a0e9';
 				</div>
 
 			</div>
-			<ul class="accordion" data-accordion data-allow-all-closed="true">
+			<ul class="accordion" data-accordion data-allow-all-closed="true" data-multi-expand="true">
 				<li class="accordion-item" data-accordion-item>
 					<!-- Accordion tab title -->
 					<a href="#" class="accordion-title">What's included</a>
