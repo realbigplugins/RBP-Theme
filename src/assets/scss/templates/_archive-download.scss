@@ -23,34 +23,44 @@
         
     }
 
-    .facetwp-facet-categories {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
+    .facets {
 
-    .facetwp-radio {
-        background-image: none;
-        padding-left: 0;
-        @include button( false, $primary-color, scale-color( $primary-color, $lightness: -15% ), 'auto', 'solid' );
-        margin: 0 5px;
+        padding: rem-calc( 30 );
 
-
-        &.checked {
-            background-image: none;
-            background-color: $secondary-color;
+        .facetwp-facet {
+            margin-bottom: 0;
         }
 
-        .facetwp-counter {
-            display: none;
-        }
-    }
+        .facetwp-type-checkboxes {
 
-    .facetwp-load-more {
-        @include button( false, $primary-color, scale-color( $primary-color, $lightness: -15% ), 'auto', 'solid' );
-        margin-top: 2.5em;
-        padding: 1.2em 2em;
-        font-size: 1rem;
+            .facetwp-checkbox:not( input[type="checkbox"] ) {
+
+                @include xy-cell( $size: 6, $gutter-position: top right bottom left );
+
+                @include breakpoint( medium ) {
+
+                    @include xy-cell( $size: 4, $gutter-position: top right bottom left );
+
+                }
+
+                @include breakpoint( large ) {
+
+                    @include xy-cell( $size: 3, $gutter-position: top right bottom left );
+
+                }
+
+            }
+
+            ul {
+
+                @include breakpoint( medium ) {
+                    columns: 3;
+                }
+
+            }
+
+        }
+
     }
 
     .product-image {

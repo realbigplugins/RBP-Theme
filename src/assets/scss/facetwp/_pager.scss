@@ -1,0 +1,13 @@
+.facetwp-pager {
+
+    @include pagination-container;
+
+    .active {
+        @include pagination-item-current;
+    }
+
+    a {
+        display: inline;
+    }
+
+}

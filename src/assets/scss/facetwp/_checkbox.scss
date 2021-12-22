@@ -1,0 +1,21 @@
+.facetwp-type-checkboxes {
+
+    // Our Filter adjusts all FacetWP Checkboxes to be an unordered list
+    ul {
+
+        list-style-type: none;
+        margin: 0;
+
+        label {
+
+            font-size: $global-font-size;
+
+            &:hover {
+                cursor: pointer;
+            }
+
+        }
+
+    }
+
+}

@@ -39,7 +39,17 @@ global $wp_query;
 
         <?php if ( function_exists( 'facetwp_display' ) ) : ?>
 
-            <?php echo facetwp_display( 'facet', 'download_categories' ); ?>
+            <div class="facets">
+                <div class="grid-container">
+                    <div class="grid-x">
+                        <div class="small-12 cell">
+
+                            <?php echo facetwp_display( 'facet', 'download_categories' ); ?>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
 
         <?php elseif ( current_user_can( 'manage_options' ) ) : ?>
 
@@ -77,7 +87,7 @@ global $wp_query;
 
                 <?php while ( have_posts() ) : the_post(); ?>
 
-                        <div class="product cell">
+                        <div <?php post_class( array( 'product', 'cell' ) ); ?>>
                             
                             <div class="product-container">
                                 

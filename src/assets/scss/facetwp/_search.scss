@@ -1,0 +1,15 @@
+.facetwp-type-search {
+
+    .facetwp-btn {
+        display: none;
+    }
+
+    .facetwp-search {
+
+        &:placeholder {
+            font-style: italic;
+        }
+
+    }
+
+}

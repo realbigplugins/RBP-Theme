@@ -489,6 +489,8 @@ add_action( 'wp_head', function() {
 // Include other static files
 require_once __DIR__ . '/includes/shortcodes/mailchimp-embed.php';
 
+require_once __DIR__ . '/includes/facetwp.php';
+
 add_filter( 'gform_get_form_filter_3', 'realbigplugins_add_form_response_time_notice', 10, 2 );
 
 /**
