@@ -15,7 +15,7 @@ get_header();
 
 if ( has_blocks() ) : ?>
 
-    <div class="page-content">
+    <div class="page-content row">
         <?php the_content(); ?>
     </div>
 
