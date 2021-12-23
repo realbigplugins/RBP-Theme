@@ -92,15 +92,29 @@ a img.aligncenter {
 }
 
 .alignwide {
+    
     width: 100vw;
-    margin: 2rem calc(50% - 50vw);
-}
-  
-@media (min-width: 960px) {
-    .alignwide {
-        width: calc(100% + 20vw);
-        margin: 2rem -10vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    
+    .row, .grid-x, .grid-y {
+        
+        max-width: $grid-row-width;
+        margin: 0 auto;
+        
+        &.expanded, &.expand {
+            max-width: $global-width;
+        }
+        
     }
+    
+}
+
+.row:not( .expanded ) .alignwide .row {
+    max-width: $grid-row-width;
 }
 
 /* Text meant only for screen readers. */

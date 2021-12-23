@@ -19,7 +19,7 @@
 
             ul {
                 li {
-                    lighten-color: darken( $topbar-background, 5% );
+                    color: darken( $topbar-background, 5% );
                     padding-left: 1.25rem;
                 }
             }
