@@ -1,5 +1,21 @@
 .home {
 
+    &.has-blocks {
+
+        #site-content {
+
+            .page-content > :first-child {
+
+                &.wp-block-cover {
+                    margin-top: 0;
+                }
+
+            }
+
+        }
+
+    }
+
     &:not( .has-blocks ) {
 
         #site-content {

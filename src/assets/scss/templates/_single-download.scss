@@ -1,4 +1,20 @@
 .single-download {
+
+    #site-content {
+        padding-top: 155px;
+    }
+
+    &.admin-bar {
+        #site-content {
+            
+            @include breakpoint( small only ) {
+                
+                padding-top: 155px + 22px;
+                
+            }
+            
+        }
+    }
     
     main {
 

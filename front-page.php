@@ -11,18 +11,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die;
 }
 
-if ( has_blocks() ) {
-
-    add_filter( 'body_class', function( $body_classes ) {
-
-        $body_classes[] = 'has-blocks';
-
-        return $body_classes;
-
-    } );
-
-}
-
 get_header();
 
 if ( has_blocks() ) : ?>

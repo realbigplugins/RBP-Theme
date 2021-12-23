@@ -33,6 +33,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 			$body_class[] = 'has-post-thumbnail';
 		}
 
+		if ( has_blocks() ) {
+			$body_class[] = 'has-blocks';
+		}
+
 	?>
 
     <body <?php body_class( $body_class ); ?>>

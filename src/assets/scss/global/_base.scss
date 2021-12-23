@@ -45,9 +45,16 @@ section {
 }
 
 #site-content {
+
     height: 100%;
-    padding-top: $site-content-padding * 2;
+
+    padding-top: 150px;
+
+    @include breakpoint( medium ) {
+        padding-top: 145px;
+    }
     //background-color: $body-background;
+
 }
 
 .admin-bar {
@@ -55,7 +62,7 @@ section {
         
         @include breakpoint( small only ) {
             
-            padding-top: $site-content-padding + 22;
+            padding-top: 150px + 22px;
             
         }
         
