@@ -1,0 +1,56 @@
+{
+	"$schema": "https://json.schemastore.org/block.json",
+	"apiVersion": 2,
+	"name": "rbp/rbp-button",
+	"version": "0.1.0",
+	"title": "RBP Button",
+	"category": "design",
+	"icon": "button",
+	"description": "RBP styled Buttons",
+	"keywords": [ "rbp", "button" ],
+	"attributes": {
+		"url": {
+			"type": "string",
+			"default": null
+		},
+		"content": {
+			"type": "string",
+			"default": ""
+		},
+		"new_tab": {
+			"type": "boolean",
+			"default": false
+		},
+		"color": {
+			"type": "string",
+			"default": "secondary"
+		},
+		"size": {
+			"type": "string",
+			"default": ""
+		},
+		"expand": {
+			"type": "boolean",
+			"default": false
+		},
+		"hollow": {
+			"type": "boolean",
+			"default": false
+		},
+		"invert": {
+			"type": "boolean",
+			"default": false
+		},
+		"slide_direction": {
+			"type": "string",
+			"default": ""
+		}
+	},
+    "supports": {
+		"align": [ "left", "center", "right" ],
+		"html": false
+	},
+	"textdomain": "rbp-sportswear-theme",
+	"editorScript": "rbp-button",
+	"editorStyle": "rbp-button"
+}

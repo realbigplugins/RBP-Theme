@@ -489,6 +489,124 @@ add_action( 'wp_head', function() {
 // Include other static files
 require_once __DIR__ . '/includes/shortcodes/mailchimp-embed.php';
 
+add_action( 'enqueue_block_assets', function() {
+
+	if ( ! is_admin() ) return;
+
+	$l10n = apply_filters( 'rbp_gutenberg_l10n', array(
+		'rbpButton' => array(
+			'buttonURL' => array(
+				'label' => __( 'Button URL', 'real-big-plugins' ),
+			),
+			'content' => array(
+				'label' => __( 'Button Text', 'real-big-plugins' ),
+                'placeholder' => __( 'Your Text Here', 'real-big-plugins' ),
+			),
+			'buttonColor' => array(
+				'label' => __( 'Button Color', 'real-big-plugins' ),
+				'colors' => array( 
+					array(
+						'color' => '#12538f',
+						'name' => 'primary',
+					),
+					array(
+						'color' => '#5b9d1a',
+						'name' => 'secondary',
+					),
+				),
+			),
+			'buttonSize' => array(
+				'label' => __( 'Button Size', 'real-big-plugins' ),
+				'options' => array( 
+					array(
+						'label' => __( 'Default', 'real-big-plugins' ),
+						'value' => '',
+					),
+					array(
+						'label' => __( 'Tiny','real-big-plugins' ),
+						'value' => 'tiny',
+					),
+					array(
+						'label' => __( 'Medium','real-big-plugins' ),
+						'value' => 'medium',
+					),
+					array(
+						'label' => __( 'Large','real-big-plugins' ),
+						'value' => 'large',
+					),
+				),
+			),
+			'expand' => array(
+				'label' => __( 'Full width?', 'real-big-plugins' ),
+			),
+			'hollow' => array(
+				'label' => __( 'Hollow/Ghost button?', 'real-big-plugins' ),
+			),
+            'invert' => array(
+				'label' => __( 'White button with colored hover? (Does not show in editor)', 'real-big-plugins' ),
+			),
+            'slideDirection' => array(
+                'label' => __( 'Slide fill animation? (Does not show in editor)', 'real-big-plugins' ),
+                'options' => array(
+                    array(
+                        'label' => __( 'None', 'real-big-plugins' ),
+                        'value' => '',
+                    ),
+                    array(
+                        'label' => __( 'To Left', 'real-big-plugins' ),
+                        'value' => 'left',
+                    ),
+                    array(
+                        'label' => __( 'To Right', 'real-big-plugins' ),
+                        'value' => 'right',
+                    ),
+                    array(
+                        'label' => __( 'To Top', 'real-big-plugins' ),
+                        'value' => 'top',
+                    ),
+                    array(
+                        'label' => __( 'To Bottom', 'real-big-plugins' ),
+                        'value' => 'bottom',
+                    ),
+                )
+            ),
+			'newTab' => array(
+				'label' => __( 'Open in a new tab?', 'real-big-plugins' ),
+			),
+		),
+	) );
+
+	foreach ( $l10n as $key => $value ) {
+
+		if ( ! is_scalar( $value ) )
+			continue;
+
+		$l10n[$key] = html_entity_decode( (string) $value, ENT_QUOTES, 'UTF-8' );
+
+	}
+
+	$script = "var rbpBlocks = " . wp_json_encode( $l10n ) . ';';
+
+	$script = "/* <![CDATA[ */\n" . $script . "\n/* ]]> */";
+
+	?>
+
+	<script type="text/javascript"><?php echo $script; ?></script>
+
+	<?php
+
+} );
+
+add_action( 'init', function() {
+
+	// Blocks
+	require_once( 'includes/blocks/class-rbp-block.php' );
+	require_once( 'includes/blocks/rbp-button/class-rbp-button-block.php' );
+
+	new RBP_Button_Block( trailingslashit( __DIR__ ) . 'includes/blocks/rbp-button/' );
+
+} );
+
 require_once __DIR__ . '/includes/facetwp.php';
 
 add_filter( 'gform_get_form_filter_3', 'realbigplugins_add_form_response_time_notice', 10, 2 );

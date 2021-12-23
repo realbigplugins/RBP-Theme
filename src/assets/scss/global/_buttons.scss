@@ -1,4 +1,4 @@
-.off-canvas-content {
+.off-canvas-content, .editor-styles-wrapper {
 
     .button {
 
@@ -58,6 +58,10 @@
         }
 
     }
+
+}
+
+.off-canvas-content {
 
     // Catch-all for WP Search Fields and stuff
     input[type="submit"] {
