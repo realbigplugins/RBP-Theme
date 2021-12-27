@@ -4,7 +4,7 @@
 
     var anchorScrolls = {
         ANCHOR_REGEX: /^#[^ ]+$/,
-        OFFSET_HEIGHT_PX: $( '.top-bar-logo li' )[0].clientHeight,
+        OFFSET_HEIGHT_PX: $( '.top-bar.sticky' )[0].clientHeight,
 
         /**
          * Establish events, and fix initial scroll position if a hash is provided.

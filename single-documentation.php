@@ -196,7 +196,7 @@ $link_download_ID = rbm_cpts_get_p2p_parent( 'download' );
 
 			<div class="medium-3 columns sticky-container hide-on-small" data-sticky-container>
 
-				<nav class="docs-toc-wrap magellan" data-sticky data-anchor="docs" data-margin-top="7">
+				<nav class="docs-toc-wrap magellan" data-sticky data-anchor="docs" data-margin-top="11">
 
 					<ul class="docs-toc vertical menu expanded" data-magellan data-bar-offset="60">
 
