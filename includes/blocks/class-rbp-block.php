@@ -2,7 +2,7 @@
 /**
  * Block class framework
  *
- * @since {{VERSION}}
+ * @since 2.0.0
  */
 
 defined( 'ABSPATH' ) || die();
@@ -12,14 +12,14 @@ defined( 'ABSPATH' ) || die();
  *
  * Template for each block.
  *
- * @since {{VERSION}}
+ * @since 2.0.0
  */
 abstract class RBP_Block {
 
 	/**
 	 * The block ID (tag).
 	 *
-	 * @since {{VERSION}}
+	 * @since 2.0.0
 	 *
      * @var string $path
 	 */
@@ -28,7 +28,7 @@ abstract class RBP_Block {
     /**
 	 * RBP_Block constructor.
 	 *
-	 * @since {{VERSION}}
+	 * @since 2.0.0
 	 *
 	 * @param string $path
 	 */
@@ -43,7 +43,7 @@ abstract class RBP_Block {
 	/**
 	 * Registers the block.
 	 *
-	 * @since {{VERSION}}
+	 * @since 2.0.0
 	 */
 	function register_block() {
 

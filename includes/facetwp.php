@@ -2,7 +2,7 @@
 /**
  * Adjusts some FacetWP functionality
  *
- * @since   {{VERSION}}
+ * @since   2.0.0
  * @package rbp_ELearning_Theme
  */
 
@@ -21,7 +21,7 @@ add_filter( 'facetwp_facet_html', 'rbp_change_checkbox_facet_output', 10, 2 );
  * @param   string  $output  HTML output
  * @param   array   $params  Array of Params
  *
- * @since	{{VERSION}}
+ * @since	2.0.0
  * @return  string           HTML output
  */
 function rbp_change_checkbox_facet_output( $output, $params ) {

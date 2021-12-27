@@ -2,7 +2,7 @@
 /**
  * Block: Button
  *
- * @since {{VERSION}}
+ * @since 2.0.0
  */
 
 defined( 'ABSPATH' ) || die();
@@ -10,7 +10,7 @@ defined( 'ABSPATH' ) || die();
 /**
  * Class RBP_Button_Block
  *
- * @since {{VERSION}}
+ * @since 2.0.0
  */
 
 final class RBP_Button_Block extends RBP_Block {
@@ -18,7 +18,7 @@ final class RBP_Button_Block extends RBP_Block {
 	/**
 	 * RBP_Button_Block constructor.
 	 *
-	 * @since {{VERSION}}
+	 * @since 2.0.0
 	 *
 	 * @param string $path
 	 */
@@ -33,7 +33,7 @@ final class RBP_Button_Block extends RBP_Block {
 	/**
 	 * Callback outputted by the dynamic block.
 	 *
-	 * @since {{VERSION}}
+	 * @since 2.0.0
 	 */
 	function render_callback( $attributes ) {
 		
@@ -88,7 +88,7 @@ final class RBP_Button_Block extends RBP_Block {
 	 *
 	 * @param   array  $allowed_block_types  Allowed Gutenberg Blocks
 	 *
-	 * @since	{{VERSION}}
+	 * @since	2.0.0
 	 * @return  array                        Allowed Gutenberg Blocks
 	 */
 	function remove_core_button_block( $allowed_block_types ) {

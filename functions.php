@@ -676,7 +676,7 @@ add_action( 'wp_head', function() {
 /**
  * Enable Gutenberg for Downloads
  * 
- * @since	{{VERSION}}
+ * @since	2.0.0
  * @return  boolean
  */
 add_filter( 'use_block_editor_for_post_type', function( $bool, $post_type ) {
@@ -693,7 +693,7 @@ add_filter( 'use_block_editor_for_post_type', function( $bool, $post_type ) {
  * @param   array   $args       Register Post Type Args
  * @param   string  $post_type  Post Type
  *
- * @since   {{VERSION}}
+ * @since   2.0.0
  * @return  array               Register Post Type Args
  */
 add_filter( 'register_post_type_args', function( $args, $post_type ) {

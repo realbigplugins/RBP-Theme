@@ -242,16 +242,16 @@ function version() {
 	
     return gulp.src([
       'admin/**/*',
-      'assets/src/**/*',
-      'core/**/*',
+      '/src/assets/**/*.js',
+      'src/assets/**/*.scss',
+      'includes/**/*',
+      '!includes/blocks/**/node_modules/**/*',
       '!vendor/**/*',
       'languages/**/*',
       'templates/**/*',
       'style.css',
       'readme.txt',
       'edd_templates/**/*',
-      'includes/**/*',
-      'src/**/*',
       '*.php',
     ], { base: './', allowEmpty: true } )
 		// Doc block versions, only update on non-Betas and 1.0.0+ releases
