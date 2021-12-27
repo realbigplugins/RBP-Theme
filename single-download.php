@@ -71,6 +71,10 @@ $secondary_color = ( $secondary_color ) ? $secondary_color : '#51a0e9';
 
 			<?php else : ?>
 
+				<div class="content">
+					<?php the_content(); ?>
+				</div>
+
 				<?php $features = rbm_fh_get_field( 'features' );
 
 				if ( ! empty( $features ) ) : ?>
