@@ -92,7 +92,6 @@
         .aside-container {
             background-color: $light-gray;
             padding: rem-calc( 20 );
-            position: sticky;
             top: rem-calc( 120 );
 
             @include breakpoint( medium down ) {
