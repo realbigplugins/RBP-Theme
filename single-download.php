@@ -311,7 +311,19 @@ $secondary_color = ( $secondary_color ) ? $secondary_color : '#51a0e9';
 
 							<!-- Accordion tab content: it would start in the open state due to using the `is-active` state class. -->
 							<div class="accordion-content" data-tab-content>
-								<?php if ( $current_version = get_post_meta( get_the_ID(), '_edd_sl_version', true ) ) : ?>
+
+								<?php if ( class_exists( 'EDD_SL_Download' ) ) : 
+
+									$sl_download = new EDD_SL_Download( get_the_ID() );
+									$current_version = $sl_download->get_version();
+
+								else : 
+
+									$current_version = get_post_meta( get_the_ID(), '_edd_sl_version', true );
+
+								endif; ?>
+
+								<?php if ( $current_version ) : ?>
 									<div class="grid-x">
 										<div class="small-12 medium-5"><strong><?php echo _x( 'Version', 'Current Version Text', THEME_ID ); ?>: </strong></div>
 										<div class="small-12 medium-7">
