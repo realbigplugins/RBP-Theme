@@ -470,6 +470,16 @@ $secondary_color = ( $secondary_color ) ? $secondary_color : '#51a0e9';
 
 												<?php if ( ! empty( $found_headers ) ) : 
 
+													$has_both_psp_pro_lite_requires = false;
+
+													// Account for displaying Requirements for Project Panorama Pro vs Lite
+													if ( in_array( 'requires_project_panorama_lite', $found_headers ) && in_array( 'requires_project_panorama', $found_headers ) ) {
+
+														$has_both_psp_pro_lite_requires = true;
+														unset( $found_headers[ array_search( 'requires_project_panorama_lite', $found_headers ) ] );
+
+													}
+
 													foreach ( $found_headers as $text => $key ) : 
 
 														$value = rbm_get_readme_header( $key );
@@ -482,7 +492,21 @@ $secondary_color = ( $secondary_color ) ? $secondary_color : '#51a0e9';
 
 														endif; ?>
 
-														<li><?php echo $text; ?> v<?php echo $value; ?> <?php _e( 'or higher', 'real-big-plugins' ); ?></li>
+														<?php if ( $key == 'requires_project_panorama' && $has_both_psp_pro_lite_requires ) : 
+
+															$value = sprintf( 
+																__( 'Pro v%s or higher / Lite v%s or higher', 'real-big-plugins' ),
+																$value, 
+																rbm_get_readme_header( 'requires_project_panorama_lite' )
+															);
+
+														else : 
+
+															$value = "v$value " . __( 'or higher', 'real-big-plugins' );
+
+														endif; ?>
+
+														<li><?php echo $text; ?> <?php echo $value; ?></li>
 
 														<?php
 
