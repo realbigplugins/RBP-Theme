@@ -495,14 +495,14 @@ $secondary_color = ( $secondary_color ) ? $secondary_color : '#51a0e9';
 														<?php if ( $key == 'requires_project_panorama' && $has_both_psp_pro_lite_requires ) : 
 
 															$value = sprintf( 
-																__( 'Pro v%s or higher / Lite v%s or higher', 'real-big-plugins' ),
+																__( 'v%s or higher / Lite v%s or higher', 'real-big-plugins' ),
 																$value, 
 																rbm_get_readme_header( 'requires_project_panorama_lite' )
 															);
 
 														else : 
 
-															$value = "v$value " . __( 'or higher', 'real-big-plugins' );
+															$value = sprintf( __( 'v%s or higher', 'real-big-plugins' ), $value );
 
 														endif; ?>
 
