@@ -64,7 +64,7 @@ abstract class RBP_Block {
             $block_meta['editorScript'], 
             get_template_directory_uri() . $relative_path . 'build/index.js',
             $script_asset['dependencies'],
-            defined( 'WP_DEBUG' ) && WP_DEBUG ? time() : THEME_VER
+            defined( 'WP_DEBUG' ) && WP_DEBUG ? time() : THEME_VERSION
         );
 
         if ( isset( $block_meta['editorStyle'] ) ) {
@@ -73,7 +73,7 @@ abstract class RBP_Block {
                 $block_meta['editorStyle'],
                 get_template_directory_uri() . $relative_path . 'build/index.css',
                 array(),
-                defined( 'WP_DEBUG' ) && WP_DEBUG ? time() : THEME_VER
+                defined( 'WP_DEBUG' ) && WP_DEBUG ? time() : THEME_VERSION
             );
 
         }
