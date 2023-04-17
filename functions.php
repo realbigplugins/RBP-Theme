@@ -636,6 +636,46 @@ function realbigplugins_add_form_response_time_notice( $form_html, $form ) {
 		
 	</div>
 
+    <div class="callout info">
+		
+		<h4>
+			Gradebook Support
+		</h4>
+		
+		<p>
+            LearnDash has acquired Gradebook, and they have begun providing support as of April 4th of 2023. Real Big Plugins is no longer providing support through this website.
+		</p>
+
+        <p>
+            Instead, please go to the following links:
+            <ul>
+                <li>
+                    <a href="https://www.learndash.com/support/docs/add-ons/gradebook-add-on/" target="_blank">
+                        For documentation
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.learndash.com/help/" target="_blank">
+                        To search support
+                    </a>
+                </li>
+                <li>
+                    <a href="https://account.learndash.com/?tab=support" target="_blank">
+                        To create a ticket
+                    </a>
+                    <ul>
+                        <li>
+                            You should be able to log in to their website using the same email address that you used to create an account on <a href="<?php echo esc_attr( site_url() ); ?>">
+                                <?php echo esc_html( site_url() ); ?>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </p>
+		
+	</div>
+
 	<?php 
 	
 	$callout = ob_get_clean();
